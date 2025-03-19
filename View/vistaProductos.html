@@ -1,0 +1,262 @@
+<html>
+
+<head>
+    <title>Productos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../css/styleInicio.css">
+    <link rel="stylesheet" href="../css/styleVistaProductos.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <div class="header">
+        <label class="main">
+            Menu
+            <input class="inp" checked="" type="checkbox" />
+            <div class="bar">
+                <span class="top bar-list"></span>
+                <span class="middle bar-list"></span>
+                <span class="bottom bar-list"></span>
+            </div>
+            <section class="menu-container">
+                <a href="index.html" class="menu-list">Inicio</a>
+                <a href="productos.html" class="menu-list">Productos</a>
+                <a href="pedidos.html" class="menu-list">Facturación</a>
+                <a href="proveedores.html" class="menu-list">Proveedores</a>
+                <a href="contactos.html" class="menu-list">Contactanos</a>
+            </section>
+        </label>
+        <img alt="Logo" height="50" src="../img/Icono K.png" width="50" />
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <img alt="User  Avatar" height="20%" src="../img/Usuario.png" width="10%" />
+            <h2>KARDEX</h2>
+            <p>Kardex1@gmail.com</p>
+            <a href="index.html">INICIO</a>
+            <a class="active" href="productos.html">PRODUCTOS</a>
+            <a href="pedidos.html">PEDIDOS</a>
+            <a href="proveedores.html">PROVEEDORES</a>
+            <a href="contactos.html">CONTACTANOS</a>
+        </div>
+
+        <div class="main-content">
+            <div class="product-card">
+                <a id="devolver" class="back-button" href="productos.html"><i class="fas fa-arrow-left"></i></a>
+                <img class="laptop1" alt="Image of a laptop" height="100" src="../img/Computador.png" />
+                <h2>Portátil Asus X1504ZA</h2>
+                <div class="price">Precio<br />$1´999.000</div>
+                <div class="specifications">Especificaciones
+                    <p>Capacidad de almacenamiento: 1T</p>
+                    <p>Memoria Ram: 16 GB</p>
+                    <p>Tamaño de Pantalla: 15.6</p>
+                </div>
+                <div class="stock">Stock
+                    <p>25 Unidades</p>
+                </div>
+                <div class="availability">Disponible</div>
+                <div class="flex justify-around items-center py-3">                    
+                    <div class="flex gap-2 text-gray-600 hover:scale-110 duration-200 hover:cursor-pointer">
+                        <button id="openModalButton">
+                        <svg class="w-6 stroke-green-700" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" onclick="openModalButton">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                    </button>
+                        <button class="button-Editar" type="button" id="openModalButton">Editar</button>
+                    </div>
+                    <div class="flex gap-2 text-gray-600 hover:scale-110 duration-200 hover:cursor-pointer">
+                        <button id="updateStockButton">
+                        <svg class="w-6 stroke-blue-700" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <polyline points="1 20 1 14 7 14"></polyline>
+                            <path d="M3.51 9a9 9 0 0 1 14.88-3.36L23 10"></path>
+                            <path d="M20.49 15a9 9 0 0 1-14.88 3.36L1 14"></path>
+                        </svg>
+                    </button>
+                        <button class="button-Actualizar" type="button" id="updateStockButton">Actualizar Stock</button>
+                    </div>
+
+                    <div class="flex gap-2 text-gray-600 hover:scale-110 duration-200 hover:cursor-pointer">                        
+                        <svg class="w-6 stroke-red-700" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                            </path>
+                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                        </svg>                
+                        <button class="button-Eliminar" type="button" onclick="showDeleteModal()">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edición -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="bg-white p-6 rounded-lg shadow-xl w-96 relative">
+                <h2 class="text-2xl font-bold text-[#0CACAB] mb-4 text-center">Editar Producto</h2>
+                <form class="flex flex-col">
+                    <input placeholder="Nombre" class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]"
+                        type="text">
+                    <input placeholder="Precio" class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]"
+                        type="text">
+                    <input placeholder="Especificaciones"
+                        class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]" type="text">
+                    <input placeholder="Stock" class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]"
+                        type="text">
+                        <div class="form-group mb-4">
+                            <label for="availability" class="text-gray-800">Proveedor</label>
+                            <select id="availability" class="border rounded-md p-2 focus:ring-2 focus:ring-[#0CACAB]">
+                              <option value="available">Proveedor 1</option>
+                              <option value="available">Proveedor 2</option>
+                              <option value="available">Proveedor 3</option>
+                              <option value="available">Proveedor 4</option>
+                              <option value="available">Proveedor 5</option>
+                            </select>
+                          </div>
+                    <input type="file" class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]">
+                    <div class="flex justify-between gap-2">
+                        <button id="editButton"
+                            class="bg-[#0CACAB] text-white font-bold py-2 px-4 rounded-md hover:bg-[#0C8B98] w-1/2">Guardar</button>
+                        <button id="cancelModalButton"
+                            class="bg-red-500 text-white font-bold py-2 px-4 rounded-md hover:bg-red-700 w-1/2">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de Actualización -->
+    <div id="updateModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="bg-white p-6 rounded-lg shadow-xl w-96 relative">
+                <h2 class="text-2xl font-bold text-[#0CACAB] mb-4 text-center">Actualizar Stock</h2>
+                <form class="flex flex-col">
+                    <input id="stockInput" placeholder="Stock"
+                        class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]" type="number" min="0">
+                    <div class="flex justify-between gap-2">
+                        <button id="saveStockButton"
+                            class="bg-[#0CACAB] text-white font-bold py-2 px-4 rounded-md hover:bg-[#0C8B98] w-1/2">
+                            Guardar
+                        </button>
+                        <button id="cancelUpdateButton"
+                            class="bg-red-500 text-white font-bold py-2 px-4 rounded-md hover:bg-red-700 w-1/2">
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Eliminación -->
+    <div id="deleteModal" class="modal hidden">
+        <div class="modal-card"
+            style="background: white; padding: 20px; border-radius: 8px; text-align: center; max-width: 400px;">
+            <div class="image">
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z">
+                    </path>
+                </svg>
+            </div>
+            <div class="content">
+                <span class="title">¿Deseas eliminar este Producto?</span>
+                <p class="message">
+                    Atención: Estás a punto de eliminar este producto de manera permanente. Una vez eliminado, no podrás
+                    recuperarlo. Asegúrate de que deseas continuar con esta acción antes de proceder.
+                </p>
+            </div>
+            <div class="actions">
+                <button type="button" class="desactivate" onclick="deleteProduct()">Aceptar</button>
+                <button type="button" class="cancel" onclick="closeDeleteModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de éxito -->
+    <div id="successModal" class="notifications-container">
+        <div class="success">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="succes-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                        aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+            </div>
+            <p class="success-prompt-heading">Producto Eliminado</p>
+            <div class="success-prompt-prompt">
+                <p>El producto ha sido eliminado exitosamente de la base de datos.</p>
+            </div>
+            <div class="success-button-container">
+                <button type="button" class="success-button-main" onclick="redirectToProducts()">Ver
+                    Productos</button>
+                <button type="button" class="success-button-secondary" onclick="closeSuccessModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const editModal = document.getElementById("modal");
+            const deleteModal = document.getElementById("deleteModal");
+            const openEditModalButton = document.getElementById("openModalButton");
+            const cancelEditButton = document.getElementById("cancelModalButton");
+
+            openEditModalButton.addEventListener("click", () => {
+                editModal.style.display = "flex";
+                deleteModal.style.display = "none";
+            });
+
+            cancelEditButton.addEventListener("click", () => {
+                editModal.style.display = "none";
+            });
+
+            window.showDeleteModal = function () {
+                deleteModal.style.display = "flex";
+            };
+
+            window.closeDeleteModal = function () {
+                deleteModal.style.display = "none";
+            };
+
+            window.deleteProduct = function () {
+                // Aquí puedes agregar la lógica para eliminar el producto
+                // Por ejemplo, hacer una llamada a la API o eliminar el producto de la lista
+                closeDeleteModal();
+            };
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const updateModal = document.getElementById("updateModal");
+            const openUpdateModalButton = document.getElementById("updateStockButton"); // Corregido
+            const cancelUpdateButton = document.getElementById("cancelUpdateButton");
+
+            // Abrir modal de actualización
+            openUpdateModalButton.addEventListener("click", () => {
+                updateModal.style.display = "flex";
+            });
+
+            // Cerrar modal de actualización
+            cancelUpdateButton.addEventListener("click", () => {
+                updateModal.style.display = "none";
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

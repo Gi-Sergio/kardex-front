@@ -1,0 +1,71 @@
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Seguimiento de Pedido
+    </title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-[#0CACAB] flex justify-center items-center min-h-screen">
+    <div class="bg-gray-100 rounded-lg p-6 w-full max-w-4xl">
+        <div class="flex justify-between items-center mb-4">
+            <h1 class="text-xl font-bold">
+                PEDIDO
+                <a class="text-blue-600" href="#">
+                    #001
+                </a>
+            </h1>
+        </div>
+        <div class="text-center mb-6">
+            <p class="text-lg font-bold mb-2">
+                Nombre del Producto
+            </p>
+            <img alt="Icono de Producto" class="mx-auto mb-2" height="100"
+                src="../img/Queso.png"
+                width="100" />
+        </div>
+        <div class="flex items-center mb-6">
+            <div class="flex-1 h-2 bg-green-500 rounded-full relative">
+                <div
+                    class="absolute left-0 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-check text-white">
+                    </i>
+                </div>
+                <div
+                    class="absolute left-1/2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                    <i class="fas fa-check text-white">
+                    </i>
+                </div>
+                <div
+                    class="absolute right-0 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                    <i class="fas fa-check text-white">
+                    </i>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between text-center mb-6">
+            <div>
+                <button class="bg-[#e3eb08] text-white py-2 px-4 rounded-full">
+                    Pedido Despachado
+                </button>
+            </div>
+            <div>
+                <button class="bg-[#08ebba] text-white py-2 px-4 rounded-full">
+                    Pedido en Tránsito
+                </button>
+            </div>
+            <div>
+                <button class="bg-[#1fac0c] text-white py-2 px-4 rounded-full">
+                    Pedido Entregado
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

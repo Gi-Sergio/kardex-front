@@ -1,0 +1,176 @@
+body {
+    background-color: #defffe;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.main-title {
+    display: block;
+    /* Hace que los enlaces sean bloques para ocupar toda la línea */
+    color: #404040;
+    /* Color turquesa para los enlaces */
+    font-size: 40px;
+    /* Tamaño de fuente de 20px */
+    text-align: center;
+    /* Centra el texto */
+    padding: 17px 0;
+    /* Relleno vertical de 17px */
+    font-weight: 900;
+    /* Peso de fuente negrita */
+    text-decoration: none;
+    /* Elimina el subrayado de los enlaces */
+}
+
+.highlight {
+    color: #0CACAB;
+}
+
+.description {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    /* Centra el texto */
+    display: block;
+    /* Asegura que ocupe toda la línea */
+}
+
+.custom-button {
+    font-weight: 900;
+    background-color: #1AF47D;
+    color: white;
+    padding: 0.5rem 3rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+}
+
+.nav-button-2 {
+    font-weight: 900;
+    background-color: #7cd4d4;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.image-container {
+    position: relative;
+    margin-top: 2rem;
+}
+
+.image-container img {
+    border-radius: 0.5rem;
+    margin-left: 90px;
+    /* Ajusta el valor según lo que necesites */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header {
+    background-color: white;
+    /* Fondo blanco para el header */
+    padding: 2rem 0;
+    /* Espaciado superior e inferior */
+    text-align: center;
+    /* Centra el texto */
+    margin-bottom: 3rem;
+    /* Espacio inferior */
+}
+
+.main-container {
+    background-color: white;
+    /* Aplica fondo blanco desde .header hacia abajo */
+    padding: 2rem 0;
+    /* Espaciado para que no quede pegado a los bordes */
+}
+
+.header {
+    background-color: white;
+    /* Asegura que el header también sea blanco */
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.small-image {
+    width: 30px;
+    /* Tamaño pequeño */
+    height: auto;
+    /* Mantiene la proporción */
+    margin-right: auto;
+    /* Empuja los botones hacia la derecha */
+}
+
+.grid {
+    background-color: white;
+    /* Asegura que el grid también sea blanco */
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.header p {
+    color: #0CACAB;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .image-container img {
+        margin: 0;
+    }
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card img {
+    margin-bottom: 1rem;
+}
+
+.card h2 {
+    color: #0CACAB;
+    font-size: 1.60rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    color: #4a4a4a;
+    margin-bottom: 1rem;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}

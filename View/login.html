@@ -1,0 +1,83 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />      
+        <link rel="stylesheet" href="../css/styles.css">
+        <title>Login</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="signin-signup">
+                <form class="sign-in-form" id="sign-in-form">
+                    <h2 class="title-1">Inicio de sesión</h2>
+                    <div class="input-field">
+                        <i class="fas fa-envelope icon"></i>
+                        <input type="email" placeholder="Correo electronico" id="user-sign-in">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Contraseña" id="password-sign-in">
+                    </div>
+                    <button type="button" class="btn-3"  onclick="window.location.href='inicio.html'">Ingresar</button>
+                    <a href="restablecerContraseña.html" class="styled-link">Restablecer tu contraseña</a>
+                    <button class="btn-2" >Registrate Aquí</button>
+                    
+                </form>
+                <form action="" class="sign-up-form">
+                    <h2 class="title">Registro</h2  >
+                        <div class="input-field">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Nombre de la Empresa">
+                        </div>
+                        <div class="input-field">
+                            <i class="fas fa-envelope icon"></i>
+                            <input type="email" placeholder="Correo electronico">
+                        </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Nombre">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Contraseña">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Confirma tu Contraseña">
+                    </div>
+                    <div class="form-group mb-4">
+                        <p class="text-gray text-sm">
+                          Al seleccionar Registarse como Empresa, aceptas nuestras <a href="" class="text-[#0CACAB] underline">Condiciones de uso</a>
+                          y reconoces haber leído nuestro
+                          <a href="" class="text-[#0CACAB] underline">Aviso de Publicidad</a>.
+                      </p>
+                    </div>
+                    <input type="submit" value="Registrarse" class="btn" style="margin-bottom: 20px;">
+                </form>
+            </div>
+            <div class="panels-container">
+                <div class="panel left-panel">
+                    <div class="content">
+                        <h3>¿Usuario Existente?</h3>
+                        <p>Inicia sesión para continuar gestionando tu inventario con nuestras herramientas avanzadas y mantener el control total de tus productos</p>
+                        <button class="btn-2" id="sign-in-btn">Inicia Sesión</button>
+                    </div>
+                    <img src="../img/Icono K.png" alt="" class="image">
+                </div>
+                <div class="panel right-panel">
+                    <div class="content">
+                        <h3>¿Eres un usuario nuevo?</h3>
+                        <p>Regístrate para acceder a nuestro sistema de gestión de inventario y controla tu inventario con herramientas eficientes y fáciles de usar</p>
+                        <button class="btn-2" id="sign-up-btn">Registrate Aquí</button>
+                    </div>
+                    <img src="../img/Icono K.png" alt="" class="image">
+                </div>                
+            </div>            
+        </div>
+        <script type="module" src="../js/utils/login.js"></script>
+        <script src="../js/app.js"></script>
+    </body>
+    </html>

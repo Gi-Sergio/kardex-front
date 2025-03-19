@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Registrar Empresa</title>
+</head>
+<body>
+    <div class="container-3">
+        
+        <h2 class="title-3">Registrar Empresa</h2>
+        <div class="signin-signup">
+            <form id="form-2" class="sign-in-form-3" onsubmit="redirectToIndex(event)">
+                <div class="form-container">
+                    <a href="index.html"><i class="fas fa-arrow-left" 
+                    style="position: absolute;
+                        right: 20px;
+                        border: 1px solid;
+                        border-radius: 20px;
+                        padding: 10px;
+                        bottom: 30px;"></i></a>
+                    <div class="column">
+                        <div class="input-field-2">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Nombre" required>
+                        </div>
+                        <div class="input-field-2">
+                            <i class="fas fa-building"></i>
+                            <input type="text" placeholder="Nombre Empresa" required>
+                        </div>
+                        <div class="input-field-2">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Correo Empresa" required>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="input-field-2">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Correo" required>
+                        </div>
+                        <div class="input-field-2">
+                            <i class="fas fa-id-card"></i>
+                            <input type="text" placeholder="NIT" required>
+                        </div>
+                        <div class="input-field-2">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <input type="text" placeholder="Dirección" required>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Registrarse" class="btn-3">
+            </form>
+        </div>
+        <script src="../js/app.js"></script>
+    </div>
+</body>
+</html>

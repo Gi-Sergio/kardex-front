@@ -1,0 +1,813 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Estilos globales para el cuerpo de la página */
+body {
+  font-family: 'Poppins', sans-serif;
+  /* Se aplica la fuente Poppins */
+  margin: 0;
+  /* Elimina los márgenes predeterminados */
+  padding: 0;
+  /* Elimina el relleno predeterminado */
+  background-color: #ffffff;
+  /* Establece un fondo gris claro */
+}
+
+/* Contenedor principal utilizando Flexbox */
+.container {
+  display: flex;
+  /* Aplica el modelo de diseño Flexbox */
+  flex-wrap: wrap;
+  /* Permite que los elementos se acomoden en varias líneas si es necesario */
+}
+
+/* Estilos del sidebar (barra lateral) */
+.sidebar {
+  background-color: var(--background-hover);
+  width: 250px;
+  /* Ancho fijo del sidebar */
+  background-color: #ffffff;
+  /* Fondo blanco */
+  border-right: 2px solid #e0e0e0;
+  /* Borde gris claro a la derecha */
+  padding: 40px;
+  /* Relleno interno de 20px */
+  transition: transform 0.3s ease-in-out;
+  /* Efecto de entrada/salida */
+  position: fixed;
+  height: 100vh;
+  top: 0;
+}
+
+/* Estilos para las imágenes dentro del sidebar */
+.sidebar img {
+  width: 100px;
+  /* Ancho de la imagen */
+  height: 100px;
+  /* Altura de la imagen */
+  display: block;
+  /* Convierte la imagen en un bloque para centrarla */
+  margin: 0 auto 20px;
+  /* Centra la imagen y agrega un margen inferior */
+}
+
+/* Títulos en el sidebar */
+.sidebar h2 {
+  color: #17E0A7;
+  /* Color verde turquesa */
+  font-size: 18px;
+  /* Tamaño de fuente de 18px */
+  text-align: center;
+  /* Centra el texto */
+}
+
+/* Párrafos en el sidebar */
+.sidebar p {
+  color: #000;
+  /* Color de texto negro */
+  font-size: 14px;
+  /* Tamaño de fuente de 14px */
+  text-align: center;
+  /* Centra el texto */
+  margin-bottom: 20px;
+  /* Margen inferior de 20px */
+  font-weight: 600;
+  /* Peso de fuente de 600 (negrita) */
+}
+
+/* Estilos de los enlaces dentro del sidebar */
+.sidebar a {
+  display: block;
+  /* Hace que los enlaces sean bloques para ocupar toda la línea */
+  color: #0CACAB;
+  /* Color turquesa para los enlaces */
+  font-size: 20px;
+  /* Tamaño de fuente de 20px */
+  text-align: center;
+  /* Centra el texto */
+  padding: 17px 0;
+  /* Relleno vertical de 17px */
+  font-weight: 900;
+  /* Peso de fuente negrita */
+  text-decoration: none;
+  /* Elimina el subrayado de los enlaces */
+  border-top: 1px solid #e0e0e0;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* El primer enlace no tiene borde superior */
+.sidebar a:first-child {
+  border-top: none;
+  /* Elimina el borde superior del primer enlace */
+}
+
+/* Estilo del contenido principal */
+.content {
+  flex-grow: 1;
+  /* Hace que el contenido ocupe el espacio restante */
+  padding: 20px;
+  /* Relleno interno de 20px */
+}
+
+/* Estilos para el encabezado */
+.header {
+  display: flex;
+  /* Utiliza flexbox para organizar el contenido */
+  justify-content: space-between;
+  /* Espacio entre los elementos */
+  align-items: center;
+  /* Alineación vertical de los elementos */
+  background-color: #ffffff;
+  /* Fondo blanco */
+  padding: 10px 20px;
+  /* Relleno de 10px en vertical y 20px en horizontal */
+  border-bottom: 1px solid #e0e0e0;
+  /* Borde inferior gris claro */
+  flex-wrap: wrap;
+  /* Permite que los elementos se acomoden si no caben en una fila */
+}
+
+/* Estilos para la imagen del encabezado */
+.header img {
+  width: 50px;
+  /* Ancho de la imagen */
+  height: 50px;
+  /* Altura de la imagen */
+}
+
+/* Estilo para los botones en el encabezado */
+.header button {
+  background-color: #0CACAB;
+  /* Fondo turquesa */
+  color: #ffffff;
+  /* Color de texto blanco */
+  border: none;
+  /* Elimina el borde */
+  padding: 10px 20px;
+  /* Relleno de 10px en vertical y 20px en horizontal */
+  cursor: pointer;
+  /* Cambia el cursor a un puntero */
+  border-radius: 5px;
+  /* Bordes redondeados */
+  font-size: 14px;
+  /* Tamaño de fuente de 14px */
+}
+
+/* Enlaces activos en el sidebar */
+.sidebar a.active {
+  background-color: #e0f7fa;
+  /* Fondo celeste para los enlaces activos */
+}
+
+/* Estilo para el contenido principal */
+.main-content {
+  flex: 1;
+  /* Hace que el contenido ocupe el espacio restante */
+  padding: 45px;
+  /* Relleno de 20px */
+  background-color: #ffffff;
+  /* Fondo blanco */
+  margin-left: 250px;
+}
+
+/* From Uiverse.io by pathikcomp */
+.main>.inp {
+  display: none;
+}
+
+.main {
+  font-weight: 800;
+  color: white;
+  background-color: 0CACAB;
+  padding: 3px 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  width: 12rem;
+  position: relative;
+  cursor: pointer;
+  justify-content: space-between;
+  z-index: 10;
+  display: none;
+}
+
+.arrow {
+  height: 34%;
+  aspect-ratio: 1;
+  margin-block: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.arrow::after,
+.arrow::before {
+  content: "";
+  position: absolute;
+  background-color: white;
+  height: 100%;
+  width: 2.5px;
+  border-radius: 500px;
+  transform-origin: bottom;
+}
+
+.arrow::after {
+  transform: rotate(35deg) translateX(-0.5px);
+}
+
+.arrow::before {
+  transform: rotate(-35deg) translateX(0.5px);
+}
+
+.main>.inp:checked+.arrow {
+  transform: rotateX(180deg);
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  /* Alinea los elementos en columna */
+  align-items: center;
+  /* Opcional, para centrar los elementos */
+  gap: 15px;
+  /* Espacio entre los elementos */
+  background-color: white;
+  color: 0CACAB;
+  border-radius: 10px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 130%;
+  overflow: hidden;
+  clip-path: inset(0% 0% 0% 0% round 10px);
+  transition: all 0.4s;
+}
+
+.menu-list {
+  --delay: 0.4s;
+  --trdelay: 0.15s;
+  padding: 8px 10px;
+  border-radius: inherit;
+  transition: background-color 0.2s 0s;
+  position: relative;
+  transform: translateY(30px);
+  opacity: 0;
+  text-decoration: none;
+  /* Elimina el subrayado */
+  color: inherit;
+  /* Hereda el color del contenedor o el texto */
+  width: 100%;
+  /* Ajusta el ancho del enlace al 100% de su contenedor */
+  text-align: center;
+  /* Centra el texto dentro del enlace */
+}
+
+.menu-list::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 95%;
+}
+
+.menu-list:hover {
+  background-color: rgb(223, 223, 223);
+}
+
+.inp:checked~.menu-container {
+  clip-path: inset(10% 50% 90% 50% round 10px);
+}
+
+.inp:not(:checked)~.menu-container .menu-list {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.inp:not(:checked)~.menu-container .menu-list:nth-child(1) {
+  transition:
+    transform 0.4s var(--delay),
+    opacity 0.4s var(--delay);
+}
+
+.inp:not(:checked)~.menu-container .menu-list:nth-child(2) {
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * 1)),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 1));
+}
+
+.inp:not(:checked)~.menu-container .menu-list:nth-child(3) {
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * 2)),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 2));
+}
+
+.inp:not(:checked)~.menu-container .menu-list:nth-child(4) {
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * 3)),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 3));
+}
+
+.bar-inp {
+  display: none;
+  visibility: hidden;
+}
+
+.bar {
+  display: flex;
+  height: 50%;
+  width: 20px;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bar-list {
+  --transform: -25%;
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 50px;
+  background-color: white;
+  transition: all 0.4s;
+  position: relative;
+}
+
+.inp:not(:checked)~.bar>.top {
+  transform-origin: top right;
+  transform: translateY(var(--transform)) rotate(-45deg);
+}
+
+.inp:not(:checked)~.bar>.middle {
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.inp:not(:checked)~.bar>.bottom {
+  transform-origin: bottom right;
+  transform: translateY(calc(var(--transform) * -1)) rotate(45deg);
+}
+
+* From Uiverse.io by omriluz */ .form-container {
+  width: 400px;
+  height: 360px;
+  /* La altura se ajustará según el contenido */
+  background: linear-gradient(#f5fffe, #f5fffe) padding-box,
+    linear-gradient(145deg, transparent 35%, #0CACAB, #40c9ff) border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  color: white;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background-size: 200% 100%;
+  animation: gradient 5s ease infinite;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  /* Esto hace que se pueda centrar en la pantalla */
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  /* Alineación perfecta en el centro */
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.form-container button:active {
+  scale: 0.95;
+}
+
+.form-container .form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #717171;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.form-container .form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #000000;
+  font-family: inherit;
+  background-color: transparent;
+  border: 1px solid #414141;
+}
+
+.form-container .form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  resize: none;
+  color: #000000;
+  height: 96px;
+  border: 1px solid #414141;
+  background-color: transparent;
+  font-family: inherit;
+}
+
+.form-container .form-group input::placeholder {
+  opacity: 0.5;
+}
+
+.form-container .form-group input:focus {
+  outline: none;
+  border-color: #0CACAB;
+}
+
+.form-container .form-group textarea:focus {
+  outline: none;
+  border-color: #0CACAB;
+}
+
+.form-container .form-submit-btn {
+  display: flex;
+  margin: 8px auto;
+  /* Esto lo centrará horizontalmente */
+  align-items: flex-start;
+  justify-content: center;
+  align-self: flex-start;
+  font-family: inherit;
+  color: #ffffff;
+  font-weight: 600;
+  width: 40%;
+  background: #0CACAB;
+  border: 1px solid #0CACAB;
+  padding: 12px 16px;
+  font-size: inherit;
+  gap: 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.form-container .form-submit-btn:hover {
+  background-color: #8180807d;
+  border-color: #fff;
+}
+
+.text {
+  position: absolute;
+  font-size: 0.7em;
+  transition: 0.4s ease-in-out;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.33em;
+  z-index: 3;
+}
+
+/* From Uiverse.io by wilsondesouza */
+ul {
+  list-style: none;
+}
+
+.example-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-2 .icon-content {
+  margin: 0 10px;
+  position: relative;
+}
+
+.example-2 .icon-content .tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.example-2 .icon-content:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  top: -50px;
+}
+
+.example-2 .icon-content a {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  top: 450px;
+  border-radius: 50%;
+  color: #4d4d4d;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.example-2 .icon-content a:hover {
+  box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+}
+
+.example-2 .icon-content a svg {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+}
+
+.example-2 .icon-content a:hover {
+  color: white;
+}
+
+.example-2 .icon-content a .filled {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #000;
+  transition: all 0.3s ease-in-out;
+}
+
+.example-2 .icon-content a:hover .filled {
+  height: 100%;
+}
+
+.example-2 .icon-content a[data-social="whatsapp"] .filled,
+.example-2 .icon-content a[data-social="whatsapp"]~.tooltip {
+  background-color: #128c7e;
+
+}
+
+.example-2 .icon-content a[data-social="facebook"] .filled,
+.example-2 .icon-content a[data-social="facebook"]~.tooltip {
+  background-color: #3b5998;
+}
+
+.example-2 .icon-content a[data-social="instagram"] .filled,
+.example-2 .icon-content a[data-social="instagram"]~.tooltip {
+  background: linear-gradient(45deg,
+      #405de6,
+      #5b51db,
+      #b33ab4,
+      #c135b4,
+      #e1306c,
+      #fd1f1f);
+}
+
+.example-2 .icon-content a[data-social="youtube"] .filled,
+.example-2 .icon-content a[data-social="youtube"]~.tooltip {
+  background-color: #ff0000;
+}
+
+/* From Uiverse.io by mahbowal */
+.container-2 {
+  background: #dde0ed;
+  background: linear-gradient(0deg,
+      rgb(255, 255, 255) 0%,
+      rgb(244, 247, 251) 100%);
+  border-radius: 10px;
+  padding: 25px 35px;
+  border: 5px solid rgb(255, 255, 255);
+  box-shadow: rgba(104, 168, 168, 0.878) 0px 30px 30px -20px;
+
+  /* Centrar en la pantalla */
+  position: absolute;
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+}
+
+
+.heading {
+  text-align: center;
+  font-weight: 900;
+  font-size: 30px;
+  color: #0CACAB;
+}
+
+.form {
+  margin-top: 20px;
+}
+
+.form .input {
+  width: 100%;
+  background: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 20px;
+  margin-top: 15px;
+  box-shadow: #cfffff 0px 10px 10px -5px;
+  border-inline: 2px solid transparent;
+}
+
+.form .textarea {
+  width: 100%;
+  background: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 20px;
+  margin-top: 15px;
+  box-shadow: #cfffff 0px 10px 10px -5px;
+  border-inline: 2px solid transparent;
+}
+
+.form .input::-moz-placeholder {
+  color: rgb(170, 170, 170);
+}
+
+.form .input::placeholder {
+  color: rgb(170, 170, 170);
+}
+
+.form .textarea::placeholder {
+  color: rgb(170, 170, 170);
+}
+
+.form .input:focus {
+  outline: none;
+  border-inline: 2px solid #0CACAB;
+}
+
+.form .textarea:focus {
+  outline: none;
+  border-inline: 2px solid #0CACAB;
+}
+
+.form .forgot-password {
+  display: block;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+
+.form .login-button {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  background: linear-gradient(45deg,
+      rgb(16, 204, 211) 0%,
+      rgb(18, 209, 200) 100%);
+  color: white;
+  padding-block: 15px;
+  margin: 20px auto;
+  border-radius: 20px;
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.form .login-button:hover {
+  transform: scale(1.03);
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
+}
+
+.form .login-button:active {
+  transform: scale(0.95);
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
+}
+
+.social-account-container {
+  margin-top: 25px;
+}
+
+.social-account-container .title {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  color: rgb(170, 170, 170);
+}
+
+.social-account-container .social-accounts {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.social-account-container .social-accounts .social-button {
+  background: linear-gradient(45deg, rgb(0, 255, 208) 0%, rgb(213, 244, 241) 100%);
+  border: 5px solid white;
+  padding: 5px;
+  border-radius: 50%;
+  width: 40px;
+  aspect-ratio: 1;
+  display: grid;
+  place-content: center;
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 12px 10px -8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.social-account-container .social-accounts .social-button .svg {
+  fill: rgba(0, 0, 0, 0.292);
+  margin: auto;
+}
+
+.social-account-container .social-accounts .social-button:hover {
+  transform: scale(1.2);
+}
+
+.social-account-container .social-accounts .social-button:active {
+  transform: scale(0.9);
+}
+
+.agreement {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.agreement a {
+  text-decoration: none;
+  color: #0099ff;
+  font-size: 9px;
+}
+
+footer {
+  text-align: center;
+  /* Centra el texto */
+  padding: 10px 0;
+  /* Agrega un poco de espacio arriba y abajo */
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .container-2 {
+    left: 62%;
+    top: 62%;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    /* Mueve el sidebar fuera de la pantalla */
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+    /* Lo muestra nuevamente */
+  }
+
+  .main {
+    display: flex;
+  }
+
+  .container-2 {
+    left: 50%;
+    top: 65%;
+  }
+
+  .social-button {
+    scale: 1.4;
+    position: relative;
+    top: 10px;
+    margin: 0 20px;
+  }
+}
+@media (min-width: 769px){
+  .header img{
+    margin-left: 250px;
+  }
+}

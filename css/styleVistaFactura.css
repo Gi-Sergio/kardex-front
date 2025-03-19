@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Estilos globales para el cuerpo de la página */
+body {
+    font-family: 'Poppins', sans-serif;  /* Se aplica la fuente Poppins */
+    margin: 0;  /* Elimina los márgenes predeterminados */
+    padding: 0;  /* Elimina el relleno predeterminado */
+    background-color: #f5f5f5;  /* Establece un fondo gris claro */
+}
+
+/* Contenedor principal utilizando Flexbox */
+.container {
+    display: flex;  /* Aplica el modelo de diseño Flexbox */
+    flex-wrap: wrap;  /* Permite que los elementos se acomoden en varias líneas si es necesario */
+}
+
+/* Estilos del sidebar (barra lateral) */
+.sidebar {
+    width: 250px;  /* Ancho fijo del sidebar */
+    background-color: #ffffff;  /* Fondo blanco */
+    border-right: 1px solid #e0e0e0;  /* Borde gris claro a la derecha */
+    padding: 20px;  /* Relleno interno de 20px */
+}
+
+/* Estilos para las imágenes dentro del sidebar */
+.sidebar img {
+    width: 100px;  /* Ancho de la imagen */
+    height: 100px;  /* Altura de la imagen */
+    display: block;  /* Convierte la imagen en un bloque para centrarla */
+    margin: 0 auto 20px;  /* Centra la imagen y agrega un margen inferior */
+}
+
+/* Títulos en el sidebar */
+.sidebar h2 {
+    color: #17E0A7;  /* Color verde turquesa */
+    font-size: 18px;  /* Tamaño de fuente de 18px */
+    text-align: center;  /* Centra el texto */
+}
+
+/* Párrafos en el sidebar */
+.sidebar p {
+    color: #000;  /* Color de texto negro */
+    font-size: 14px;  /* Tamaño de fuente de 14px */
+    text-align: center;  /* Centra el texto */
+    margin-bottom: 20px;  /* Margen inferior de 20px */
+    font-weight: 600;  /* Peso de fuente de 600 (negrita) */
+}
+
+/* Estilos de los enlaces dentro del sidebar */
+.sidebar a {
+    display: block;  /* Hace que los enlaces sean bloques para ocupar toda la línea */
+    color: #0CACAB;  /* Color turquesa para los enlaces */
+    font-size: 20px;  /* Tamaño de fuente de 20px */
+    text-align: center;  /* Centra el texto */
+    padding: 17px 0;  /* Relleno vertical de 17px */
+    font-weight: 900;  /* Peso de fuente negrita */
+    text-decoration: none;  /* Elimina el subrayado de los enlaces */
+    border-top: 1px solid #e0e0e0;  /* Borde superior gris claro */
+}
+
+/* El primer enlace no tiene borde superior */
+.sidebar a:first-child {
+    border-top: none;  /* Elimina el borde superior del primer enlace */
+}
+
+/* Estilo del contenido principal */
+.content {
+    flex-grow: 1;  /* Hace que el contenido ocupe el espacio restante */
+    padding: 20px;  /* Relleno interno de 20px */
+}
+
+/* Estilos para el encabezado */
+.header {
+    display: flex;  /* Utiliza flexbox para organizar el contenido */
+    justify-content: space-between;  /* Espacio entre los elementos */
+    align-items: center;  /* Alineación vertical de los elementos */
+    background-color: #ffffff;  /* Fondo blanco */
+    padding: 10px 20px;  /* Relleno de 10px en vertical y 20px en horizontal */
+    border-bottom: 1px solid #e0e0e0;  /* Borde inferior gris claro */
+    flex-wrap: wrap;  /* Permite que los elementos se acomoden si no caben en una fila */
+}
+
+/* Estilos para la imagen del encabezado */
+.header img {
+    width: 50px;  /* Ancho de la imagen */
+    height: 50px;  /* Altura de la imagen */
+}
+
+/* Estilo para los botones en el encabezado */
+.header button {
+    background-color: #0CACAB;  /* Fondo turquesa */
+    color: #ffffff;  /* Color de texto blanco */
+    border: none;  /* Elimina el borde */
+    padding: 10px 20px;  /* Relleno de 10px en vertical y 20px en horizontal */
+    cursor: pointer;  /* Cambia el cursor a un puntero */
+    border-radius: 5px;  /* Bordes redondeados */
+    font-size: 14px;  /* Tamaño de fuente de 14px */
+}
+
+/* Enlaces activos en el sidebar */
+.sidebar a.active {
+    background-color: #e0f7fa;  /* Fondo celeste para los enlaces activos */
+}
+
+/* Estilo para el contenido principal */
+.content {
+    flex: 1;  /* Hace que el contenido ocupe el espacio restante */
+    padding: 20px;  /* Relleno de 20px */
+    background-color: #ffffff;  /* Fondo blanco */
+}
+/* From Uiverse.io by pathikcomp */ 
+.main > .inp {
+    display: none;
+  }
+  .main {
+    font-weight: 800;
+    color: white;
+    background-color: 0CACAB;
+    padding: 3px 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    width: 12rem;
+    position: relative;
+    cursor: pointer;
+    justify-content: space-between;
+  }
+  
+  .arrow {
+    height: 34%;
+    aspect-ratio: 1;
+    margin-block: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+  
+  .arrow::after,
+  .arrow::before {
+    content: "";
+    position: absolute;
+    background-color: white;
+    height: 100%;
+    width: 2.5px;
+    border-radius: 500px;
+    transform-origin: bottom;
+  }
+  
+  .arrow::after {
+    transform: rotate(35deg) translateX(-0.5px);
+  }
+  .arrow::before {
+    transform: rotate(-35deg) translateX(0.5px);
+  }
+  
+  .main > .inp:checked + .arrow {
+    transform: rotateX(180deg);
+  }
+  
+  .menu-container {
+    display: flex;
+    flex-direction: column;  /* Alinea los elementos en columna */
+    align-items: center;  /* Opcional, para centrar los elementos */
+    gap: 15px; /* Espacio entre los elementos */  
+    background-color: white;
+    color: 0CACAB;
+    border-radius: 10px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 130%;
+    overflow: hidden;
+    clip-path: inset(0% 0% 0% 0% round 10px);
+    transition: all 0.4s;
+  }
+  .menu-list {
+    --delay: 0.4s;
+    --trdelay: 0.15s;
+    padding: 8px 10px;
+    border-radius: inherit;
+    transition: background-color 0.2s 0s;
+    position: relative;
+    transform: translateY(30px);
+    opacity: 0;
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Hereda el color del contenedor o el texto */
+    width: 100%;  /* Ajusta el ancho del enlace al 100% de su contenedor */
+    text-align: center; /* Centra el texto dentro del enlace */
+  }
+  
+  .menu-list::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 95%;
+  }
+  
+  .menu-list:hover {
+    background-color: rgb(223, 223, 223);
+  }
+  
+  .inp:checked ~ .menu-container {
+    clip-path: inset(10% 50% 90% 50% round 10px);
+  }
+  
+  .inp:not(:checked) ~ .menu-container .menu-list {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .inp:not(:checked) ~ .menu-container .menu-list:nth-child(1) {
+    transition:
+      transform 0.4s var(--delay),
+      opacity 0.4s var(--delay);
+  }
+  
+  .inp:not(:checked) ~ .menu-container .menu-list:nth-child(2) {
+    transition:
+      transform 0.4s calc(var(--delay) + (var(--trdelay) * 1)),
+      opacity 0.4s calc(var(--delay) + (var(--trdelay) * 1));
+  }
+  
+  .inp:not(:checked) ~ .menu-container .menu-list:nth-child(3) {
+    transition:
+      transform 0.4s calc(var(--delay) + (var(--trdelay) * 2)),
+      opacity 0.4s calc(var(--delay) + (var(--trdelay) * 2));
+  }
+  
+  .inp:not(:checked) ~ .menu-container .menu-list:nth-child(4) {
+    transition:
+      transform 0.4s calc(var(--delay) + (var(--trdelay) * 3)),
+      opacity 0.4s calc(var(--delay) + (var(--trdelay) * 3));
+  }
+  
+  .bar-inp {
+    display: none;
+    visibility: hidden;
+  }
+  
+  .bar {
+    display: flex;
+    height: 50%;
+    width: 20px;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  .bar-list {
+    --transform: -25%;
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 50px;
+    background-color: white;
+    transition: all 0.4s;
+    position: relative;
+  }
+  
+  .inp:not(:checked) ~ .bar > .top {
+    transform-origin: top right;
+    transform: translateY(var(--transform)) rotate(-45deg);
+  }
+  
+  .inp:not(:checked) ~ .bar > .middle {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  
+  .inp:not(:checked) ~ .bar > .bottom {
+    transform-origin: bottom right;
+    transform: translateY(calc(var(--transform) * -1)) rotate(45deg);
+  }
+
+  .content {
+    width: 75%;
+    padding: 20px;
+}
+.content .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.content .header h1 {
+    font-size: 24px;
+    color: #00bfa5;
+}
+.content .header .profile-button {
+    background-color: #e0f7fa;
+    color: #00bfa5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.content .invoice {
+    background-color: #fff;
+    padding: 10px;
+    width: calc(50% - 20px); /* Asegúrate de que tiene un ancho definido */
+    width: 800px; /* Ajusta el ancho de la carta */
+    border-radius: 10px;
+    margin: 0 auto; /* Esto centra la carta horizontalmente */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.content .invoice-header {
+    display: flex;
+    justify-content: center; /* Centra los elementos hijos horizontalmente */
+    align-items: center;
+    position: relative; /* Permite posicionar el botón de retroceso */
+}
+
+.content .invoice-header h2 {
+    color: #248E9C;
+    margin-bottom: 20px;
+    font-size: 34px;
+    text-align: center; /* Centrar el texto */
+    flex: 1; /* Asegura que el título ocupe todo el espacio disponible */
+}
+
+.content .invoice-header .back-button {
+    color: #248E9C;
+    font-size: 24px;
+    text-decoration: none;
+    position: absolute; /* Para posicionarlo en una esquina sin afectar el centrado del título */
+    left: 10px; /* Ajusta según lo necesites */
+}
+.content .invoice .separator {
+    border-bottom: 2px solid #e0e0e0;
+    margin: 20px 0;
+}
+.content .invoice .details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.content .invoice .details div {
+    width: 45%;
+    text-align: center;
+}
+.content .invoice .details div p {
+    margin: 5px 0;
+}
+.content .invoice .details div p span {
+    font-weight: bold;
+}
+.content .invoice .details div p.subtitle {
+    color: #248E9C;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.content .invoice .invoice-info {
+    margin-bottom: 20px;
+    color: #34BCCE;
+}
+#info{
+    color: #000000;
+
+}
+.content .invoice .invoice-info p {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+.content .invoice .invoice-info p span {
+    font-weight: bold;
+}
+.content .invoice table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.content .invoice table, .content .invoice table th, .content .invoice table td {
+    border: 1px solid #e0e0e0;
+}
+.content .invoice table th, .content .invoice table td {
+    padding: 10px;
+    text-align: left;
+    text-align: center; /* Centrar el texto */
+
+}
+.content .invoice table th {
+    background-color: #e0f7fa;
+}
+.content .invoice table td {
+    text-align: center;
+}

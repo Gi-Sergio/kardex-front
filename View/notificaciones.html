@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificaciones</title>
+    <link rel="stylesheet" href="../css/styleNotificaciones.css">
+
+    <style>
+       
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <button class="home-button" onclick="goHome()">🏠</button>
+        
+        <div id="notifications">
+            <h2>Notificaciones</h2>
+            <div class="notification">
+                <p>Tienes una nueva actualización disponible.</p>
+                <div class="buttons">
+                    <button class="button read-btn" onclick="markAsRead(this)">✔</button>
+                    <button class="button delete-btn" onclick="deleteNotification(this)">🗑</button>
+                </div>
+            </div>
+            <div class="notification">
+                <p>Tu perfil ha sido verificado exitosamente.</p>
+                <div class="buttons">
+                    <button class="button read-btn" onclick="markAsRead(this)">✔</button>
+                    <button class="button delete-btn" onclick="deleteNotification(this)">🗑</button>
+                </div>
+            </div>
+            <div class="notification">
+                <p>Recibiste un nuevo mensaje.</p>
+                <div class="buttons">
+                    <button class="button read-btn" onclick="markAsRead(this)">✔</button>
+                    <button class="button delete-btn" onclick="deleteNotification(this)">🗑</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function markAsRead(button) {
+            const notification = button.closest(".notification");
+            notification.classList.add("read");
+        }
+        function deleteNotification(button) {
+            const notification = button.closest(".notification");
+            notification.remove();
+        }
+        function goHome() {
+            window.location.href = "inicio.html";
+        }
+    </script>
+</body>
+</html>

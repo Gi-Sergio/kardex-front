@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    display: flex;
+}
+
+
+.sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px;
+}
+.sidebar img {
+    width: 100px;
+    height: 100;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.sidebar h2 {
+    color: #17E0A7;
+    font-size: 18px;
+    text-align: center;
+}
+.sidebar p {
+    color: #000;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+
+}
+.sidebar a {
+    display: block;
+    color: #0CACAB;
+    font-size: 20px;
+    text-align: center;
+    padding: 17px 0;
+    font-weight: 900;
+    text-decoration: none;
+    border-top: 1px solid #e0e0e0;
+}
+.sidebar a:first-child {
+    border-top: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.header img {
+    width: 5%;
+    height: 5%;
+}
+
+.header button {
+    background-color: #0CACAB;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.sidebar a.active {
+    background-color: #e0f7fa;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.content .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.content .header h1 {
+    font-size: 28px; /* Aumentar el tamaño de la fuente */
+    color: #00bfa5;
+}
+
+.content .header .profile-button {
+    background-color: #e0f7fa;
+    color: #00bfa5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content .invoice {
+    background-color: #fff;
+    padding: 10px; /* Aumenta el padding para que sea más larga */
+    width: 800px; /* Ajusta el ancho de la carta */
+    border-radius: 10px;
+    margin: 20px auto; /* Centra la carta horizontalmente y agrega un margen vertical */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content .invoice-header {
+    display: flex;
+    justify-content: center; /* Centra los elementos hijos horizontalmente */
+    align-items: center;
+    position: relative; /* Permite posicionar el botón de retroceso */
+}
+
+.content .invoice-header h2 {
+    color: #18AFAE;
+    margin-bottom: 20px;
+    font-size: 36px; /* Aumentar el tamaño de la fuente */
+    text-align: center; /* Centra el texto */
+    flex: 1; /* Asegura que el título ocupe todo el espacio disponible */
+}
+
+.content .invoice-header .back-button {
+    color: #248E9C;
+    font-size: 24px;
+    text-decoration: none;
+    position: absolute; /* Para posicionarlo en una esquina sin afectar el centrado del título */
+    left: 10px; /* Ajusta según lo necesites */
+}
+
+.content .card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.content .card table,
+.content .card table th,
+.content .card table td {
+    border: 1px solid #18AFAE;
+}
+
+.content .card table th,
+.content .card table td {
+    padding: 15px; /* Aumentar el padding de las celdas */
+    text-align: center;
+    font-size: 18px; /* Aumentar el tamaño de la fuente */
+}
+
+.content .card table th {
+    color: #18AFAE;
+    width: 30%;
+}
+
+.content .card table td {
+    color: #333;
+}
+
+.back-button {
+    font-size: 20px;
+    color: #18AFAE;
+    cursor: pointer;
+    margin-bottom: 20px;
+}

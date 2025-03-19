@@ -1,0 +1,86 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eef2f3;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  display: flex;
+  max-width: 500px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+  text-align: center;
+  color: #0CACAB;
+}
+.notification {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.notification:hover {
+  transform: scale(1.02);
+}
+.read {
+  color: gray;
+  background: #f0f0f0;
+}
+.buttons {
+  display: flex;
+  gap: 5px;
+}
+.button {
+  border: none;
+  padding: 7px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.read-btn {
+  background-color: #0CACAB;
+  color: white;
+}
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+.home-button {
+  position: absolute;
+  background: #0CACAB;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.home-button:hover {
+  background: white;
+}
+
+@media (max-width: 425px){
+  .container{
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  .home-button{
+    position: relative;
+  }
+  h2{
+    margin: 10px 0;
+  }
+}

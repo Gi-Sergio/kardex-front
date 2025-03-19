@@ -1,0 +1,1051 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Estilos globales para el cuerpo de la página */
+body {
+    font-family: 'Poppins', sans-serif;  /* Se aplica la fuente Poppins */
+    margin: 0;  /* Elimina los márgenes predeterminados */
+    padding: 0;  /* Elimina el relleno predeterminado */
+    background-color: #ffffff;  /* Establece un fondo gris claro */
+   height: 100vh;
+}
+
+/* Contenedor principal utilizando Flexbox */
+.container {
+    display: flex;  /* Aplica el modelo de diseño Flexbox */
+    flex-wrap: wrap;  /* Permite que los elementos se acomoden en varias líneas si es necesario */
+}
+
+/* Estilos del sidebar (barra lateral) */
+.sidebar {
+  background-color: var(--background-hover);
+  position: fixed;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  /* Ancho fijo del sidebar */
+  background-color: #ffffff;
+  /* Fondo blanco */
+  border-right: 2px solid #e0e0e0;
+  /* Borde gris claro a la derecha */
+  padding: 40px;
+  /* Relleno interno de 20px */
+  transition: transform 0.3s ease-in-out; /* Efecto de entrada/salida */
+  
+}
+
+/* Estilos para las imágenes dentro del sidebar */
+.sidebar img {
+  width: 100px;
+  /* Ancho de la imagen */
+  height: 100px;
+  /* Altura de la imagen */
+  display: block;
+  /* Convierte la imagen en un bloque para centrarla */
+  margin: 0 auto 20px;
+  /* Centra la imagen y agrega un margen inferior */
+}
+
+/* Títulos en el sidebar */
+.sidebar h2 {
+  color: #17E0A7;
+  /* Color verde turquesa */
+  font-size: 18px;
+  /* Tamaño de fuente de 18px */
+  text-align: center;
+  /* Centra el texto */
+}
+
+/* Párrafos en el sidebar */
+.sidebar p {
+  color: #000;
+  /* Color de texto negro */
+  font-size: 14px;
+  /* Tamaño de fuente de 14px */
+  text-align: center;
+  /* Centra el texto */
+  margin-bottom: 20px;
+  /* Margen inferior de 20px */
+  font-weight: 600;
+  /* Peso de fuente de 600 (negrita) */
+  position: relative;
+  top: -1px;
+}
+
+/* Estilos de los enlaces dentro del sidebar */
+.sidebar a {
+  display: block;
+  /* Hace que los enlaces sean bloques para ocupar toda la línea */
+  color: #0CACAB;
+  /* Color turquesa para los enlaces */
+  font-size: 20px;
+  /* Tamaño de fuente de 20px */
+  text-align: center;
+  /* Centra el texto */
+  padding: 17px 0;
+  /* Relleno vertical de 17px */
+  font-weight: 900;
+  /* Peso de fuente negrita */
+  text-decoration: none;
+  /* Elimina el subrayado de los enlaces */
+  border-top: 1px solid #e0e0e0;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* El primer enlace no tiene borde superior */
+.sidebar a:first-child {
+  border-top: none;
+  /* Elimina el borde superior del primer enlace */
+}
+
+
+/* Estilo del contenido principal */
+.content > * {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+
+/* Estilos para el encabezado */
+.header {
+    display: flex;  /* Utiliza flexbox para organizar el contenido */
+    justify-content: space-between;  /* Espacio entre los elementos */
+    align-items: center;  /* Alineación vertical de los elementos */
+    background-color: #ffffff;  /* Fondo blanco */
+    padding: 10px 20px;  /* Relleno de 10px en vertical y 20px en horizontal */
+    border-bottom: 1px solid #e0e0e0;  /* Borde inferior gris claro */
+    flex-wrap: nowrap; 
+}
+
+/* Estilos para la imagen del encabezado */
+.header img {
+    width: 50px;  /* Ancho de la imagen */
+    height: 50px;  /* Altura de la imagen */
+}
+
+/* Estilo para los botones en el encabezado */
+.header button {
+    background-color: #0CACAB;  /* Fondo turquesa */
+    color: #ffffff;  /* Color de texto blanco */
+    border: none;  /* Elimina el borde */
+    padding: 10px 20px;  /* Relleno de 10px en vertical y 20px en horizontal */
+    cursor: pointer;  /* Cambia el cursor a un puntero */
+    border-radius: 5px;  /* Bordes redondeados */
+    font-size: 14px;  /* Tamaño de fuente de 14px */
+}
+
+/* Enlaces activos en el sidebar */
+.sidebar a.active {
+    background-color: #e0f7fa;  /* Fondo celeste para los enlaces activos */
+}
+
+
+/* Estilo para el contenido principal */
+.main-content {
+    flex: 1;  /* Hace que el contenido ocupe el espacio restante */
+    padding: 20px;  /* Relleno de 20px */
+    background-color: #ffffff;  /* Fondo blanco */
+    width: 100%;
+}
+
+.header-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.header-2 input {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    width: 300px;
+}
+.header-2 button {
+    background-color: #3fab9d;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* From Uiverse.io by LightAndy1 */ 
+.group {
+    display: flex;
+    line-height: 28px;
+    align-items: center;
+    position: relative;
+    margin-bottom: 2%;
+    gap: 20px;
+  }
+  
+  .input {
+    height: 40px;
+    line-height: 28px;
+    padding: 0 1rem;
+    padding-left: 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #f3f3f4;
+    color: #0d0c22;
+    transition: 0.3s ease;
+  }
+  
+  .input::placeholder {
+    color: #9e9ea7;
+  }
+  
+  .input:focus,
+  input:hover {
+    outline: none;
+    border-color: rgba(0, 48, 73, 0.4);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgb(0 48 73 / 10%);
+  }
+  
+  .icon {
+    position: absolute;
+    left: 1rem;
+    fill: #9e9ea7;
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .button-Crear {
+    border: 2px solid #ffffff;
+    background-color: #0CACAB;
+    border-radius: 0.9em;
+    cursor: pointer;
+    padding: 0.8em 1.2em 0.8em 1em;
+    transition: all ease-in-out 0.2s;
+    font-size: 12px;
+    position: relative;  /* Agregar posición relativa */
+         /* Mover hacia la derecha */
+  }
+  
+  .button-Crear span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .button-Crear:hover {
+    background-color: #00bfa5;
+  }
+  
+  /* Estilo del modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);  /* Fondo oscuro */
+    display: none;  /* Ocultar por defecto */
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  
+  /* Estilo del contenido del modal */
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    max-width: 600px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+.search-bar-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.search-bar-2 input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+.search-bar-2 button {
+    background-color: #00bfa5;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.main > .inp {
+  display: none;
+}
+.main {
+  font-weight: 800;
+  color: white;
+  background-color: #0CACAB;
+  padding: 3px 15px;
+  border-radius: 10px;
+  display: none;
+  align-items: center;
+  height: 2.5rem;
+  width: 12rem;
+  position: relative;
+  cursor: pointer;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.arrow {
+  height: 34%;
+  aspect-ratio: 1;
+  margin-block: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.arrow::after,
+.arrow::before {
+  content: "";
+  position: absolute;
+  background-color: white;
+  height: 100%;
+  width: 2.5px;
+  border-radius: 500px;
+  transform-origin: bottom;
+}
+
+.arrow::after {
+  transform: rotate(35deg) translateX(-0.5px);
+}
+.arrow::before {
+  transform: rotate(-35deg) translateX(0.5px);
+}
+
+.main > .inp:checked + .arrow {
+  transform: rotateX(180deg);
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;  /* Alinea los elementos en columna */
+  align-items: center;  /* Opcional, para centrar los elementos */
+  gap: 15px; /* Espacio entre los elementos */  
+  background-color: white;
+  color: #0CACAB;
+  border-radius: 10px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 130%;
+  overflow: hidden;
+  clip-path: inset(0% 0% 0% 0% round 10px);
+  transition: all 0.4s;
+}
+.menu-list {
+  --delay: 0.4s;
+  --trdelay: 0.15s;
+  padding: 8px 10px;
+  border-radius: inherit;
+  transition: background-color 0.2s 0s;
+  position: relative;
+  transform: translateY(30px);
+  opacity: 0;
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; /* Hereda el color del contenedor o el texto */
+  width: 100%;  /* Ajusta el ancho del enlace al 100% de su contenedor */
+  text-align: center; /* Centra el texto dentro del enlace */
+}
+
+.menu-list::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 95%;
+}
+
+.menu-list:hover {
+  background-color: rgb(223, 223, 223);
+}
+
+.inp:checked ~ .menu-container {
+  clip-path: inset(10% 50% 90% 50% round 10px);
+}
+
+.inp:not(:checked) ~ .menu-container .menu-list {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.inp:not(:checked) ~ .menu-container .menu-list:nth-child(1) {
+  transition:
+    transform 0.4s var(--delay),
+    opacity 0.4s var(--delay);
+}
+
+.inp:not(:checked) ~ .menu-container .menu-list:nth-child(2) {
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * 1)),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 1));
+}
+
+.inp:not(:checked) ~ .menu-container .menu-list:nth-child(3) {
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * 2)),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 2));
+}
+
+.inp:not(:checked) ~ .menu-container .menu-list:nth-child(4) {
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * 3)),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 3));
+}
+
+.bar-inp {
+  display: none;
+  visibility: hidden;
+}
+
+.bar {
+  display: flex;
+  height: 50%;
+  width: 20px;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bar-list {
+  --transform: -25%;
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 50px;
+  background-color: white;
+  transition: all 0.4s;
+  position: relative;
+}
+
+.inp:not(:checked) ~ .bar > .top {
+  transform-origin: top right;
+  transform: translateY(var(--transform)) rotate(-45deg);
+}
+
+.inp:not(:checked) ~ .bar > .middle {
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.inp:not(:checked) ~ .bar > .bottom {
+  transform-origin: bottom right;
+  transform: translateY(calc(var(--transform) * -1)) rotate(45deg);
+}
+
+.container-proveedor{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  z-index: 1;
+}
+.container-card {
+  position: relative;
+  width: 280px;
+  height: 325px;
+  margin: 30px;
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.2); /* Sombra más sutil */
+  border-radius: 15px;
+  background: rgba(255,255,255,0.1);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.5);
+  border-left: 1px solid rgba(255,255,255,0.5);
+  backdrop-filter: blur(5px);
+}
+
+.container-card_content{
+  padding: 20px;
+  text-align: center;
+  transition: 0.5s;
+}
+ #numero-proveedor{
+  position: absolute;
+  top: -40px;
+  right: 30px;
+  font-size: 8em;
+  color: #5dcece3c;
+  pointer-events: none;
+  font-weight: 800; /* Puedes probar con 700, 800 o 900 dependiendo de lo que necesites */
+}
+
+h3{
+  font-weight: 500;
+  font-size:21px;
+  color: #248e9c;
+  z-index: 1;
+  margin-top: 20%;
+}
+p {
+  font-size: 1em;
+  color: #000000;
+  font-weight: 500;
+  position: relative;
+  top: 20px; /* Ajusta este valor según lo que necesites */
+}
+.a-2 {
+  position: relative;
+  top: 50px; /* Ajusta el valor según lo que necesites */
+  display: inline-block;
+  padding: 8px 20px;
+  background: #0CACAB;
+  color: #ffffff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.a-3 {
+  position: relative;
+  top: 60px; /* Ajusta el valor según lo que necesites */
+  display: inline-block;
+  padding: 8px 20px;
+  background: #4CF69A;
+  color: #ffffff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+}
+/* Modal básico */
+.modal {
+  display: none; /* Inicialmente oculto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+/* Estilo de contenido del modal */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 80%;
+}
+
+/* Asegúrate de que el modal esté oculto inicialmente */
+#modalContacto {
+  display: none; /* Lo dejamos oculto al principio */
+  position: fixed; /* Aseguramos que esté fijo en la pantalla */
+  top: 50%; /* Centrado verticalmente */
+  left: 50%; /* Centrado horizontalmente */
+  transform: translate(-50%, -50%); /* Ajustamos la posición */
+  z-index: 1000; /* Aseguramos que esté encima de otros elementos */
+  background-color: white; /* Fondo blanco para el modal */
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);  /* Fondo oscuro */
+  display: none;  /* Ocultar por defecto */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo del contenido del modal */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+}
+
+.hidden {
+  display: none;
+}
+  /* Estilos del modal de éxito */
+  .notifications-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa todo el ancho */
+    height: 100vh; /* Ocupa toda la altura */
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Mantiene la notificación en su tamaño original */
+  .success {
+    width: 350px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .succes-svg {
+    color: rgb(74 222 128);
+    width: 2rem;
+    height: 2rem;
+    display: block; /* Hace que el icono sea un bloque */
+    margin: auto; /* Lo centra horizontalmente */
+  }
+  
+  
+  .success-prompt-heading {
+    font-weight: bold;
+    color: rgb(22 101 52);
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .success-prompt-prompt {
+    margin-top: 0.5rem;
+    color: rgb(21 128 61);
+    text-align: center;
+  }
+  
+  .success-button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .success-button-main,
+  .success-button-secondary {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .success-button-main {
+    background-color: #ECFDF5;
+    color: rgb(22 101 52);
+  }
+  
+  .success-button-main:hover {
+    background-color: #D1FAE5;
+  }
+  .success-button-secondary:hover {
+    background-color: #f02a2a;
+  }
+  .success-button-secondary {
+    background-color: #eb4a4a;
+    color: #ffffff;
+  }
+  
+  footer{
+    display: none;
+  }
+  .crear-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /*---------------------------------------------------------------------CAMPANA Y LOGO USUARIO----------------------------------------------------------------------*/
+/* ---- Container con campana ---- */
+
+.contenedor-iconos {
+  display: flex;
+  justify-content: flex-end; /* Mueve los elementos a la derecha */
+  align-items: center; /* Alinea verticalmente */
+  gap: 20px; /* Espacio entre los iconos */
+  width: 100%; /* Que ocupe todo el ancho */
+  margin-top: 5px;
+  z-index: 10;
+}
+.container-2 {
+  --color: #0CACAb;
+  --size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  fill: var(--color);
+  right: 580px;
+  transform: translateX(580px);
+}
+
+.container-2 .bell-regular {
+  animation: keyframes-fill 0.5s;
+}
+
+.container-2 .bell-solid {
+  display: none;
+  animation: keyframes-fill 0.5s;
+}
+
+/* ---- Estados al marcar el checkbox ---- */
+.container-2 input:checked ~ .bell-regular {
+  display: none;
+}
+
+.container-2 input:checked ~ .bell-solid {
+  display: block;
+}
+
+/* ---- Ocultar el checkbox por defecto ---- */
+.container-2 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* ---- Animación ---- */
+@keyframes keyframes-fill {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    transform: rotate(25deg);
+  }
+  50% {
+    transform: rotate(-20deg) scale(1.2);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+}
+
+/* ---- Popup y variables ---- */
+.popup {
+  --burger-line-width: 1.125em;
+  --burger-line-height: 0.125em;
+  --burger-offset: 0.625em;
+  --burger-bg: #0CACAB;
+  --burger-color: #333;
+  --burger-line-border-radius: 0.1875em;
+  --burger-diameter: 3.125em;
+  --burger-btn-border-radius: calc(var(--burger-diameter) / 2);
+  --burger-line-transition: 0.3s;
+  --burger-transition: all 0.1s ease-in-out;
+  --burger-hover-scale: 1.1;
+  --burger-active-scale: 0.95;
+  --burger-enable-outline-color: var(--burger-bg);
+  --burger-enable-outline-width: 0.125em;
+  --burger-enable-outline-offset: var(--burger-enable-outline-width);
+  /* nav */
+  --nav-padding-x: 0.25em;
+  --nav-padding-y: 0.625em;
+  --nav-border-radius: 0.375em;
+  --nav-border-color: #ffffff;
+  --nav-border-width: 0.0625em;
+  --nav-shadow-color: #0cacac5c;
+  --nav-shadow-width: 0 1px 5px;
+  --nav-bg: #ffffff;
+  /* Si prefieres gris claro usa: --nav-bg: #f5f5f5; */
+  --nav-font-family: "Poppins", sans-serif;
+  --nav-default-scale: 0.8;
+  --nav-active-scale: 1;
+  --nav-position-left: 0;
+  --nav-position-right: unset;
+  /* Título */
+  --nav-title-size: 0.625em;
+  --nav-title-color: #777;
+  --nav-title-padding-x: 1rem;
+  --nav-title-padding-y: 0.25em;
+  /* Botones del menú */
+  --nav-button-padding-x: 1rem;
+  --nav-button-padding-y: 0.375em;
+  --nav-button-border-radius: 0.375em;
+  --nav-button-font-size: 17px;
+  --nav-button-hover-bg: #0CACAB;
+  --nav-button-hover-text-color: #fff;
+  --nav-button-distance: 0.875em;
+  /* Línea separadora */
+  --underline-border-width: 0.0625em;
+  --underline-border-color: #ebebeb;
+  --underline-margin-y: 0.3125em;
+  
+  display: inline-block;
+  text-rendering: optimizeLegibility;
+  position: relative;
+}
+
+.popup input {
+  display: none;
+}
+
+/* ---- Botón tipo "burger" ---- */
+.burger {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background: var(--burger-bg);
+  width: var(--burger-diameter);
+  height: var(--burger-diameter);
+  border-radius: var(--burger-btn-border-radius);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--burger-transition);
+  outline: var(--burger-enable-outline-width) solid transparent;
+  outline-offset: 0;
+}
+
+/* ---- Ventana del popup ---- */
+.popup-window {
+  transform: scale(var(--nav-default-scale));
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  padding: var(--nav-padding-y) var(--nav-padding-x);
+  background: var(--nav-bg);
+  font-family: var(--nav-font-family);
+  color: var(--burger-color);
+  border-radius: var(--nav-border-radius);
+  box-shadow: var(--nav-shadow-width) var(--nav-shadow-color);
+  border: var(--nav-border-width) solid var(--nav-border-color);
+  top: calc(var(--burger-diameter) + var(--burger-enable-outline-width) + var(--burger-enable-outline-offset));
+  left: auto;
+  right: 0;
+  transition: var(--burger-transition);
+  margin-top: 10px;
+}
+
+.popup-window legend {
+  padding: var(--nav-title-padding-y) var(--nav-title-padding-x);
+  margin: 0;
+  color: var(--nav-title-color);
+  font-size: var(--nav-title-size);
+  text-transform: uppercase;
+}
+
+.popup-window ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.popup-window ul button {
+  outline: none;
+  width: 100%;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  color: var(--burger-color);
+  font-size: var(--nav-button-font-size);
+  padding: var(--nav-button-padding-y) var(--nav-button-padding-x);
+  white-space: nowrap;
+  border-radius: var(--nav-button-border-radius);
+  cursor: pointer;
+  column-gap: var(--nav-button-distance);
+}
+
+.popup-window ul li:nth-child(1) svg,
+.popup-window ul li:nth-child(2) svg {
+  color: #0CACAB;
+}
+
+.popup-window hr {
+  margin: var(--underline-margin-y) 0;
+  border: none;
+  border-bottom: var(--underline-border-width) solid var(--underline-border-color);
+}
+
+/* ---- Acciones en botones del popup ---- */
+.popup-window ul button:hover,
+.popup-window ul button:focus-visible,
+.popup-window ul button:hover svg,
+.popup-window ul button:focus-visible svg {
+  color: var(--nav-button-hover-text-color);
+  background: var(--nav-button-hover-bg);
+}
+
+/* ---- Estados del botón burger ---- */
+.burger:hover {
+  transform: scale(var(--burger-hover-scale));
+}
+
+.burger:active {
+  transform: scale(var(--burger-active-scale));
+}
+
+.burger:focus:not(:hover) {
+  outline-color: var(--burger-enable-outline-color);
+  outline-offset: var(--burger-enable-outline-offset);
+}
+
+/* ---- Transformación de las líneas del burger al marcar ---- */
+.popup input:checked + .burger span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.popup input:checked + .burger span:nth-child(2) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+.popup input:checked + .burger span:nth-child(3) {
+  transform: translateX(calc(var(--burger-diameter) * -1 - var(--burger-line-width)));
+}
+
+/* ---- Mostrar el menú al marcar ---- */
+.popup input:checked ~ nav {
+  transform: scale(var(--nav-active-scale));
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ---- Estilos para el pie de página ---- */
+#p-2 {
+  font-size: 10px;
+  font-weight: normal;
+  text-align: center;
+  color: #666;
+  padding: 10px 0;
+}
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+  @media (max-width: 768px){
+    .sidebar {
+      transform: translateX(-100%); /* Mueve el sidebar fuera de la pantalla */
+  }
+
+  .sidebar.show {
+      transform: translateX(0); /* Lo muestra nuevamente */
+  }
+    .main{
+      display: flex;
+    }
+    .container-proveedor{
+      width: 100%;
+      flex-flow: row wrap;
+    }
+    .main-content{
+      position: absolute;
+    }    
+    
+    
+  }
+
+  @media (min-width:768px) and (max-width:1024px){
+    .modal{
+      transform: scale(1.2);
+    }
+  }
+
+  
+  
+  @media (max-width: 425px){
+    .container-proveedor{
+      flex-flow: row wrap;      
+    }
+    
+    .input{
+      width: 50%;
+    }
+    .crear-container{
+      justify-content: left;
+    }
+    .modal-content{
+      transform: scale(1);
+    }
+  }
+
+  @media (max-width: 375px){
+    body{
+      position: relative;
+    }
+    .main{
+      left: 80px;
+      transform: scale(1.4);
+    }
+    .input{
+      display: none;
+    }
+    .container-proveedor{
+      flex-flow: column wrap;
+      transform: scale(1.4);
+      top: 300px;
+    } 
+  }
+
+  @media (max-width: 320px){
+    body{
+      top: 70px;
+    }
+    .contenedor-iconos{
+      display: none;      
+    }
+    
+    .main{
+      left: 0;
+      margin-left: 30px;
+      transform: scale(1.3);
+    }
+    .container-proveedor{
+      transform: scale(1);
+      top: 80px;
+      left: 0;
+    }    
+    .modal{
+      scale: 2;
+      height: 1000px;
+    }
+    .bg-white{
+      left: 0;
+      top: -90px;
+      transform: scale(0.4);
+    }
+    .container-card{
+      margin: 20px 0;
+    }
+    .header img{
+      display: none;
+    }
+  }
+  @media (min-width:769px){
+    .main-content{
+    margin-left: 250px;
+    }
+    .header img{      
+        margin-left: 250px;      
+    }
+  }
