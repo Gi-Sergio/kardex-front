@@ -95,9 +95,11 @@
 
   <div class="container">
     <div class="sidebar">
-      <img alt="User Avatar" height="20%" src="../img/Usuario.png" width="10%" />
-      <h2>KARDEX</h2>
-      <p>Kardex1@gmail.com</p>
+      <div id="user-container">
+        <img id="user-image-preview" alt="User Avatar" height="20%" src="../img/Usuario.png" width="10%" />
+        <h2 id="companyName">KARDEX</h2>
+        <p id="email">Kardex1@gmail.com</p>
+    </div>
       <a href="index.html">INICIO</a>
       <a href="productos.html">PRODUCTOS</a>
       <a href="pedidos.html">PEDIDOS</a>
@@ -215,6 +217,8 @@
       modal.style.display = "none";
     });
   </script>
+  <script src="../js/utils/protect.js"></script>
+  <script type="module" src="../js/controllers/user/getUser.js"></script>
 
 </body>
 
