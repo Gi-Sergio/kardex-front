@@ -1,8 +1,5 @@
 import UserService from "../../services/UserService.js";
 
-const params = new URLSearchParams(window.location.search);
-const userId = params.get("id");
-
 document.getElementById("image").addEventListener("change", previewImage);
 
 // Botón para confirmar imagen
@@ -25,13 +22,13 @@ document.getElementById("confirm-image-btn").addEventListener("click", async () 
 
     // Limpiar errores previos y mostrar "Cargando..."
     errorMessage.textContent = "";
-    loadingMessage.style.display = "block";
+    
 
     const formData = new FormData();
     formData.append("image", file);
 
     try {
-        const response = await UserService.updateUserImage(userId, formData);
+        const response = await UserService.updateUserImage( formData);
 
         if (response.status !== 204) {
             const errorDetails = await response.text();
@@ -43,9 +40,7 @@ document.getElementById("confirm-image-btn").addEventListener("click", async () 
         alert("Imagen actualizada exitosamente.");
     } catch (error) {
         errorMessage.textContent = "Error al actualizar la imagen. Inténtalo de nuevo.";
-    } finally {
-        loadingMessage.style.display = "none"; // Ocultar "Cargando..."
-    }
+    } 
 });
 
 // Función para previsualizar la imagen antes de subirla

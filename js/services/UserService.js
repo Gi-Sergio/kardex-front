@@ -12,10 +12,11 @@ export default class UserService {
 }
 
 
-  static async updateUser(userId, user) {
+  static async updateUser(user) {
+    console.log("📌 Enviando datos a updateUser:", user);
     if (!AuthUtils.isAuthenticated()) return;
 
-    const response = await fetch(`${API_URL}/${userId}`, {
+    const response = await fetch(`${API_URL}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${AuthUtils.getToken()}`,
@@ -27,11 +28,11 @@ export default class UserService {
     return response;
   }
 
-  static async updateUserImage(userId, formData) {
+  static async updateUserImage(formData) {
     if (!AuthUtils.isAuthenticated()) return;
 
-    const response = await fetch(`${API_URL}/${userId}/image`, {
-      method: "PUT",
+    const response = await fetch(`${API_URL}/update/image`, {
+      method: "PATCH",
       headers: {
         Authorization: `Bearer ${AuthUtils.getToken()}`
       },
@@ -40,10 +41,10 @@ export default class UserService {
     return response;
   }
 
-  static async getUser(userId) {
+  static async getUser() {
     if (!AuthUtils.isAuthenticated()) return;
 
-    const response = await fetch(`${API_URL}/${userId}`, {
+    const response = await fetch(`${API_URL}/me`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${AuthUtils.getToken()}`,

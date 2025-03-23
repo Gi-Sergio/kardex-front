@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
 
     let loading = document.getElementById("create-loading");
-    //loading.style.display = "block";
+    loading.style.display = "block";
     form.style.display = "none";
 
     try {
@@ -17,8 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error al crear usuario:", error);
       alert("Hubo un error al crear el usuario. Intenta de nuevo.");
     } finally {
-      //loading.style.display = "none";
-      form.style.display = "flex";
+      loading.style.display = "none";
+      form.style.display = "block";
+      window.location.reload();
     }
   });
 

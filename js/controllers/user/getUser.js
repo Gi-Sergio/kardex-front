@@ -1,9 +1,6 @@
 import UserService from "../../services/UserService.js";
 import { handleApiResponse } from "../../utils/handleApiResponse.js";
 
-const params = new URLSearchParams(window.location.search);
-const userId = params.get("id");
-
 document.addEventListener("DOMContentLoaded", async function () {
   document.getElementById("loading-user").style.display = "block";
   document.getElementById("user-container").style.display = "none";
@@ -13,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 async function getUser() {
-  const user = await UserService.getUser(userId);
+  const user = await UserService.getUser();
 
   if (
     !handleApiResponse(user, {
@@ -29,6 +26,7 @@ async function getUser() {
   if (username) {
     username.value = user.username;
   }
+  
   setElementValue("companyName", user.companyName);
   setElementValue("email", user.email);
 

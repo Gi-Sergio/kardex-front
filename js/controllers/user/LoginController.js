@@ -8,16 +8,18 @@ form.addEventListener("submit", async function (event) {
 });
 
 const loginUser = async () => {
-  const email = document.getElementById("user-sign-in").value.trim();
-  const password = document.getElementById("password-sign-in").value.trim();
+  const user = {
+    email: document.getElementById("user-sign-in").value.trim(),
+    password: document.getElementById("password-sign-in").value.trim(),
+  };
 
-  if (!email || !password) {
+  if (!user.email || !user.password) {
     alert("Por favor, ingresa tu correo y contraseña.");
     return;
   }
 
   try {
-    const data = await AuthService.login(email, password);
+    const data = await AuthService.login(user);
 
     if (data.Message && data.Message === "Incorrect username or password") {
       alert("Usuario o contraseña incorrectos.");

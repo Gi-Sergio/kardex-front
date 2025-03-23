@@ -1,10 +1,6 @@
 import UserService from "../../services/UserService.js";
 import { handleApiResponse } from "../../utils/handleApiResponse.js";
 
-// Obtener ID del usuario desde la URL
-const params = new URLSearchParams(window.location.search);
-const userId = params.get("id");
-
 document.addEventListener("DOMContentLoaded", async function () {
   const editBtn = document.getElementById("edit-btn");
   const saveBtn = document.getElementById("save-btn");
@@ -48,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     };
 
     try {
-      const response = await UserService.updateUser(userId, user);
+      const response = await UserService.updateUser(user);
 
       if (
         !handleApiResponse(user, {
