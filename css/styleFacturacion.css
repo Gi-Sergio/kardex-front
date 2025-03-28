@@ -832,3 +832,15 @@ footer {
   }
 
 }
+
+#no-orders{
+  display: flex;
+  justify-content: center;
+}
+
+#orders-loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}

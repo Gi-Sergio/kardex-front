@@ -234,18 +234,32 @@
         <!-- Modal de cantidad de productos -->
         <div class="modal" id="pedidoModal">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Especificar cantidad</h5>
-                    <img src="../img/Pedido.png" alt="Imagen redonda" class="img-redonda">
-
-                </div>
-                <div class="modal-body">
-                    <label for="cantidad">Cantidad:</label>
-                    <input type="number" id="cantidad" class="form-control" min="1" value="1">
-                </div>
-                <div class="modal-footer">
-                    <a class="btn-cerrar" onclick="closeModal('pedidoModal')">Cancelar</a>
-                    <a class="btn-modal" id="generarPedido">Generar Pedido</a>
+                <form id="order-save-form">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Especificar cantidad</h5>
+                        <img src="../img/Pedido.png" alt="Imagen redonda" class="img-redonda">
+                    </div>
+                    <div class="modal-body">
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" id="productId">
+                        <input type="number" id="quantity" class="form-control" min="1" placeholder="1" required>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="button" class="btn-cerrar" onclick="closeModal('pedidoModal')">Cancelar</a>
+                        <a class="btn-modal">Generar Pedido</a>
+                    </div>    
+                </form>
+                <div class="loader" id="create-loading" style="display: none;">
+                    <div class="dot-spinner">
+                      <div class="dot-spinner__dot"></div>
+                      <div class="dot-spinner__dot"></div>
+                      <div class="dot-spinner__dot"></div>
+                      <div class="dot-spinner__dot"></div>
+                      <div class="dot-spinner__dot"></div>
+                      <div class="dot-spinner__dot"></div>
+                      <div class="dot-spinner__dot"></div>
+                      <div class="dot-spinner__dot"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -261,42 +275,12 @@
                     <p>¿Deseas seguir viendo productos o generar la factura?</p>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn-ver"
-                        onclick="closeModal('confirmacionModal')">Seguir viendo productos</a>
-                    <a href="facturacion.html" class="btn-modal">Generar Factura</a>
+                    <button type="button" class="btn-ver" onclick="closeModal('confirmacionModal')">Seguir viendo productos</button>
+                    <button type="button" onclick="redirectOrder()" class="btn-modal">Ver Factura</button>
                 </div>
             </div>
         </div>
-
-        <script>
-            // Función para abrir el modal
-            function openModal(modalId) {
-                document.getElementById(modalId).classList.add('show');
-            }
-
-            // Función para cerrar el modal
-            function closeModal(modalId) {
-                document.getElementById(modalId).classList.remove('show');
-            }
-
-            // Abrir el modal de cantidad al hacer clic en el ícono SVG
-            document.getElementById("openModal").addEventListener("click", function () {
-                openModal('pedidoModal');
-            });
-
-            // Al hacer clic en "Generar Pedido", cerrar el primer modal y abrir el segundo
-            document.getElementById("generarPedido").addEventListener("click", function () {
-                let cantidad = document.getElementById("cantidad").value;
-                if (cantidad > 0) {
-                    closeModal('pedidoModal'); // Cierra el primer modal
-
-                    setTimeout(() => {
-                        openModal('confirmacionModal'); // Abre el segundo modal
-                    }, 500);
-                }
-            });
-        </script>
-
+    <script src="../js/utils/protect.js"></script>
+    <script src="../js/modals/modalCreateOrder.js" defer></script>
 </body>
-
 </html>
