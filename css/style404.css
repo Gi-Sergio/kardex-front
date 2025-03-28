@@ -191,3 +191,9 @@
   #notFound {
     fill: #a7444b;
   }
+  @media (max-width:475px){
+    .page404{
+      width: 250px;
+      height: auto;
+    }
+  }
