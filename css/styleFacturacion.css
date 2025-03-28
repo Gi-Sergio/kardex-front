@@ -506,7 +506,6 @@ footer {
   text-align: center; /* Centra el texto */
   padding: 10px 0; /* Agrega un poco de espacio arriba y abajo */
     position: relative;
-    top: 500px;
 }
 .main{
   z-index: 100;
@@ -772,8 +771,7 @@ footer {
   font-weight: normal;
   text-align: center;
   color: #666;
-  padding: 10px 0;
-}
+ }
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
