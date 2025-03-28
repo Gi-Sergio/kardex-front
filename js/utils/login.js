@@ -10,33 +10,40 @@ form.addEventListener("submit", async function (event) {
 // Función asincrónica para enviar el formulario
 let login = async () => {
   let user = {
-    email: document.getElementById("user-sign-in").value,
-    password: document.getElementById("password-sign-in").value,
+    email: document.getElementById("user-sign-in").value.trim(),
+    password: document.getElementById("password-sign-in").value.trim(),
   };
 
-  // Envia la solicitud al backend usando fetch con el método POST
-  let response = await fetch("http://localhost:8081/auth/login", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(user),
-  });
+  try {
+    console.log("Intentando hacer la petición...");
+    let response = await fetch("http://localhost:8081/auth/login", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
 
-  const data = await response.json();
+    // Primero intentamos obtener el JSON
+    const data = await response.json();
 
-  if (data.Message && data.Message === "Incorrect username or password") {
-    alert(data.Message);
-    return;
-  } else {
-    // Obtenemos el token del objeto de respuesta y lo guardamos en localStorage
-    const token = data.token;
-    localStorage.setItem("token", token); // Guardamos el token en localStorage
+    // Si la respuesta no es OK, lanzamos un error con el mensaje del servidor
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: ${data?.message || "Error desconocido"}`);
+    }
+
+    // Verificamos si el token está en la respuesta
+    if (!data.token) {
+      throw new Error("No se recibió un token en la respuesta del servidor");
+    }
+
+    // Guardamos el token en localStorage
+    localStorage.setItem("token", data.token);
     window.location.href = "index.html";
-  }
 
-  if(!response.ok){
-    throw new Error(`HTTP error! status: ${response.status}`);
+  } catch (error) {
+    console.error("Error en la autenticación:", error.message);
+    alert("Ocurrió un error al iniciar sesión. Inténtalo nuevamente.");
   }
 };

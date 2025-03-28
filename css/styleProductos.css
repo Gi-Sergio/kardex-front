@@ -349,7 +349,10 @@ input:hover {
   font-size: 16px;
   color: #248E9C;
   margin: 10px 0;
+  overflow: hidden; /* Oculta el texto que sobrepasa el ancho */
+  text-overflow: ellipsis; /* Agrega los puntos suspensivos (...) */
 }
+
 
 .product-card p {
   font-size: 14px;
@@ -583,20 +586,14 @@ input:hover {
 /* Estilos del modal de éxito */
 .notifications-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  /* Ocupa todo el ancho */
-  height: 100vh;
-  /* Ocupa toda la altura */
-  background: rgba(0, 0, 0, 0.5);
-  /* Fondo oscuro semi-transparente */
-  display: none;
+  inset: 0; /* Asegura que ocupe toda la pantalla */
+  display: flex; /* Usa flexbox para centrar el contenido */
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
-/* Mantiene la notificación en su tamaño original */
 .success {
   width: 350px;
   background: white;
@@ -604,18 +601,31 @@ input:hover {
   border-radius: 0.5rem;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra todo horizontalmente */
+  justify-content: center;
+  text-align: center;
+}
+
+.success-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem; /* Espaciado debajo del ícono */
 }
 
 .succes-svg {
-  color: rgb(74 222 128);
-  width: 2rem;
-  height: 2rem;
-  display: block;
-  /* Hace que el icono sea un bloque */
-  margin: auto;
-  /* Lo centra horizontalmente */
+  width: 3rem;
+  height: 3rem;
 }
-
 
 .success-prompt-heading {
   font-weight: bold;

@@ -1,28 +1,57 @@
+/* Contenedor del arbolito */
 .container-404 {
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-align-content: center;
-    -ms-flex-line-pack: center;
-    align-content: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Mueve el contenido más arriba */
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  padding-top: 50px; /* Ajusta este valor según necesites */
+}
 
-  .page404 {
-    width: 400px;
-    height: auto;
+
+/* Asegura que el arbolito esté en el centro de su sección */
+.page404 {
+  width: 400px;
+  height: auto;
+  position: relative;
+}
+
+/* Animación del tronco del árbol */
+@keyframes wood-stump {
+  0% {
+    transform: translateX(20px);
   }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(20px);
+  }
+}
+
+/* Animación de la hoja */
+@keyframes leaf {
+  0% {
+    transform: translateY(15px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(15px);
+  }
+}
+
+/* Aplicar las animaciones SOLO al árbol */
+#wood-stump {
+  animation: wood-stump 3s infinite ease-in-out;
+}
+
+#leaf {
+  animation: leaf 7s infinite ease-in-out;
+}
+
 
   #tree {
     stroke: #59513c;
@@ -161,4 +190,10 @@
   }
   #notFound {
     fill: #a7444b;
+  }
+  @media (max-width:475px){
+    .page404{
+      width: 250px;
+      height: auto;
+    }
   }
