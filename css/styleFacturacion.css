@@ -393,7 +393,7 @@ body {
   flex-wrap: wrap;  /* Permite que las facturas se acomoden en varias filas */
 }
 .receipts-container {
-  max-height: 500px; /* Ajusta la altura máxima según necesites */
+  /* max-height: 500px; Ajusta la altura máxima según necesites */
   overflow: visible
   ;
   padding-right: 10px; /* Espacio para que no se superponga el scroll */
@@ -429,6 +429,10 @@ body {
   text-align: center;
   color: #0CACAB;
   margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;/* para poner ... al final*/
+  height: 25px;
+  white-space: nowrap;
 }
 
 .info {
@@ -489,6 +493,10 @@ body {
 }
 .Estado #Estado-Proceso{
   color: #eb8c08;
+}
+
+.Estado #Estado-Cancelado {
+  color: #eb0808;
 }
 
 .barcode {

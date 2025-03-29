@@ -6,7 +6,7 @@ form.addEventListener("submit", async function (event) {
   event.preventDefault();
 
   let loading = document.getElementById("create-loading");
-  loading.style.display = "block";
+  loading.style.display = "flex";
   form.style.display = "none";
 
   try {
@@ -19,7 +19,7 @@ form.addEventListener("submit", async function (event) {
     alert("Hubo un error al crear el pedido. Intenta de nuevo.");
   } finally {
     loading.style.display = "none";
-    form.style.display = "flex";
+    form.style.display = "block";
   }
 });
 
@@ -45,6 +45,6 @@ let createOrder = async () => {
   }
 
   console.log("Pedido creado con éxito");
-  alert("Pedido creado con éxito");
+  // alert("Pedido creado con éxito");
   return true;
 };

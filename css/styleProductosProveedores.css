@@ -25,6 +25,11 @@ a {
     text-decoration: none;
 }
 
+button{
+    border: none;
+    cursor: pointer;
+}
+
 .cols__container {
     display: flex;
     justify-content: space-between;
@@ -226,11 +231,12 @@ a {
 }
 
 .card-img {
-    background-color: #0CACAB;
+    /* background-color: #0CACAB; */
     height: 40%;
     width: 100%;
     border-radius: .5rem;
     transition: .3s ease;
+    object-fit: contain;
 }
 
 .card-info {
@@ -425,22 +431,17 @@ ul {
 
 /* Estilos para el modal */
 .modal {
-    display: none;
-    /* Oculto por defecto */
-    position: fixed;
-    /* Fijo en la pantalla */
-    z-index: 1;
-    /* Por encima de otros elementos */
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    z-index: 1; /* Por encima de otros elementos */
     left: 0;
     top: 0;
     width: 100%;
-    /* Ancho completo */
     height: 100%;
-    /* Alto completo */
-    overflow: auto;
-    /* Habilitar desplazamiento si es necesario */
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Fondo oscuro con opacidad */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    overflow: hidden; /* Evita barras de desplazamiento */
 }
 
 .modal-content {
@@ -459,7 +460,7 @@ ul {
 
 }
 .form-control{
-    width: 40px;  /* O ajusta a un tamaño específico, como 300px */
+    width: 20%;  /* O ajusta a un tamaño específico, como 300px */
     height: 20px; /* Aumenta la altura */
     font-size: 18px; /* Aumenta el tamaño del texto */
     padding: 10px; /* Añade espacio interno */
@@ -572,7 +573,7 @@ ul {
 }
 /* Estilo para mostrar el modal */
 .show {
-    display: block;
+    display: flex;
     /* Mostrar el modal */
 }
 .dot-spinner{
@@ -654,4 +655,9 @@ ul {
         left: -65px;
         position: relative;
     }
+}
+
+center{
+    top: 0;
+    left: 0;
 }

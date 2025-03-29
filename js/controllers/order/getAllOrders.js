@@ -135,21 +135,28 @@ const showOrders = (orders) => {
 
     if(order.status.id === 1){
       estadoValue.id = "Estado-Proceso";
+      estadoValue.textContent = "PEDIDO"
     }
     
     if(order.status.id === 2){
       estadoValue.id = "Estado-Despachado";
+      estadoValue.textContent = "ENVIADO"
     }
 
     if(order.status.id === 3){
       estadoValue.id = "Estado-Transito";
+      estadoValue.textContent = "EN TRANSITO"
     }
 
     if(order.status.id === 4){
       estadoValue.id = "Estado-Activo";
+      estadoValue.textContent = "ENTREGADO"
     }
 
-    estadoValue.textContent = order.status.statusName;
+    if(order.status.id === 5){
+      estadoValue.id = "Estado-Cancelado";
+      estadoValue.textContent = "CANCELADO"
+    }
 
     estadoDiv.append(estadoText, estadoValue);
 
