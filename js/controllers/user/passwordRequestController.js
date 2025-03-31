@@ -2,6 +2,25 @@ import PasswordResetService from "../../services/passwordResetService.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector(".sign-in-form-2");
+  const alertContainer = document.getElementById("alert-container");
+
+  // Función para mostrar alertas de Bootstrap en el centro superior
+  const showAlert = (message, type) => {
+    const alert = document.createElement("div");
+    alert.className = `alert alert-${type} alert-dismissible fade show`;
+    alert.role = "alert";
+    alert.innerHTML = `
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+    alertContainer.appendChild(alert);
+
+    // Eliminar la alerta después de 4 segundos
+    setTimeout(() => {
+      alert.remove();
+    }, 4000);
+  };
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
@@ -10,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = emailInput.value.trim();
 
     if (!email) {
-      alert("Por favor, ingrese un correo electrónico válido.");
+      showAlert("⚠️ Por favor, ingrese un correo electrónico válido.", "danger");
       return;
     }
 
@@ -18,15 +37,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const response = await PasswordResetService.requestPasswordReset(email);
 
       if (response.ok) {
-        alert("Se ha enviado un enlace de restablecimiento a su correo.");
+        showAlert("✅ Se ha enviado un enlace de restablecimiento a su correo.", "success");
         form.reset();
       } else {
         const errorData = await response.json();
-        alert(errorData.Message || "Hubo un error al procesar la solicitud.");
+        showAlert(errorData.Message || "❌ Hubo un error al procesar la solicitud.", "danger");
       }
     } catch (error) {
       console.error("Error en la solicitud:", error);
-      alert("No se pudo conectar con el servidor.");
+      showAlert("❌ No se pudo conectar con el servidor.", "danger");
     }
   });
 });

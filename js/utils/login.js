@@ -1,11 +1,22 @@
 // Obtiene el formulario
 const form = document.getElementById("sign-in-form");
+const alertContainer = document.getElementById("alert-container");
 
 // Escucha el evento submit del formulario
 form.addEventListener("submit", async function (event) {
   event.preventDefault(); // Previene el envío tradicional del formulario
   await login(); // Llama a la función asincrónica para autenticar
 });
+
+// Función para mostrar alertas de Bootstrap
+const showAlert = (message, type) => {
+  alertContainer.innerHTML = `
+    <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  `;
+};
 
 // Función asincrónica para enviar el formulario
 let login = async () => {
@@ -14,7 +25,7 @@ let login = async () => {
 
   // Validación previa
   if (!email || !password) {
-    alert("Por favor, ingresa tu correo y contraseña.");
+    showAlert("Por favor, ingresa tu correo y contraseña.", "danger");
     return;
   }
 
@@ -39,19 +50,23 @@ let login = async () => {
     const data = await response.json();
 
     if (data.Message && data.Message === "Incorrect username or password") {
-      alert("Usuario o contraseña incorrectos.");
+      showAlert("Usuario o contraseña incorrectos.", "danger");
       return;
     }
 
     // Obtenemos el token y lo guardamos en localStorage
     if (data.token) {
-      localStorage.setItem("token", data.token);
-      window.location.href = "index.html";
+      showAlert("Inicio de sesión exitoso. Redirigiendo...", "success");
+
+      setTimeout(() => {
+        localStorage.setItem("token", data.token);
+        window.location.href = "index.html";
+      }, 1500);
     } else {
-      alert("Error: No se recibió un token.");
+      showAlert("Error: No se recibió un token.", "danger");
     }
   } catch (error) {
     console.error("Error en el login:", error);
-    alert("Error al conectar con el servidor. Intenta de nuevo más tarde.");
+    showAlert("Error al conectar con el servidor. Intenta de nuevo más tarde.", "danger");
   }
 };

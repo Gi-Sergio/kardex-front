@@ -6,12 +6,31 @@ document.addEventListener("DOMContentLoaded", async function () {
   const saveBtn = document.getElementById("save-btn");
   const cancelBtn = document.getElementById("cancel-btn");
   const inputs = document.querySelectorAll("#update-user-form input");
+  const alertContainer = document.getElementById("alert-container");
 
   let originalValues = {}; // Guardará los valores originales
 
+  // Función para mostrar alertas de Bootstrap
+  const showAlert = (message, type) => {
+    const alert = document.createElement("div");
+    alert.className = `alert alert-${type} alert-dismissible fade show`;
+    alert.role = "alert";
+    alert.innerHTML = `
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+    alertContainer.appendChild(alert);
+
+    // Eliminar la alerta después de 4 segundos
+    setTimeout(() => {
+      alert.remove();
+    }, 4000);
+  };
+
   // Función para habilitar inputs y mostrar botones
   editBtn.addEventListener("click", function () {
-    inputs.forEach(input => {
+    inputs.forEach((input) => {
       originalValues[input.id] = input.value; // Guardamos el valor original
       input.disabled = false;
     });
@@ -23,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Función para cancelar la edición y restaurar valores originales
   cancelBtn.addEventListener("click", function () {
-    inputs.forEach(input => {
+    inputs.forEach((input) => {
       input.value = originalValues[input.id]; // Restauramos valores
       input.disabled = true;
     });
@@ -58,14 +77,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       if (response.status === 204) {
         // Si la actualización es exitosa, deshabilitar inputs y mostrar alerta
-        inputs.forEach(input => input.disabled = true);
-        
+        inputs.forEach((input) => (input.disabled = true));
+
         // Restaurar la visibilidad de los botones
         editBtn.style.display = "inline-block";
         saveBtn.style.display = "none";
         cancelBtn.style.display = "none";
 
-        alert("Usuario actualizado exitosamente");
+        showAlert("✅ Usuario actualizado exitosamente", "success");
       } else {
         const errorDetails = await response.text();
         console.error(
@@ -74,11 +93,11 @@ document.addEventListener("DOMContentLoaded", async function () {
           response.statusText,
           errorDetails
         );
-        alert(`Error al actualizar el usuario: ${errorDetails}`);
+        showAlert(`❌ Error al actualizar el usuario: ${errorDetails}`, "danger");
       }
     } catch (error) {
       console.error("Error al actualizar usuario:", error);
-      alert("Ocurrió un error al actualizar el usuario.");
+      showAlert("❌ Ocurrió un error al actualizar el usuario.", "danger");
     }
   });
 });

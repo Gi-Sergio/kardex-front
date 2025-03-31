@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <div id="alert-container" class="alert-container"></div>
     <div class="container">
         <div class="profile-sidebar">
             <i class="fas fa-arrow-left back-icon" onclick="window.history.back();"></i>
@@ -44,7 +45,7 @@
             <div class="tabs">
                 <div class="active">Información del usuario</div>
             </div>
-            <div id="loading-user" style="display: none;">Cargando usuario...</div>
+            <div class="loader" id="loading-user" style="display: none;">Cargando usuario...</div>
             <div id="no-user" style="display: none;">Usuario no encontrado.</div>
             <div id="user-container">
                 <form id="update-user-form">

@@ -35,14 +35,12 @@ body {
 
 /* Estilos para las imágenes dentro del sidebar */
 .sidebar img {
-  width: 100px;
-  /* Ancho de la imagen */
-  height: 100px;
-  /* Altura de la imagen */
-  display: block;
-  /* Convierte la imagen en un bloque para centrarla */
-  margin: 0 auto 20px;
-  /* Centra la imagen y agrega un margen inferior */
+  width: 100px; /* Ancho de la imagen */
+  height: 100px; /* Altura de la imagen */
+  display: block; /* Convierte la imagen en un bloque para centrarla */
+  margin: 0 auto 20px; /* Centra la imagen y agrega un margen inferior */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Evita deformaciones y mantiene el recorte adecuado */
 }
 
 /* Títulos en el sidebar */

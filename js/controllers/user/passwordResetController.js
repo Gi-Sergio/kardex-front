@@ -1,6 +1,26 @@
 import PasswordResetService from "../../services/passwordResetService.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector(".sign-in-form-2");
+    const alertContainer = document.getElementById("alert-container");
+
+    // Función para mostrar alertas de Bootstrap
+    const showAlert = (message, type) => {
+        const alert = document.createElement("div");
+        alert.className = `alert alert-${type} alert-dismissible fade show`;
+        alert.role = "alert";
+        alert.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        `;
+
+        alertContainer.appendChild(alert);
+
+        // Eliminar la alerta después de 4 segundos
+        setTimeout(() => {
+            alert.remove();
+        }, 4000);
+    };
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -11,12 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const confirmPasswordInput = document.getElementById("confirm-password").value;
 
         if (!passwordInput || !confirmPasswordInput) {
-            alert("Por favor, completa todos los campos.");
+            showAlert("⚠️ Por favor, completa todos los campos.", "danger");
             return;
         }
 
         if (passwordInput !== confirmPasswordInput) {
-            alert("Las contraseñas no coinciden.");
+            showAlert("❌ Las contraseñas no coinciden.", "danger");
             return;
         }
 
@@ -24,15 +44,18 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await PasswordResetService.resetPassword(token, passwordInput);
 
             if (response.ok) {
-                alert("Contraseña cambiada exitosamente. Redirigiendo...");
-                window.location.href = "login.html"; // Redirige a la página de inicio de sesión
+                showAlert("✅ Contraseña cambiada exitosamente. Redirigiendo...", "success");
+
+                setTimeout(() => {
+                    window.location.href = "login.html"; // Redirige después de 2 segundos
+                }, 2000);
             } else {
                 const errorData = await response.json();
-                alert(`Error: ${errorData.Message || "No se pudo cambiar la contraseña."}`);
+                showAlert(`❌ Error: ${errorData.Message || "No se pudo cambiar la contraseña."}`, "danger");
             }
         } catch (error) {
             console.error("Error en la solicitud:", error);
-            alert("Hubo un problema con la solicitud. Inténtalo de nuevo.");
+            showAlert("❌ Hubo un problema con la solicitud. Inténtalo de nuevo.", "danger");
         }
     });
 });
