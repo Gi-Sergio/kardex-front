@@ -14,7 +14,6 @@ const populateProviderSelect = (providers) => {
   const providerSelect = document.getElementById("providerSelect");
 
   // Limpiar opciones previas
-  providerSelect.innerHTML = '<option value="">Seleccione un proveedor</option>';
 
   providers.forEach((provider) => {
     const option = document.createElement("option");
