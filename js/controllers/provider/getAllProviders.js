@@ -62,7 +62,7 @@ const showProviders = (providers) => {
     id.textContent = provider.id;
 
     const name = document.createElement("h3");
-    name.textContent = provider.name;
+    name.textContent = provider.companyName;
 
     const description = document.createElement("p");
     description.textContent = provider.description;

@@ -20,6 +20,21 @@ export default class ProviderService {
     return response.json();
   }
 
+  static async getAllProvidersName(page = 0) {
+    
+    if (!AuthUtils.isAuthenticated()) return;   
+
+    const response = await fetch(`${API_URL}/providerName`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${AuthUtils.getToken()}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return response.json();
+  }
+
   static async getById(providerId) {
     if (!AuthUtils.isAuthenticated()) return; 
 
