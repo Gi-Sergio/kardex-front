@@ -26,8 +26,9 @@ let getProduct = async () => {
   document.getElementById("product-name-edit").value = product.name;
   document.getElementById("product-quantity-edit").value = product.quantity;
   document.getElementById("product-price-edit").value = product.price;
-  document.getElementById("product-description-edit").value =
-    product.description;
+  document.getElementById("product-description-edit").value =product.description;
+  document.getElementById("product-companyName-edit").textContent = product.provider.companyName;
+
 
   const img = document.getElementById("product-image-edit");
   img.src = product.imageUrl || "/img/Logo_Empresa.png";
@@ -76,6 +77,11 @@ let updateProduct = async () => {
   formData.append(
     "description",
     document.getElementById("product-description-edit").value
+  );
+
+  formData.append(
+    "providerId",
+    document.getElementById("providerSelect").value
   );
 
   const imageInput = document.getElementById("product-image-edit");

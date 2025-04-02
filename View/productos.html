@@ -143,18 +143,15 @@
                     type="text" id="price" required>
                 </div>
                 <textarea placeholder="Especificaciones"
-                  class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]" rows="3" id="description"></textarea>
+                  class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]" rows="3"
+                  id="description"></textarea>
                 <div class="form-group mb-4">
-                  <input type="hidden" value="1" id="provider">
-                  <label for="availability" class="text-gray-800">Proveedor</label>
-                  <select id="availability" class="border rounded-md p-2 focus:ring-2 focus:ring-[#0CACAB]">
-                    <option value="available">Proveedor 1</option>
-                    <option value="available">Proveedor 2</option>
-                    <option value="available">Proveedor 3</option>
-                    <option value="available">Proveedor 4</option>
-                    <option value="available">Proveedor 5</option>
+                  <label for="providerSelect" class="text-gray-800">Seleccionar Proveedor</label>
+                  <select id="providerSelect" class="border rounded-md p-2 focus:ring-2 focus:ring-[#0CACAB]">
+                    <option value="">Seleccione un proveedor</option>
                   </select>
                 </div>
+
                 <div class="form-group mb-4">
                   <p class="text-gray-600 text-sm">
                     Si no tienes proveedor para el producto, primero debes
@@ -191,25 +188,26 @@
           <!-- Modal de éxito -->
           <div id="successModal" class="notifications-container" style="display: none;">
             <div class="success">
-                <!-- Icono SVG de chulo dentro de un círculo verde -->
-                <div class="success-icon-container">
-                    <svg class="succes-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="10" fill="rgb(74, 222, 128)"/>
-                        <path d="M8 12.5l2.5 2.5 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-        
-                <p class="success-prompt-heading">Producto Añadido</p>
-                <div class="success-prompt-prompt">
-                  <p>El producto ha sido añadido exitosamente en la base de datos.</p>
-                </div>
+              <!-- Icono SVG de chulo dentro de un círculo verde -->
+              <div class="success-icon-container">
+                <svg class="succes-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" fill="rgb(74, 222, 128)" />
+                  <path d="M8 12.5l2.5 2.5 5-5" stroke="white" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+
+              <p class="success-prompt-heading">Producto Añadido</p>
+              <div class="success-prompt-prompt">
+                <p>El producto ha sido añadido exitosamente en la base de datos.</p>
+              </div>
+              <div class="success-button-container">
                 <div class="success-button-container">
-                  <div class="success-button-container">
-                    <button type="button" class="success-button-secondary" onclick="closeSuccessModal()">Cerrar</button>
-                  </div>
+                  <button type="button" class="success-button-secondary" onclick="closeSuccessModal()">Cerrar</button>
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
 
           <script>
             // Mostrar el modal de éxito
@@ -308,6 +306,8 @@
   <script src="../js/utils/protect.js"></script>
   <script type="module" src="../js/controllers/product/getAllproducts.js"></script>
   <script type="module" src="../js/controllers/product/postProduct.js"></script>
+  <script type="module" src="../js/controllers/provider/getAllProvidersName.js"></script>
+
   <script type="module" src="../js/controllers/notification/getAllStatusNotifications.js"></script>
   <script src="../js/utils/openNotificaciones.js"></script>
 </body>

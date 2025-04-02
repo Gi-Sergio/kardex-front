@@ -30,7 +30,7 @@ let createProduct = async () => {
   formData.append("quantity", document.getElementById("quantity").value || "0");
   formData.append("price", document.getElementById("price").value);
   formData.append("description", document.getElementById("description").value);
-  formData.append("providerId", document.getElementById("provider").value);
+  formData.append("providerId", document.getElementById("providerSelect").value);
 
   // Verifica que se haya seleccionado una imagen
   const imageFile = document.getElementById("image").files[0];
