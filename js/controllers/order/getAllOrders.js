@@ -21,9 +21,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 let currentPage = 0; // Página inicial
+const pagesize = 15;
+
 
 const listOrders = async (page = 0) => {
-  const data = await OrderService.getAll(page);
+  const data = await OrderService.getAll(page, pagesize);
   if (
     !handleApiResponse(data, {
       noDataId: "no-orders",

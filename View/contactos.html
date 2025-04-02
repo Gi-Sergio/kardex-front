@@ -1,89 +1,129 @@
 <html>
+  <head>
+    <title>Contactanos</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="../css/styleContacto.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
 
-    <head>
-        <title>Contactanos</title>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-        <link rel="stylesheet" href="../css/styleContacto.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    </head>
-
-    <body>
-        <div class="header">
-            <!-- From Uiverse.io by pathikcomp -->
-            <label class="main">
-                Menu
-                <input class="inp" checked="" type="checkbox" />
-                <div class="bar">
-                    <span class="top bar-list"></span>
-                    <span class="middle bar-list"></span>
-                    <span class="bottom bar-list"></span>
-                </div>
-                <section class="menu-container">
-                    <a href="index.html" class="menu-list">Inicio</a>
-                    <a href="productos.html" class="menu-list">Productos</a>
-                    <a href="pedidos.html" class="menu-list">Facturación</a>
-                    <a href="proveedores.html" class="menu-list">Proveedores</a>
-                    <a href="contactos.html" class="menu-list">Contactanos</a>
-                </section>
-            </label>
-            <img alt="Logo" height="50" src="../img/Icono K.png" width="50" />
+  <body>
+    <div class="header">
+      <!-- From Uiverse.io by pathikcomp -->
+      <label class="main">
+        Menu
+        <input class="inp" checked="" type="checkbox" />
+        <div class="bar">
+          <span class="top bar-list"></span>
+          <span class="middle bar-list"></span>
+          <span class="bottom bar-list"></span>
         </div>
-        <div class="container">
-            <div class="sidebar">
-                <img alt="User Avatar" height="20%" src="../img/Usuario.png" width="10%" />
-                <h2>KARDEX</h2>
-                <p>Kardex1@gmail.com</p>
-                <a href="index.html">INICIO</a>
-                <a href="productos.html">PRODUCTOS</a>
-                <a href="pedidos.html">PEDIDOS</a>
-                <a href="proveedores.html"> PROVEEDORES</a>
-                <a class="active" href="contactos.html"> CONTACTANOS</a>
-                <footer>
-                    <p id="p-2">&copy; 2025 Kardex. Todos los derechos reservados.</p>
-                </footer>
+        <section class="menu-container">
+          <a href="index.html" class="menu-list">Inicio</a>
+          <a href="productos.html" class="menu-list">Productos</a>
+          <a href="pedidos.html" class="menu-list">Pedidos</a>
+          <a href="proveedores.html" class="menu-list">Proveedores</a>
+          <a href="contactos.html" class="menu-list">Contactanos</a>
+        </section>
+      </label>
+      <img alt="Logo" height="50" src="../img/Icono K.png" width="50" />
+    </div>
+    <div class="container">
+      <div class="sidebar">
+        <img
+          alt="User Avatar"
+          height="20%"
+          src="../img/Usuario.png"
+          width="10%"
+        />
+        <h2>KARDEX</h2>
+        <p>Kardex1@gmail.com</p>
+        <a href="index.html">INICIO</a>
+        <a href="productos.html">PRODUCTOS</a>
+        <a href="pedidos.html">PEDIDOS</a>
+        <a href="proveedores.html"> PROVEEDORES</a>
+        <a class="active" href="contactos.html"> CONTACTANOS</a>
+        <footer>
+          <p id="p-2">&copy; 2025 Kardex. Todos los derechos reservados.</p>
+        </footer>
+      </div>
+      <div class="main-content">
+        <div class="container-2">
+          <div class="heading">Contactanos</div>
+          <form class="form" action="">
+            <input
+              placeholder="E-mail"
+              id="email"
+              name="email"
+              type="email"
+              class="input"
+              required=""
+            />
+            <textarea
+              placeholder="Especificaciones"
+              class="textarea"
+              rows="3"
+            ></textarea>
+            <input value="Enviar" type="submit" class="login-button" />
+          </form>
+          <div class="social-account-container">
+            <span class="title"
+              >O contactanos a traves de nuestras redes sociales</span
+            >
+            <div class="social-accounts">
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=nialeon04@gmail.com"
+                target="_blank"
+              >
+                <button class="social-button google">
+                  <svg
+                    viewBox="0 0 488 512"
+                    height="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="svg"
+                  >
+                    <path
+                      d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
+                    ></path>
+                  </svg>
+                </button>
+              </a>
+              <a href="https://wa.me/3053660594" target="_blank">
+                <button class="social-button whatsapp">
+                  <svg
+                    viewBox="0 0 448 512"
+                    height="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="svg"
+                  >
+                    <path
+                      d="M380.9 97.1C339 55.2 283.2 32 224 32 100.3 32 0 132.3 0 256c0 45 11.8 88.9 34.1 127.5L3.4 480l100.8-26.5c36.5 19.9 77.7 30.5 119.8 30.5h.1c123.7 0 224-100.3 224-224 0-59.2-23.2-115-65.2-157.9zM224.1 456h-.1c-37.1 0-73.5-9.8-105.2-28.3l-7.5-4.4-59.9 15.7 16-58.3-4.9-7.7C42.5 337.4 32 297.4 32 256 32 150.1 118.1 64 224 64c50.1 0 97.2 19.5 132.5 54.9S416 205.9 416 256c0 105.9-86.1 200-191.9 200zM308.4 302.3c-5.3-2.7-31.4-15.5-36.3-17.3-4.9-1.8-8.5-2.7-12.1 2.7-3.6 5.3-13.9 17.3-17 20.9-3.1 3.6-6.2 4-11.5 1.3-31.3-15.6-51.9-27.9-72.5-63.2-5.5-9.5 5.5-8.8 15.9-29.3 1.8-3.6.9-6.7-.4-9.5-1.3-2.7-12.1-29.2-16.6-40-4.4-10.7-8.9-9.3-12.1-9.5-3.1-.2-6.7-.2-10.3-.2s-9.5 1.3-14.5 6.7c-5.3 5.3-19.8 19.4-19.8 47.3s20.3 54.9 23.1 58.7c2.7 3.6 40 61 97 85.5 13.5 5.8 24.1 9.2 32.3 11.8 13.5 4.2 25.8 3.6 35.5 2.2 10.8-1.6 31.4-12.8 35.8-25.1 4.4-12.3 4.4-22.8 3.1-25.1-1.4-2.3-4.9-3.8-10.2-6.5z"
+                    />
+                  </svg>
+                </button>
+              </a>
+              <a href="https://www.facebook.com" target="_blank">
+                <button class="social-button facebook">
+                  <svg
+                    viewBox="0 0 320 512"
+                    height="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="svg"
+                  >
+                    <path
+                      d="M279.14 288l14.22-92.66h-88.91V128c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S266.43 0 225.36 0C141.09 0 89.09 48.38 89.09 136v60.34H0v92.66h89.09V512h107.91V288h82.14z"
+                    />
+                  </svg>
+                </button>
+              </a>
             </div>
-            <div class="main-content">
-                <div class="container-2">
-                    <div class="heading">Contactanos</div>
-                    <form class="form" action="">
-                        <input placeholder="E-mail" id="email" name="email" type="email" class="input" required="" />
-                        <textarea placeholder="Especificaciones" class="textarea" rows="3"></textarea>
-                        <input value="Enviar" type="submit" class="login-button" />
-                    </form>
-                    <div class="social-account-container">
-                        <span class="title">O contactanos a traves de nuestras redes sociales</span>
-                        <div class="social-accounts">
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nialeon04@gmail.com" target="_blank">
-                                <button class="social-button google">
-                                    <svg viewBox="0 0 488 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="svg">
-                                        <path
-                                            d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </a>
-                            <a href="https://wa.me/3053660594" target="_blank">
-                                <button class="social-button whatsapp">
-                                    <svg viewBox="0 0 448 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="svg">
-                                        <path
-                                            d="M380.9 97.1C339 55.2 283.2 32 224 32 100.3 32 0 132.3 0 256c0 45 11.8 88.9 34.1 127.5L3.4 480l100.8-26.5c36.5 19.9 77.7 30.5 119.8 30.5h.1c123.7 0 224-100.3 224-224 0-59.2-23.2-115-65.2-157.9zM224.1 456h-.1c-37.1 0-73.5-9.8-105.2-28.3l-7.5-4.4-59.9 15.7 16-58.3-4.9-7.7C42.5 337.4 32 297.4 32 256 32 150.1 118.1 64 224 64c50.1 0 97.2 19.5 132.5 54.9S416 205.9 416 256c0 105.9-86.1 200-191.9 200zM308.4 302.3c-5.3-2.7-31.4-15.5-36.3-17.3-4.9-1.8-8.5-2.7-12.1 2.7-3.6 5.3-13.9 17.3-17 20.9-3.1 3.6-6.2 4-11.5 1.3-31.3-15.6-51.9-27.9-72.5-63.2-5.5-9.5 5.5-8.8 15.9-29.3 1.8-3.6.9-6.7-.4-9.5-1.3-2.7-12.1-29.2-16.6-40-4.4-10.7-8.9-9.3-12.1-9.5-3.1-.2-6.7-.2-10.3-.2s-9.5 1.3-14.5 6.7c-5.3 5.3-19.8 19.4-19.8 47.3s20.3 54.9 23.1 58.7c2.7 3.6 40 61 97 85.5 13.5 5.8 24.1 9.2 32.3 11.8 13.5 4.2 25.8 3.6 35.5 2.2 10.8-1.6 31.4-12.8 35.8-25.1 4.4-12.3 4.4-22.8 3.1-25.1-1.4-2.3-4.9-3.8-10.2-6.5z" />
-                                    </svg>
-                                </button>
-                            </a>
-                            <a href="https://www.facebook.com" target="_blank">
-                                <button class="social-button facebook">
-                                    <svg viewBox="0 0 320 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="svg">
-                                        <path
-                                            d="M279.14 288l14.22-92.66h-88.91V128c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S266.43 0 225.36 0C141.09 0 89.09 48.38 89.09 136v60.34H0v92.66h89.09V512h107.91V288h82.14z" />
-                                    </svg>
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </body> 
+      </div>
+    </div>
+    <script src="../js/utils/protect.js"></script>
+  </body>
 </html>

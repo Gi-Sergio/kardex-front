@@ -11,10 +11,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   listProviders(currentPage);
 });
 
-let currentPage = 0; // Página inicial
+let currentPage = 0; 
+const pagesize = 15;// tamaño de pagina
 
 const listProviders = async (page = 0) => {
-  const data = await ProviderService.getAll(page);
+  const data = await ProviderService.getAll(page, pagesize);
 
   if (
     !handleApiResponse(data, {

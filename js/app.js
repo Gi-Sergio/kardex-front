@@ -7,16 +7,7 @@ sign_up_btn.addEventListener("click", () => {
 sign_in_btn.addEventListener("click", () => {
     container.classList.remove("sign-up-mode");
 });
-if(sign_up_btn2){
-    sign_up_btn2.addEventListener("click", () => {
-        container.classList.add("sign-up-mode2");
-    });
-}
-if(sign_in_btn2){
-    sign_in_btn2.addEventListener("click", () => {
-        container.classList.remove("sign-up-mode2");
-    });
-}
+
 function redirectToIndex(event) {
         event.preventDefault(); // Evita que el formulario se envíe de la manera tradicional
         // Aquí puedes agregar tu lógica para procesar el formulario, si es necesario.

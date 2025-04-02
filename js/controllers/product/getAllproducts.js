@@ -11,10 +11,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   listProducts(currentPage);
 });
 
-let currentPage = 0; // Página inicial
+let currentPage = 0;
+const pagesize = 15;
 
 const listProducts = async (page = 0) => {
-  const data = await ProductService.getAll(page);
+  const data = await ProductService.getAll(page, pagesize);
 
   if (
     !handleApiResponse(data, {

@@ -3,11 +3,9 @@ import AuthUtils from "../utils/authUtils.js";
 const API_URL = "http://localhost:8080/providers"; // Cambia esto por tu URL real
 
 export default class ProviderService {
-  static async getAll(page = 0) {
+  static async getAll(page = 0, pageSize) {
     
     if (!AuthUtils.isAuthenticated()) return; 
-
-    const pageSize = 6; // Tamaño de página
 
     const response = await fetch(`${API_URL}?page=${page}&size=${pageSize}`, {
       method: "GET",

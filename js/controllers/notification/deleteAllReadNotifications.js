@@ -1,28 +1,15 @@
 import NotificationService from "../../services/NotificationService.js";
 
-const btnDelete = document.getElementById("btn-delete-product");
-const deleteModal = document.getElementById("delete-modal");
+const btnDeleteAll = document.getElementById("btn-delete-read-notification");
 
-btnDelete.addEventListener("click", async function () {
+btnDeleteAll.addEventListener("click", async function () {
+  const confirmacion = confirm(`¿Estás seguro de eliminar las notificaciones ya leidas?`);
+  if (!confirmacion) return;
 
-  let loading = document.getElementById("delete-loading");
-  loading.style.display = "block";
-  deleteModal.style.display = "none";
-
-  try {
-    await deleteNotification();
-  } catch (error) {
-    console.error("Error al eliminar notificacion:", error);
-    alert("Hubo un error al eliminar la notificacion. Intenta de nuevo.");
-  } finally {
-    loading.style.display = "none";
-    deleteModal.style.display = "flex";
-    window.location.href = 'notificaciones.html';
-  }
+  await deleteAllNotifications();
 });
 
-export const deleteNotification = async () => {
-
+const deleteAllNotifications = async () => {
   const response = await NotificationService.deleteAllReadNotifications();
 
   if (response.status != 204) {
@@ -33,11 +20,9 @@ export const deleteNotification = async () => {
       response.statusText,
       errorDetails
     );
-    alert(`Error al eliminar la notificacion: ${errorDetails}`);
-    return false;
   }
-
+  window.location.reload();
+  
   console.log("Notificacion eliminada con éxito");
   alert("Notificacion eliminada con éxito");
-  return true;
 };
