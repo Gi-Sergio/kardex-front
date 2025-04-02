@@ -6,8 +6,6 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="../css/styleInicio.css">
     <link rel="stylesheet" href="../css/styleVistaProductos.css">
-    <link rel="stylesheet" href="../404.html">
-    <link rel="stylesheet" href="../loader.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -25,7 +23,7 @@
             <section class="menu-container">
                 <a href="index.html" class="menu-list">Inicio</a>
                 <a href="productos.html" class="menu-list">Productos</a>
-                <a href="pedidos.html" class="menu-list">Facturación</a>
+                <a href="pedidos.html" class="menu-list">Pedidos</a>
                 <a href="proveedores.html" class="menu-list">Proveedores</a>
                 <a href="contactos.html" class="menu-list">Contactanos</a>
             </section>
@@ -35,12 +33,21 @@
 
     <div class="container">
         <div class="sidebar">
-            <div id="user-container">
-                <img id="user-image-preview" alt="User Avatar" height="20%" src="../img/Usuario.png" width="10%" />
-                <h2 id="companyName">KARDEX</h2>
-                <p id="email">Kardex1@gmail.com</p>
-            </div>
-            <div id="loading-user" style="display: none;">
+            <img alt="User  Avatar" height="20%" src="../img/Usuario.png" width="10%" />
+            <h2>KARDEX</h2>
+            <p>Kardex1@gmail.com</p>
+            <a href="index.html">INICIO</a>
+            <a class="active" href="productos.html">PRODUCTOS</a>
+            <a href="pedidos.html">PEDIDOS</a>
+            <a href="proveedores.html">PROVEEDORES</a>
+            <a href="contactos.html">CONTACTANOS</a>
+            <footer>
+                <p id="p-2">&copy; 2025 Kardex. Todos los derechos reservados.</p>
+            </footer>
+        </div>
+
+        <div class="main-content">
+            <div class="loader" id="loading" style="display: none;">
                 <div class="dot-spinner">
                     <div class="dot-spinner__dot"></div>
                     <div class="dot-spinner__dot"></div>
@@ -52,7 +59,7 @@
                     <div class="dot-spinner__dot"></div>
                 </div>
             </div>
-            <div id="no-user" style="display: none;">
+            <div id="no-products" style="display: none;">
                 <div class="container-404">
                     <?xml version="1.0" encoding="UTF-8"?>
                     <svg class="page404" viewBox="0 0 5059 4833" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -83,35 +90,26 @@
                                 <path
                                     d="M582.4375,4792.43333 C903.798189,4792.43333 1164.3125,4531.89291 1164.3125,4210.5 C1164.3125,3889.10709 903.798189,3628.56667 582.4375,3628.56667 C261.076811,3628.56667 0.5625,3889.10709 0.5625,4210.5 C0.5625,4531.89291 261.076811,4792.43333 582.4375,4792.43333 Z M582.4375,4418.33333 C467.641875,4418.33333 374.625,4325.30713 374.625,4210.5 C374.625,4095.69287 467.641875,4002.66667 582.4375,4002.66667 C629.070625,4002.66667 672.129375,4018.04633 706.7925,4043.9008 M582.4375,3628.56667 L1330.5625,3628.56667 C1651.92375,3628.56667 1912.4375,3889.10653 1912.4375,4210.5 C1912.4375,4531.89347 1651.92375,4792.43333 1330.5625,4792.43333 L582.4375,4792.43333 M249.77125,4459.73373 C325.58125,4560.74073 446.361875,4626.16667 582.4375,4626.16667 C812.02875,4626.16667 998.0625,4440.11427 998.0625,4210.5 C998.0625,3980.88573 812.02875,3794.83333 582.4375,3794.83333 M1108.28625,4459.9 L1413.6875,4459.9 M1372.125,4210.5 L1496.8125,4210.5 M1704.625,4127.36667 L1906.53562,4127.36667 M1856.41125,3961.1 L1496.8125,3961.1 M582.4375,4168.93333 L582.4375,4252.06667"
                                     id="wood-stump" stroke="#000000" stroke-width="40" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                </path>
+                                    stroke-linejoin="round"></path>
                             </g>
                         </g>
                     </svg>
                 </div>
             </div>
-            <a href="index.html">INICIO</a>
-            <a class="active" href="productos.html">PRODUCTOS</a>
-            <a href="pedidos.html">PEDIDOS</a>
-            <a href="proveedores.html">PROVEEDORES</a>
-            <a href="contactos.html">CONTACTANOS</a>
-        </div>
-
-        <div class="main-content">
-            <div class="product-card">
+            <div class="product-card" id="product-card">
                 <a id="devolver" class="back-button" href="productos.html"><i class="fas fa-arrow-left"></i></a>
-                <img class="laptop1" alt="Image of a laptop" height="100" src="../img/Computador.png" />
-                <h2>Portátil Asus X1504ZA</h2>
-                <div class="price">Precio<br />$1´999.000</div>
-                <div class="specifications">Especificaciones
-                    <p>Capacidad de almacenamiento: 1T</p>
-                    <p>Memoria Ram: 16 GB</p>
-                    <p>Tamaño de Pantalla: 15.6</p>
+                <img id="image" class="laptop1" alt="Image of a laptop" height="100" src="../img/Computador.png" />
+                <h2 id="name">Portátil Asus X1504ZA</h2>
+                <div class="price">Precio:
+                    <p style="color: black">$<span id="price"></span></p>
                 </div>
-                <div class="stock">Stock
-                    <p>25 Unidades</p>
+                <div class="specifications">Especificaciones:
+                    <p style="color: black" id="description"></p>
                 </div>
-                <div class="availability">Disponible</div>
+                <div class="stock">Stock:
+                    <p style="color: black"><span id="quantity"></span> unidades</p>
+                </div>
+                <div class="availability" id="status">Disponible</div>
                 <div class="flex justify-around items-center py-3">
                     <div class="flex gap-2 text-gray-600 hover:scale-110 duration-200 hover:cursor-pointer">
                         <button id="openModalButton">
@@ -134,7 +132,7 @@
                                 <path d="M20.49 15a9 9 0 0 1-14.88 3.36L1 14"></path>
                             </svg>
                         </button>
-                        <button class="button-Actualizar" type="button" id="updateStockButton">Actualizar Stock</button>
+                        <button class="button-Actualizar" type="button" id="updateStockButton"> Ajuste de Stock</button>
                     </div>
 
                     <div class="flex gap-2 text-gray-600 hover:scale-110 duration-200 hover:cursor-pointer">
@@ -158,55 +156,122 @@
         <div class="modal-content">
             <div class="bg-white p-6 rounded-lg shadow-xl w-96 relative">
                 <h2 class="text-2xl font-bold text-[#0CACAB] mb-4 text-center">Editar Producto</h2>
-                <form class="flex flex-col">
+                <form class="flex flex-col" id="product-update-form">
                     <input placeholder="Nombre" class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]"
-                        type="text">
+                        type="text" id="product-name-edit">
                     <input placeholder="Precio" class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]"
-                        type="text">
+                        type="text" id="product-price-edit">
                     <input placeholder="Especificaciones"
-                        class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]" type="text">
+                        class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]" type="text"
+                        id="product-description-edit">
                     <input placeholder="Stock" class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]"
-                        type="text">
-                    <div class="form-group mb-4">
-                        <label for="availability" class="text-gray-800">Proveedor</label>
-                        <select id="availability" class="border rounded-md p-2 focus:ring-2 focus:ring-[#0CACAB]">
-                            <option value="available">Proveedor 1</option>
-                            <option value="available">Proveedor 2</option>
-                            <option value="available">Proveedor 3</option>
-                            <option value="available">Proveedor 4</option>
-                            <option value="available">Proveedor 5</option>
-                        </select>
-                    </div>
-                    <input type="file" class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]">
+                        type="text" id="product-quantity-edit">
+
+                        <div class="form-group mb-4">
+                            <label for="providerSelect" class="text-gray-800">Seleccionar Proveedor</label>
+                            <select id="providerSelect" class="border rounded-md p-2 focus:ring-2 focus:ring-[#0CACAB]">
+                              <option value="" id="product-companyName-edit"></option>
+                            </select>
+                          </div>
+                    <input type="file" class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]"
+                        id="product-image-edit">
                     <div class="flex justify-between gap-2">
                         <button id="editButton"
                             class="bg-[#0CACAB] text-white font-bold py-2 px-4 rounded-md hover:bg-[#0C8B98] w-1/2">Guardar</button>
-                        <button id="cancelModalButton"
+                        <button id="cancelModalButton" type="button" onclick="window.location.reload"
                             class="bg-red-500 text-white font-bold py-2 px-4 rounded-md hover:bg-red-700 w-1/2">Cancelar</button>
                     </div>
                 </form>
+                <div class="loader" id="update-loading" style="display: none;">
+                    <div class="dot-spinner">
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Modal de Actualización -->
+
+    <!-- ✅ Alerta de éxito después de actualizar -->
+    <div id="successModal" class="notifications-container hidden" style="display: none;">
+        <div class="success">
+            <div class="success-icon-container">
+                <svg class="succes-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" fill="rgb(74, 222, 128)" />
+                    <path d="M8 12.5l2.5 2.5 5-5" stroke="white" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+            <p class="success-prompt-heading">Producto Actualizado</p>
+            <div class="success-prompt-prompt">
+                <p>El Producto se ha sido actualizado exitosamente.</p>
+            </div>
+            <div class="success-button-container">
+                <button id="btn-view-products" class="success-button-secondary">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <!-- Modal de actualización de stock -->
     <div id="updateModal" class="modal hidden">
         <div class="modal-content">
             <div class="bg-white p-6 rounded-lg shadow-xl w-96 relative">
-                <h2 class="text-2xl font-bold text-[#0CACAB] mb-4 text-center">Actualizar Stock</h2>
-                <form class="flex flex-col">
-                    <input id="stockInput" placeholder="Stock"
-                        class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]" type="number" min="0">
+                <h2 class="text-2xl font-bold text-[#0CACAB] mb-4 text-center">Añadir / Eliminar Stock</h2>
+                <form class="flex flex-col" id="product-patch-form">
+                    <input placeholder="Stock" class="border rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#0CACAB]"
+                        type="number" id="product-quantity-update">
                     <div class="flex justify-between gap-2">
                         <button id="saveStockButton"
-                            class="bg-[#0CACAB] text-white font-bold py-2 px-4 rounded-md hover:bg-[#0C8B98] w-1/2">
+                            class="bg-[#0CACAB] text-white font-bold py-2 px-4 rounded-md hover:bg-[#0C8B98] w-1/2"
+                            type="submit">
                             Guardar
                         </button>
                         <button id="cancelUpdateButton"
-                            class="bg-red-500 text-white font-bold py-2 px-4 rounded-md hover:bg-red-700 w-1/2">
+                            class="bg-red-500 text-white font-bold py-2 px-4 rounded-md hover:bg-red-700 w-1/2"
+                            type="button">
                             Cancelar
                         </button>
                     </div>
                 </form>
+                <div class="loader" id="patch-loading" style="display: none;">
+                    <div class="dot-spinner">
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alerta de éxito stock -->
+    <div id="successModal-2" class="notifications-container" style="display: none;">
+        <div class="success">
+            <div class="success-icon-container">
+                <svg class="succes-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" fill="rgb(74, 222, 128)" />
+                    <path d="M8 12.5l2.5 2.5 5-5" stroke="white" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+            <p class="success-prompt-heading">Stock Actualizado</p>
+            <div class="success-prompt-prompt">
+                <p>El stock del producto ha sido actualizado exitosamente.</p>
+            </div>
+            <div class="success-button-container">
+                <button id="btn-view-products-2" class="success-button-secondary">Cerrar</button>
             </div>
         </div>
     </div>
@@ -216,7 +281,8 @@
         <div class="modal-card"
             style="background: white; padding: 20px; border-radius: 8px; text-align: center; max-width: 400px;">
             <div class="image">
-                <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"
+                    id="delete-modal">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z">
                     </path>
@@ -230,36 +296,37 @@
                 </p>
             </div>
             <div class="actions">
-                <button type="button" class="desactivate" onclick="deleteProduct()">Aceptar</button>
+                <button type="button" class="desactivate" id="btn-delete-product"
+                    onclick="deleteProduct()">Aceptar</button>
                 <button type="button" class="cancel" onclick="closeDeleteModal()">Cancelar</button>
             </div>
         </div>
     </div>
 
     <!-- Modal de éxito -->
-    <div id="successModal" class="notifications-container">
+    <div id="successModal-3" class="notifications-container" style="display: none;">
         <div class="success">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <svg class="succes-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                        aria-hidden="true">
-                        <path fill-rule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </div>
+            <!-- Icono SVG de chulo dentro de un círculo verde -->
+            <div class="success-icon-container">
+                <svg class="succes-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" fill="rgb(74, 222, 128)" />
+                    <path d="M8 12.5l2.5 2.5 5-5" stroke="white" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
             </div>
+
             <p class="success-prompt-heading">Producto Eliminado</p>
             <div class="success-prompt-prompt">
                 <p>El producto ha sido eliminado exitosamente de la base de datos.</p>
             </div>
             <div class="success-button-container">
-                <button type="button" class="success-button-main" onclick="redirectToProducts()">Ver
-                    Productos</button>
-                <button type="button" class="success-button-secondary" onclick="closeSuccessModal()">Cerrar</button>
+                <button id="btn-view-products-3" class="success-button-secondary">
+                    Cerrar
+                </button>
             </div>
         </div>
     </div>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -311,9 +378,13 @@
         });
 
     </script>
-    <script src="../js/utils/protect.js"></script>
-    <script type="module" src="../js/controllers/user/getUser.js"></script>
 
 </body>
+<script src="../js/utils/protect.js"></script>
+<script type="module" src="../js/controllers/product/getProduct.js"></script>
+<script type="module" src="../js/controllers/product/patchProduct.js"></script>
+<script type="module" src="../js/controllers/product/putProduct.js"></script>
+<script type="module" src="../js/controllers/product/deleteProduct.js"></script>
+<script type="module" src="../js/controllers/provider/getAllProvidersName.js"></script>
 
 </html>

@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
 
       if (response.status === 204) {
-        // Si la actualización es exitosa, deshabilitar inputs y mostrar alerta
+        // Si la actualización es exitosa
         inputs.forEach((input) => (input.disabled = true));
 
         // Restaurar la visibilidad de los botones
@@ -85,6 +85,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         cancelBtn.style.display = "none";
 
         showAlert("✅ Usuario actualizado exitosamente", "success");
+
+        // Cerrar sesión y redirigir al login
+        setTimeout(() => {
+          localStorage.clear();
+          sessionStorage.clear();
+          window.location.href = "login.html";
+        }, 2000);
       } else {
         const errorDetails = await response.text();
         console.error(

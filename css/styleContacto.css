@@ -761,14 +761,15 @@ ul {
   color: #0099ff;
   font-size: 9px;
 }
-
-footer {
+/* ---- Estilos para el pie de página ---- */
+#p-2 {
+  font-size: 10px;
+  font-weight: normal;
   text-align: center;
-  /* Centra el texto */
+  color: #666;
   padding: 10px 0;
-  /* Agrega un poco de espacio arriba y abajo */
-  display: none;
 }
+
 
 @media (max-width: 1024px) {
   .container-2 {
