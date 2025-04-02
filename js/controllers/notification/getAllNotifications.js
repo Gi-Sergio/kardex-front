@@ -2,6 +2,7 @@
 import NotificationService from "../../services/NotificationService.js";
 import { handleApiResponse } from "../../utils/handleApiResponse.js";
 import { deleteNotification } from "./deleteNotification.js";
+import{updateNotificationStatus} from "./patchStatusNotification.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("notifications-loading").style.display = "flex";
@@ -39,121 +40,67 @@ const listNotifications = async (page = 0) => {
   showPagination(data.totalPages);
 
   document.getElementById("notifications-loading").style.display = "none";
-  notificationsContainer.style.display = "flex";
+  notificationsContainer.style.display = "block";
   paginationContainer.style.display = "flex";
 };
 
 const showNotifications = (notifications) => {
   const notificationsContainer = document.getElementById("notifications");
 
-  orders.forEach((notification) => {
-    // Crear contenedor principal
-    const orderCard = document.createElement("div");
-    orderCard.classList.add("receipt");
-
-    // Nombre del producto
-    const productName = document.createElement("p");
-    productName.classList.add("shop-name");
-    productName.textContent = order.product.name;
-
-    // Información del proveedor y fecha
-    const info = document.createElement("div");
-    info.classList.add("info");
-
-    const providerName = document.createElement("p");
-    providerName.textContent = order.product.provider.companyName;
-
-    const [date, time] = order.createdAt.split("T");
-    const formattedTime = time.split(".")[0];
-
-    const dateText = document.createElement("p");
-    dateText.textContent = "Date: " + date;
-
-    const timeText = document.createElement("p");
-    timeText.textContent = "Time: " + formattedTime;
-
-    info.append(providerName, dateText, timeText);
-
-    // Tabla de productos
-    const table = document.createElement("table");
-
-    const thead = document.createElement("thead");
-    const trHead = document.createElement("tr");
-    ["Producto", "Cantidad", "Precio"].forEach((text) => {
-      const th = document.createElement("th");
-      th.textContent = text;
-      trHead.appendChild(th);
-    });
-    thead.appendChild(trHead);
-
-    const tbody = document.createElement("tbody");
-    const tr = document.createElement("tr");
-    [
-      order.product.name,
-      order.quantity,
-      `$${order.product.price.toLocaleString()}`,
-    ].forEach((text) => {
-      const td = document.createElement("td");
-      td.textContent = text;
-      tr.appendChild(td);
-    });
-    tbody.appendChild(tr);
-
-    table.append(thead, tbody);
-
-    // Total
-    const totalDiv = document.createElement("div");
-    totalDiv.classList.add("total");
-
-    const totalText = document.createElement("p");
-    totalText.textContent = "Total:";
-
-    const totalAmount = document.createElement("p");
-    totalAmount.textContent = `$${order.totalPrice.toLocaleString()}`;
-
-    totalDiv.append(totalText, totalAmount);
-
-    // Línea vertical
-    const lineVertical = document.createElement("div");
-    lineVertical.classList.add("line-vertical");
-
-    // Estado
-    const estadoDiv = document.createElement("div");
-    estadoDiv.classList.add("Estado");
-
-    const estadoText = document.createElement("p");
-    estadoText.textContent = "Estado:";
-
-    const estadoValue = document.createElement("p");
-
-    if(order.status.id === 1){
-      estadoValue.id = "Estado-Proceso";
-    }
-    
-    if(order.status.id === 2){
-      estadoValue.id = "Estado-Despachado";
+  notifications.forEach((notification) => {
+    // Crear el elemento <li> de la notificación
+    const notificationLi = document.createElement("li");
+    notificationLi.classList.add("notification");
+    if(notification.status.id == 2){
+      notificationLi.classList.add("read");
+      // Habilitar el botón eliminar 
+      document.getElementById('btn-delete-read-notification').disabled = false;
     }
 
-    if(order.status.id === 3){
-      estadoValue.id = "Estado-Transito";
-    }
+    // Contenedor de contenido
+    const contentDiv = document.createElement("div");
+    contentDiv.classList.add("notification-content");
 
-    if(order.status.id === 4){
-      estadoValue.id = "Estado-Activo";
-    }
+    // Título de la notificación
+    const titleDiv = document.createElement("div");
+    titleDiv.classList.add("notification-title");
+    titleDiv.textContent = notification.type.typeName;
 
-    estadoValue.textContent = order.status.statusName;
+    // Mensaje de la notificación
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("notification-message");
+    messageDiv.textContent = notification.message;
 
-    estadoDiv.append(estadoText, estadoValue);
+    // Agregar título y mensaje al contenedor de contenido
+    contentDiv.append(titleDiv, messageDiv);
 
-    // Mensaje de agradecimiento
-    const thanks = document.createElement("p");
-    thanks.classList.add("thanks");
-    thanks.textContent = "¡Gracias por comprar con NOSOTROS!";
+    // Contenedor de acciones
+    const actionsDiv = document.createElement("div");
+    actionsDiv.classList.add("notification-actions");
 
-    // Estructurar el recibo
-    orderCard.append(productName, info, table, totalDiv, lineVertical, estadoDiv, thanks);
-    notificationsContainer.appendChild(orderCard);
+    // Botón de marcar como leído
+    const markReadBtn = document.createElement("button");
+    markReadBtn.classList.add("action-btn", "mark-read");
+    markReadBtn.textContent = "✓";
+    markReadBtn.onclick = function () {
+      updateNotificationStatus(notification.id, notificationLi);
+    };
+
+    // Botón de eliminar notificación
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("action-btn", "delete");
+    deleteBtn.setAttribute("id", "delete-modal");
+    deleteBtn.textContent = "×";
+    deleteBtn.onclick = function () {
+      deleteNotification(notification.id, notificationLi);
+    };
+
+    // Agregar botones al contenedor de acciones
+    actionsDiv.append(markReadBtn, deleteBtn);
+
+    // Agregar contenido y acciones a la notificación
+    notificationLi.append(contentDiv, actionsDiv);
+    notificationsContainer.appendChild(notificationLi);
   });
 };
 
@@ -174,7 +121,7 @@ const showPagination = (totalPages) => {
   prevButton.addEventListener("click", () => {
     if (currentPage > 0) {
       currentPage--;
-      listOrders(currentPage);
+      listNotifications(currentPage);
     }
   });
 
@@ -184,7 +131,7 @@ const showPagination = (totalPages) => {
   nextButton.addEventListener("click", () => {
     if (currentPage < totalPages - 1) {
       currentPage++;
-      listOrders(currentPage);
+      listNotifications(currentPage);
     }
   });
 

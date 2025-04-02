@@ -16,7 +16,6 @@ form.addEventListener("submit", async function (event) {
     }
   } catch (error) {
     console.error("Error al crear el pedido:", error);
-    alert("Hubo un error al crear el pedido. Intenta de nuevo.");
   } finally {
     loading.style.display = "none";
     form.style.display = "block";
@@ -40,11 +39,9 @@ let createOrder = async () => {
       response.statusText,
       errorDetails
     );
-    alert(`Error al crear el pedido: ${errorDetails}`);
     return false;
   }
 
   console.log("Pedido creado con éxito");
-  // alert("Pedido creado con éxito");
   return true;
 };

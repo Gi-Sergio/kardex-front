@@ -1,31 +1,8 @@
 import NotificationService from "../../services/NotificationService.js";
 
-// Obtener los parámetros de la URL
-const params = new URLSearchParams(window.location.search);
-const notificationId = params.get("id");
-
-const btnDelete = document.getElementById("btn-delete-product");
-const deleteModal = document.getElementById("delete-modal");
-
-btnDelete.addEventListener("click", async function () {
-
-  let loading = document.getElementById("delete-loading");
-  loading.style.display = "block";
-  deleteModal.style.display = "none";
-
-  try {
-    await deleteNotification();
-  } catch (error) {
-    console.error("Error al eliminar notificacion:", error);
-    alert("Hubo un error al eliminar la notificacion. Intenta de nuevo.");
-  } finally {
-    loading.style.display = "none";
-    deleteModal.style.display = "flex";
-    window.location.href = 'notificaciones.html';
-  }
-});
-
-export const deleteNotification = async () => {
+export const deleteNotification = async (notificationId, notificationLi) => {
+  const confirmacion = confirm(`¿Estás seguro de eliminar la notificacion?`);
+  if (!confirmacion) return;
 
   const response = await NotificationService.delete(notificationId);
 
@@ -37,11 +14,15 @@ export const deleteNotification = async () => {
       response.statusText,
       errorDetails
     );
-    alert(`Error al eliminar la notificacion: ${errorDetails}`);
-    return false;
   }
+
+  window.location.reload();
 
   console.log("Notificacion eliminada con éxito");
   alert("Notificacion eliminada con éxito");
-  return true;
+
+  notificationLi.style.opacity = "0";
+  setTimeout(() => {
+    notificationLi.remove();
+  }, 300);
 };

@@ -5,85 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Notificaciones</title>
     <link rel="stylesheet" href="../css/styleNotificaciones.css">
+    <link rel="stylesheet" href="../css/styleLoader.css"/>
+    <link rel="stylesheet" href="../css/stylePagination.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="header-left">
                 <a href="index.html" class="back-link" title="Volver a la página principal">
-                    <span class="back-icon">←</span>
+                    <span class="back-icon"><i class="fa-solid fa-arrow-left"></i>
+                    </span>
                 </a>
                 <h1>Notificaciones</h1>
             </div>
             <div class="header-buttons">
-                <button id="undoButton" class="undo-button" onclick="undoDelete()" disabled>↩ Deshacer</button>
+                <button id="btn-delete-read-notification" class="undo-button" disabled><i class="fa-solid fa-trash"></i>
+                </button>
             </div>
         </div>
-        <ul class="notification-list" id="notificationList">
-            <li class="notification" data-id="1">
-                <div class="notification-content">
-                    <div class="notification-title">Nuevo mensaje</div>
-                    <div class="notification-message">Tienes un nuevo mensaje en tu bandeja de entrada.</div>
-                </div>
-                <div class="notification-actions">
-                    <button class="action-btn mark-read" onclick="markAsRead(this)">✓</button>
-                    <button class="action-btn delete" onclick="deleteNotification(this)">×</button>
-                </div>
-            </li>
-            <li class="notification" data-id="2">
-                <div class="notification-content">
-                    <div class="notification-title">Recordatorio</div>
-                    <div class="notification-message">Reunión importante a las 15:00 horas.</div>
-                </div>
-                <div class="notification-actions">
-                    <button class="action-btn mark-read" onclick="markAsRead(this)">✓</button>
-                    <button class="action-btn delete" onclick="deleteNotification(this)">×</button>
-                </div>
-            </li>
-            <li class="notification" data-id="3">
-                <div class="notification-content">
-                    <div class="notification-title">Actualización del sistema</div>
-                    <div class="notification-message">Se ha instalado una nueva actualización del sistema.</div>
-                </div>
-                <div class="notification-actions">
-                    <button class="action-btn mark-read" onclick="markAsRead(this)">✓</button>
-                    <button class="action-btn delete" onclick="deleteNotification(this)">×</button>
-                </div>
-            </li>
-        </ul>
-        <ul class="notification-list" id="notificationList">
-            <li class="notification" data-id="1">
-                <div class="notification-content">
-                    <div class="notification-title">Nuevo mensaje</div>
-                    <div class="notification-message">Tienes un nuevo mensaje en tu bandeja de entrada.</div>
-                </div>
-                <div class="notification-actions">
-                    <button class="action-btn mark-read" onclick="markAsRead(this)">✓</button>
-                    <button class="action-btn delete" onclick="deleteNotification(this)">×</button>
-                </div>
-            </li>
-            <li class="notification" data-id="2">
-                <div class="notification-content">
-                    <div class="notification-title">Recordatorio</div>
-                    <div class="notification-message">Reunión importante a las 15:00 horas.</div>
-                </div>
-                <div class="notification-actions">
-                    <button class="action-btn mark-read" onclick="markAsRead(this)">✓</button>
-                    <button class="action-btn delete" onclick="deleteNotification(this)">×</button>
-                </div>
-            </li>
-            <li class="notification" data-id="3">
-                <div class="notification-content">
-                    <div class="notification-title">Actualización del sistema</div>
-                    <div class="notification-message">Se ha instalado una nueva actualización del sistema.</div>
-                </div>
-                <div class="notification-actions">
-                    <button class="action-btn mark-read" onclick="markAsRead(this)">✓</button>
-                    <button class="action-btn delete" onclick="deleteNotification(this)">×</button>
-                </div>
-            </li>
-        </ul>
+
+        <ul class="notification-list" id="notifications"></ul>
+        <div id="notifications-loading" class="loader" style="display: none;">
+            <div class="dot-spinner">
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+              </div>
+        </div>
+        <div class="loader" id="no-notifications" style="display: none;">
+            <img src="../img/no-notification.jpg" alt="no-notification">
+        </div>
     </div>
-    <script src="../js/notificaciones.js"></script>
+    <div id="pagination" class="pagination-controls"></div>
+    <script src="../js/utils/protect.js"></script>
+    <script type="module" src="../js/controllers/notification/getAllNotifications.js"></script>
+    <script type="module" src="../js/controllers/notification/deleteAllReadNotifications.js"></script>
 </body>
 </html>
