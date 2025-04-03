@@ -1,28 +1,37 @@
 import NotificationService from "../../services/NotificationService.js";
 
 export const deleteNotification = async (notificationId, notificationLi) => {
-  const confirmacion = confirm(`¿Estás seguro de eliminar la notificacion?`);
-  if (!confirmacion) return;
+  const result = await Swal.fire({
+    title: "¿Estás seguro?",
+    text: "Esta acción no se puede deshacer",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar",
+  });
 
-  const response = await NotificationService.delete(notificationId);
+  if (!result.isConfirmed) return;
 
-  if (response.status != 204) {
-    const errorDetails = await response.text();
-    console.error(
-      "Error en la eliminacion de la notificacion:",
-      response.status,
-      response.statusText,
-      errorDetails
-    );
+  try {
+    const response = await NotificationService.delete(notificationId);
+
+    if (response.status !== 204) {
+      const errorDetails = await response.text();
+      console.error("Error en la eliminación:", response.status, response.statusText, errorDetails);
+      return Swal.fire("Error", "No se pudo eliminar la notificación", "error");
+    }
+
+    Swal.fire("Eliminado", "La notificación se eliminó con éxito", "success");
+
+    // Animación para eliminar la notificación sin recargar
+    notificationLi.style.transition = "opacity 0.5s";
+    notificationLi.style.opacity = "0";
+    setTimeout(() => notificationLi.remove(), 500);
+
+  } catch (error) {
+    console.error("Error inesperado:", error);
+    Swal.fire("Error", "Ocurrió un error inesperado", "error");
   }
-
-  window.location.reload();
-
-  console.log("Notificacion eliminada con éxito");
-  alert("Notificacion eliminada con éxito");
-
-  notificationLi.style.opacity = "0";
-  setTimeout(() => {
-    notificationLi.remove();
-  }, 300);
 };
