@@ -1,6 +1,7 @@
 // js/controllers/getAllProducts.js
 import ProductService from "../../services/ProductService.js";
 import { handleApiResponse } from "../../utils/handleApiResponse.js";
+import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter.js';
 
 const params = new URLSearchParams(window.location.search);
 const providerId = params.get("id");
@@ -46,6 +47,7 @@ const listProducts = async (page = 0) => {
   document.getElementById("loading-products").style.display = "none";
   productsContainer.style.display = "flex";
   paginationContainer.style.display = "flex";
+  
 };
 
 // Función para mostrar los productos
@@ -57,13 +59,13 @@ const showProducts = (products) => {
     card.classList.add("card");
 
     const img = document.createElement("img");
-    img.src = product.imageUrl || "/img/Logo_Empresa.png";
+    img.src = product.imageUrl || "/img/Icono-K.png";
     img.alt = product.name || "Imagen por defecto";
     img.classList.add("card-img");
 
     // Si la imagen no carga, se reemplaza por una imagen por defecto
     img.onerror = function () {
-      img.src = "/img/Logo_Empresa.png";
+      img.src = "/img/Icono-K.png";
     };
 
     const cardInfo = document.createElement("div");
@@ -71,7 +73,7 @@ const showProducts = (products) => {
 
     const textTitle = document.createElement("p");
     textTitle.classList.add("text-title");
-    textTitle.textContent = product.name; // Nombre del producto
+    textTitle.textContent = capitalizeFirstLetter(product.name); // Nombre del producto
 
     const textBody = document.createElement("p");
     textBody.classList.add("text-body");

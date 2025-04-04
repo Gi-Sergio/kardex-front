@@ -8,13 +8,6 @@ sign_in_btn.addEventListener("click", () => {
     container.classList.remove("sign-up-mode");
 });
 
-function redirectToIndex(event) {
-        event.preventDefault(); // Evita que el formulario se envíe de la manera tradicional
-        // Aquí puedes agregar tu lógica para procesar el formulario, si es necesario.
-        
-        // Redirige a index.html
-        window.location.href = 'index.html';
-}
 const toggleButton = document.createElement("button");
 toggleButton.innerHTML = "&#9776;";  // Icono de hamburguesa
 toggleButton.classList.add("logo-menu-btn");
@@ -33,5 +26,15 @@ function closeModal() {
     document.getElementById('modalEliminar').style.display = 'none';
 }
 
+function openRegister(){
+    document.getElementById("sign-in-form").style.display = "none";
+    container.classList.add("sign-up-mode");
+    document.getElementById("user-save-form").style.display = "flex";
+}
 
+function openLogin(){
+    document.getElementById("user-save-form").style.display = "none";
+    container.classList.remove("sign-up-mode");
+    document.getElementById("sign-in-form").style.display = "flex";
+}
 

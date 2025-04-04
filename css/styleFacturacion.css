@@ -75,7 +75,6 @@ body {
 /* Estilo del contenido principal */
 .content {
     flex-grow: 1;  /* Hace que el contenido ocupe el espacio restante */
-    padding: 20px;  /* Relleno interno de 20px */
 }
 
 /* Estilos para el encabezado */
@@ -355,7 +354,7 @@ body {
     line-height: 28px;
     align-items: center;
     position: relative;
-    max-width: 190px;
+    max-width: 70%;
     margin-bottom: 2%;
   }
   
@@ -370,6 +369,7 @@ body {
     background-color: #f3f3f4;
     color: #0d0c22;
     transition: 0.3s ease;
+    width: 100%;
   }
   
   .input::placeholder {
@@ -395,12 +395,14 @@ body {
 .receipts-container {
   display: flex;  /* Utiliza flexbox para alinear las facturas */
   flex-wrap: wrap;  /* Permite que las facturas se acomoden en varias filas */
+  justify-content: center;
 }
 .receipts-container {
   /* max-height: 500px; Ajusta la altura máxima según necesites */
   overflow: visible
   ;
-  padding-right: 10px; /* Espacio para que no se superponga el scroll */
+  padding-right: 10px;
+  margin-top: 3%; /* Espacio para que no se superponga el scroll */
 }
 
 /* Estiliza la barra de desplazamiento (opcional) */
@@ -435,7 +437,7 @@ body {
   margin-bottom: 10px;
   overflow: hidden;
   text-overflow: ellipsis;/* para poner ... al final*/
-  height: 25px;
+  height: 27px;
   white-space: nowrap;
 }
 
@@ -853,4 +855,17 @@ footer {
   justify-content: center;
   align-items: center;
   height: 50vh;
+}
+
+.no-data-message {
+  font-size: 18px;
+  font-weight: bold;
+  color: gray;
+  margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
 }

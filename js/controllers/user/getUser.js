@@ -33,7 +33,7 @@ async function getUser() {
   const img = document.getElementById("user-image-preview");
   img.src = user.imageUrl || "/img/Usuario.png";
   img.onerror = function () {
-    img.src = "/img/Logo_Empresa.png";
+    img.src = "/img/Usuario.png";
   };
 
   document.getElementById("loading-user").style.display = "none";

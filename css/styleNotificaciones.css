@@ -167,3 +167,17 @@ body {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.no-notifications{
+  text-align: center;
+  margin: 60px 0 60px 0;
+}
+.no-notifications i{
+  font-size: 50px;
+  color: #0CACAB;
+}
+
+.no-notifications p{
+  margin-top: 20px;
+  font-weight: bold;
+}

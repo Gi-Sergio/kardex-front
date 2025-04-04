@@ -1,5 +1,6 @@
 import ProductService from "../../services/ProductService.js";
 import { handleApiResponse } from "../../utils/handleApiResponse.js";
+import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter.js'; 
 
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
@@ -25,7 +26,7 @@ let getProduct = async () => {
     return;
   }
 
-  document.getElementById("name").innerHTML = product.name;
+  document.getElementById("name").innerHTML = capitalizeFirstLetter(product.name);
   document.getElementById("quantity").innerText = product.quantity;
   document.getElementById("price").innerText = product.price;
   document.getElementById("description").innerText = product.description;
@@ -35,13 +36,13 @@ let getProduct = async () => {
   status.classList.add(product.status ? "disponible" : "no-disponible");
 
   const img = document.getElementById("image");
-  img.src = product.imageUrl || "/img/Logo_Empresa.png";
+  img.src = product.imageUrl || "/img/Icono-K.png";
   img.alt = product.name || "Imagen por defecto";
 
   img.onerror = function () {
-    img.src = "/img/Logo_Empresa.png";
+    img.src = "/img/Icono-K.png";
   };
 
   document.getElementById("loading").style.display = "none";
-  document.getElementById("product-card").style.display = "block";
+  document.getElementById("product-card").style.display = "flex";
 };

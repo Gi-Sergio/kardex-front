@@ -1,5 +1,6 @@
 import OrderService from "../../services/OrderService.js";
 import { handleApiResponse } from "../../utils/handleApiResponse.js";
+import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter.js';
 
 const params = new URLSearchParams(window.location.search);
 const orderId = params.get("idOrder");
@@ -27,7 +28,7 @@ let getOrder = async () => {
   }
 
   document.getElementById("customerEmail").innerHTML = order.customerEmail;
-  document.getElementById("product-name").innerText = order.product.name;
+  document.getElementById("product-name").innerText = capitalizeFirstLetter( order.product.name);
   document.getElementById("quantity").innerText = order.quantity;
   document.getElementById("product-price").innerText = order.product.price;
   document.getElementById("totalPrice").innerText = order.totalPrice;
