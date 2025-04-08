@@ -37,7 +37,14 @@ body {
   /* Relleno interno de 20px */
   transition: transform 0.3s ease-in-out; /* Efecto de entrada/salida */
 }
-
+.sidebar img {
+  width: 100px; /* Ancho de la imagen */
+  height: 100px; /* Altura de la imagen */
+  display: block; /* Convierte la imagen en un bloque para centrarla */
+  margin: 0 auto 20px; /* Centra la imagen y agrega un margen inferior */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: contain; /* Evita deformaciones y mantiene el recorte adecuado */
+}
 /* Títulos en el sidebar */
 .sidebar h2 {
   color: #17e0a7;
