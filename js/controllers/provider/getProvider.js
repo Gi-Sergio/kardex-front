@@ -1,5 +1,6 @@
 import ProviderService from "../../services/ProviderService.js";
 import { handleApiResponse } from "../../utils/handleApiResponse.js";
+import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter.js';
 
 const params = new URLSearchParams(window.location.search);
 const providerId = params.get("id");
@@ -25,8 +26,7 @@ let getProvider = async () => {
     return;
   }
 
-  document.getElementById("companyName").innerHTML = provider.companyName;
-  document.getElementById("name").innerHTML = provider.name;
+  document.getElementById("companyName").innerHTML = capitalizeFirstLetter(provider.companyName);
   document.getElementById("email").innerText = provider.email;
   document.getElementById("description").innerText = provider.description;
   document.getElementById("whatsapp").href = `https://api.whatsapp.com/send?phone=${provider.phone}&text=Hola%20me%20quiero%20comunicar%20contigo.%20Muchas%20Gracias`
@@ -40,7 +40,7 @@ let getProvider = async () => {
   img.alt = provider.name || "Imagen por defecto";
 
   img.onerror = function () {
-    img.src = "/img/Logo_Empresa.png";
+    img.src = "/img/Usuario.png";
   };
 
   document.getElementById("loading-providers").style.display = "none";

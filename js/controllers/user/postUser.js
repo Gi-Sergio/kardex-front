@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
       showAlert("❌ Hubo un error al crear el usuario. Intenta de nuevo.", "danger");
     } finally {
       loading.style.display = "none";
-      form.style.display = "block";
+      form.style.display = "flex";
     }
   });
 

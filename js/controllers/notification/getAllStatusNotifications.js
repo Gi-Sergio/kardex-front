@@ -1,3 +1,4 @@
+
 import NotificationService from "../../services/NotificationService.js";
 
 document.addEventListener("DOMContentLoaded", async () => {

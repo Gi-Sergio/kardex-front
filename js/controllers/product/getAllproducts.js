@@ -1,6 +1,7 @@
 // js/controllers/getAllProducts.js
 import ProductService from "../../services/ProductService.js";
 import { handleApiResponse } from "../../utils/handleApiResponse.js";
+import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("loading").style.display = "flex";
@@ -54,15 +55,15 @@ const showProducts = (products) => {
     productCard.classList.add("product-card");
 
     const name = document.createElement("h3");
-    name.textContent = product.name;
+    name.textContent = capitalizeFirstLetter(product.name);
 
     const img = document.createElement("img");
-    img.src = product.imageUrl || "/img/Logo_Empresa.png";
+    img.src = product.imageUrl || "/img/Icono-Kardex.png";
     img.alt = product.name || "Imagen por defecto";
 
     // Si la imagen no carga, se reemplaza por una imagen por defecto
     img.onerror = function () {
-      img.src = "/img/Logo_Empresa.png";
+      img.src = "/img/Icono-K.png";
     };
 
     const status = document.createElement("p");

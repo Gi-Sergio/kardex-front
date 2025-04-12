@@ -1,6 +1,7 @@
 // js/controllers/getAllProviders.js
 import ProviderService from "../../services/ProviderService.js";
 import { handleApiResponse } from "../../utils/handleApiResponse.js";
+import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("loading").style.display = "flex";
@@ -38,8 +39,6 @@ const listProviders = async (page = 0) => {
 
   // Mostrar los botones de paginación
   showPagination(data.totalPages);
-  showPagination2(data.totalPages);
-
 
   // Mostrar los provideros y ocultar el mensaje de carga
   document.getElementById("loading").style.display = "none";
@@ -63,7 +62,7 @@ const showProviders = (providers) => {
     id.textContent = provider.id;
 
     const name = document.createElement("h3");
-    name.textContent = provider.companyName;
+    name.textContent = capitalizeFirstLetter(provider.companyName);
 
     const description = document.createElement("p");
     description.textContent = provider.description;
@@ -120,40 +119,3 @@ const showPagination = (totalPages) => {
 
   // Mostrar los botones de paginación
 };
-
-const showPagination2 = (totalPages) => {
-  const paginationContainer = document.getElementById("pagination2");
-  paginationContainer.innerHTML = "";
-
-  // Si solo hay una página, no mostrar los botones
-  if (totalPages <= 1) {
-    paginationContainer.style.display = "none";
-    return;
-  }
-
-  const prevButton = document.createElement("button");
-  prevButton.textContent = "<";
-  prevButton.disabled = currentPage === 0;
-  prevButton.addEventListener("click", () => {
-    if (currentPage > 0) {
-      currentPage--;
-      listProviders(currentPage);
-    }
-  });
-
-  const nextButton = document.createElement("button");
-  nextButton.textContent = ">";
-  nextButton.disabled = currentPage === totalPages - 1;
-  nextButton.addEventListener("click", () => {
-    if (currentPage < totalPages - 1) {
-      currentPage++;
-      listProviders(currentPage);
-    }
-  });
-
-  // Agregar los botones de paginación
-  paginationContainer.appendChild(prevButton);
-  paginationContainer.appendChild(nextButton);
-
-  // Mostrar los botones de paginación
-}

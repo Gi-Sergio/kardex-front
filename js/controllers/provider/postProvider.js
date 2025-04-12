@@ -20,7 +20,6 @@ form.addEventListener("submit", async function (event) {
 let createProvider = async () => {
   const formData = new FormData();
 
-  formData.append("name", document.getElementById("name").value);
   formData.append("companyName", document.getElementById("companyName-create-provider").value || "0");
   formData.append("email", document.getElementById("email-create-provider").value);
   formData.append("phone", document.getElementById("phone").value);

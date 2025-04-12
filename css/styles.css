@@ -286,7 +286,7 @@ form.sign-up-form-3 {
     /* Asegura que cada campo ocupe todo el ancho de su columna */
     height: 50px;
     background: #f0f0f0;
-    margin: 10px 0;
+    margin: 10px 0 3px 0;
     border: 1px solid #0CACAB;
     border-radius: 20px;
     display: flex;
@@ -361,6 +361,37 @@ form.sign-up-form-3 {
     /* Ajusta este valor según lo necesites */
 }
 
+.btn-4 {
+    display: none;
+    width: 180px;
+    height: 40px;
+    border: none;
+    border-radius: 50px;
+    background: #94DBE5;
+    font-weight: 900;
+    color: #fff;
+    margin: 30px 0 10px 0;
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+}
+
+.btn-5 {
+    display: none;
+    width: 180px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background: #94DBE5;
+    opacity: 0.78;
+    font-weight: 900;
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+    top: 20px;
+}
 .social-text {
     margin: 10px 0;
     font-size: 16px;
@@ -549,8 +580,8 @@ a {
         width: 80%;
     }
 
-    form.sign-up-form {
-        display: flex;
+    .sign-up-form {
+        display: none;
         position: absolute;
     }
 
@@ -574,6 +605,14 @@ a {
 
     .container-2 {
         width: 500px;
+    }
+
+    .btn-4{
+        display: block;
+    }
+
+    .btn-5{
+        display: block;
     }
 
 }

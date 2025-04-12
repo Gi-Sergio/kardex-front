@@ -1,6 +1,7 @@
 // js/controllers/getAllOrders.js
 import OrderService from "../../services/OrderService.js";
 import { handleApiResponse } from "../../utils/handleApiResponse.js";
+import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter.js';
 
 document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("orders-loading").style.display = "flex";
@@ -63,14 +64,14 @@ const showOrders = (orders) => {
     // Nombre del producto
     const productName = document.createElement("p");
     productName.classList.add("shop-name");
-    productName.textContent = order.product.name;
+    productName.textContent = capitalizeFirstLetter(order.product.name);
 
     // Información del proveedor y fecha
     const info = document.createElement("div");
     info.classList.add("info");
 
     const providerName = document.createElement("p");
-    providerName.textContent = order.product.provider.companyName;
+    providerName.textContent = capitalizeFirstLetter(order.product.provider.companyName);
 
     const [date, time] = order.createdAt.split("T");
     const formattedTime = time.split(".")[0];
@@ -98,7 +99,7 @@ const showOrders = (orders) => {
     const tbody = document.createElement("tbody");
     const tr = document.createElement("tr");
     [
-      order.product.name,
+      capitalizeFirstLetter(order.product.name),
       order.quantity,
       `$${order.product.price.toLocaleString()}`,
     ].forEach((text) => {

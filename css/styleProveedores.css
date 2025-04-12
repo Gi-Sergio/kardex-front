@@ -47,7 +47,7 @@ body {
   display: block; /* Convierte la imagen en un bloque para centrarla */
   margin: 0 auto 20px; /* Centra la imagen y agrega un margen inferior */
   border-radius: 50%; /* Hace que la imagen sea redonda */
-  object-fit: cover; /* Evita deformaciones y mantiene el recorte adecuado */
+  object-fit: contain; /* Evita deformaciones y mantiene el recorte adecuado */
 }
 
 /* Títulos en el sidebar */
@@ -167,10 +167,6 @@ body {
   flex: 1;
   /* Hace que el contenido ocupe el espacio restante */
   padding: 20px;
-  /* Relleno de 20px */
-  background-color: #ffffff;
-  /* Fondo blanco */
-  width: 100%;
 }
 
 .header-2 {
@@ -198,12 +194,12 @@ body {
 
 /* From Uiverse.io by LightAndy1 */
 .group {
+  flex-grow: 7;
   display: flex;
   line-height: 28px;
   align-items: center;
   position: relative;
-  margin-bottom: 2%;
-  gap: 20px;
+  max-width: 65%;
 }
 
 .input {
@@ -217,6 +213,7 @@ body {
   background-color: #f3f3f4;
   color: #0d0c22;
   transition: 0.3s ease;
+  width: 100%;
 }
 
 .input::placeholder {
@@ -240,11 +237,12 @@ input:hover {
 }
 
 .button-Crear {
+   margin-left: auto;
   border: 2px solid #ffffff;
-  background-color: #0CACAB;
+  background-color: #0cacab;
   border-radius: 0.9em;
   cursor: pointer;
-  padding: 0.8em 1.2em 0.8em 1em;
+  padding: 0.8em 1.2em 0.6em 1em;
   transition: all ease-in-out 0.2s;
   font-size: 12px;
   position: relative;
@@ -501,12 +499,9 @@ input:hover {
 }
 
 .container-proveedor {
-  position: absolute;
-  display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 1200px;
   z-index: 1;
 }
 
@@ -514,7 +509,7 @@ input:hover {
   position: relative;
   width: 280px;
   height: 325px;
-  margin: 30px;
+  margin: 20px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
   /* Sombra más sutil */
   border-radius: 15px;
@@ -751,13 +746,6 @@ p {
 .success-button-secondary {
   background-color: #eb4a4a;
   color: #ffffff;
-}
-
-
-.crear-container {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
 }
 
 /*---------------------------------------------------------------------CAMPANA Y LOGO USUARIO----------------------------------------------------------------------*/
@@ -1052,15 +1040,8 @@ p {
   }
 
   .container-proveedor {
-    width: 100%;
     flex-flow: row wrap;
   }
-
-  .main-content {
-    position: absolute;
-  }
-
-
 }
 
 @media (min-width:768px) and (max-width:1024px) {
@@ -1069,7 +1050,11 @@ p {
   }
 }
 
-
+@media (max-width: 530px) {
+  .button-Crear p {
+    display: none;
+  }
+}
 
 @media (max-width: 425px) {
   .container-proveedor {
@@ -1098,23 +1083,6 @@ p {
     left: 26px;
     transform: scale(1.4);
   }
-
-  .input {
-    display: none;
-  }
-
-  .container-proveedor {
-    flex-flow: column wrap;
-    transform: scale(1.4);
-    top: 520px;
-  }
-
-  .group {
-    scale: 1.4;
-    left: 20%;
-    gap: 30px;
-  }
-
   .contenedor-iconos {
     left: 70px;
     position: relative;
@@ -1175,5 +1143,23 @@ p {
 @media (max-width: 574px) {
   .crear-container p {
     display: none;
+  }
+}
+.no-data-message {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: gray;
+  margin-top: 20px;
+}
+
+.content{
+  display: flex;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .container {
+      max-width: 1024px;
   }
 }
