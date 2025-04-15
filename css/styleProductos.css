@@ -1044,3 +1044,8 @@ input:hover {
   display: flex;
   width: 100%;
 }
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1163,3 +1163,8 @@ p {
       max-width: 1024px;
   }
 }
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
