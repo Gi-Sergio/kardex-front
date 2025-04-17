@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proveedor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../css/styleProductosProveedores.css">
     <link rel="stylesheet" href="../css/styleLoader.css">
     <link rel="stylesheet" href="../css/style404.css">
@@ -14,13 +14,20 @@
 
 <body>
     <div class="header__wrapper">
-        <a href="proveedores.html" class="btn-volver">
-            <i class="fas fa-arrow-left"></i> Volver
-        </a>
-        <header>
-            <img src="../img/Fondo.jpeg">
+            <a href="proveedores.html" class="btn-volver">
+              <i class="fas fa-arrow-left"></i> Volver
+            </a>
 
-        </header>
+            <!-- Ícono de carrito -->
+            <div class="carrito-icono">
+                 <i class="fas fa-shopping-cart" onclick="mostrarCarrito()" style="cursor:pointer;"></i>
+                <span id="contador-carrito">0</span>
+            </div>
+          
+            <header>
+              <img src="../img/Fondo.jpeg">
+            </header>
+          
         <div class="cols__container" id="provider">
             <div class="left__col">
                 <div class="img__container">
@@ -34,8 +41,8 @@
                     <li><span>Productos</span>
                         <p id="total">0</p>
                     </li>
-                    <li class="Estado"><span>Proveedor</span>
-                        <p id="status">sexo</p>
+                    <li class="Estado"><span>Estado</span>
+                        <p id="status">Disponible</p>
                     </li>
                 </ul>
                 <div class="content">
@@ -250,24 +257,16 @@
                 </svg>
               </div> 
         </div>
-        <!-- Modal de cantidad de productos -->
-        <div class="modal" id="pedidoModal">
-            <div class="modal-content">
-                <form id="order-save-form">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Especificar cantidad</h5>
-                        <img src="../img/Pedido.png" alt="Imagen redonda" class="img-redonda">
-                    </div>
-                    <div class="modal-body">
-                        <label for="cantidad">Cantidad:</label>
-                        <input type="hidden" id="productId">
-                        <input type="number" id="quantity" class="form-control" min="1" placeholder="1" required>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn-cerrar" onclick="closeModal('pedidoModal')">Cancelar</button>
-                        <button class="btn-modal">Generar Pedido</button>
-                    </div>    
-                </form>
+        <!-- Modal del carrito -->
+        <div id="modalCarrito" class="modal" style="justify-content: center;">
+            <div class="modal-contenido">
+                <span class="cerrar" onclick="cerrarCarrito()">×</span>
+                <h2>Tu carrito (<span id="contador">0</span>)</h2>
+                <div id="lista-carrito"></div>
+                <p class="total">Total a cancelar: <strong>$<span id="total">0.00</span></strong></p>
+                <button class="btn-pedido" onclick="realizarPedido()">Realizar Pedido</button>
+            </div>
+        </div>
                 <div class="loader" id="create-loading" style="display: none;">
                     <div class="dot-spinner" style="top: 0; left: 0;">
                       <div class="dot-spinner__dot"></div>
@@ -283,27 +282,11 @@
             </div>
         </div>
 
-        <!-- Modal de opciones después de generar pedido -->
-        <div class="modal" id="confirmacionModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Pedido generado</h5>
-                    <img src="../img/PedidoListo.png" alt="Imagen redonda" class="img-redonda">
-                </div>
-                <div class="modal-body">
-                    <p>¿Deseas seguir viendo productos o ver la factura?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn-ver" onclick="closeAllModals()">Seguir viendo</button>
-                    <button type="button" onclick="redirectOrder()" class="btn-modal">Ver Factura</button>
-                </div>
-            </div>
         </div>
-    </div>
-    <script src="../js/utils/protect.js"></script>
-    <script type="module" src="../js/controllers/provider/getProvider.js"></script>
-    <script type="module" src="../js/controllers/product/getAllProductsByProvider.js"></script>
-    <script type="module" src="../js/controllers/order/postOrder.js"></script>
-    <script src="../js/modals/modalCreateOrder.js" defer></script>
-</body>
+        <script src="../js/utils/protect.js"></script>
+        <script type="module" src="../js/controllers/provider/getProvider.js"></script>
+        <script type="module" src="../js/controllers/product/getAllProductsByProvider.js"></script>
+        <script type="module" src="../js/controllers/order/postOrder.js"></script>
+        <script src="../js/modals/modalCreateOrder.js" defer></script>
+    </body>
 </html>
