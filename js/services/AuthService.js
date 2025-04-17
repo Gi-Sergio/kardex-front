@@ -14,5 +14,18 @@ export default class AuthService {
     
     return response.json();
   }
+
+  static async loginWithGoogle(idToken) {
+    
+    const response = await fetch(`${API_URL}/google`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({idToken}),
+    });
+    
+    return response.json();
+  }
 }
   

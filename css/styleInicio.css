@@ -760,3 +760,9 @@ body {
     margin-left: 260px;
   }
 }
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

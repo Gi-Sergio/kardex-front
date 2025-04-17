@@ -810,3 +810,8 @@ ul {
     margin-left: 250px;
   }
 }
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
