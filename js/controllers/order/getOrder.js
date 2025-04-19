@@ -27,20 +27,27 @@ let getOrder = async () => {
     return;
   }
 
-  document.getElementById("customerEmail").innerHTML = order.customerEmail;
-  document.getElementById("product-name").innerText = capitalizeFirstLetter( order.product.name);
-  document.getElementById("quantity").innerText = order.quantity;
-  document.getElementById("product-price").innerText = order.product.price;
-  document.getElementById("totalPrice").innerText = order.totalPrice;
+  document.getElementById("customerEmail").innerText = order.customerEmail;
   document.getElementById("numberOrder").innerText = order.numberOrder;
+  document.getElementById("totalPrice").innerText = order.totalAmount;
 
-  const img = document.getElementById("imageUrl");
-  img.src = order.product.imageUrl || "/img/Icono K.png";
-  img.alt = order.product.name || "Imagen por defecto";
+  const itemsContainer = document.getElementById("items-container");
+  itemsContainer.innerHTML = ""; // Limpiar contenido anterior
 
-  img.onerror = function () {
-    img.src = "/img/Logo_Empresa.png";
-  };
+  order.items.forEach((item) => {
+    const product = item.product;
+
+    const producttd = document.createElement("td");
+    producttd.textContent = capitalizeFirstLetter(product.name);
+
+    const quantitytd = document.createElement("td");
+    quantitytd.textContent = item.quantity;
+
+    const pricetd = document.createElement("td");
+    pricetd.textContent = `$${product.price.toLocaleString()}`;
+
+    itemsContainer.append(producttd, quantitytd, pricetd);
+  });
 
   document.getElementById("loading").style.display = "none";
   document.getElementById("order-card").style.display = "block";

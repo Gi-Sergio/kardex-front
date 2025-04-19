@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../css/styleLoader.css">
     <link rel="stylesheet" href="../css/style404.css">
     <link rel="icon" type="image/png" href="../img/Icono-K.png">
+    <script src="https://www.paypal.com/sdk/js?client-id=AXpRM1WfppDXX939tHb32M8s9jDXHrYyRoNsOfzMyPxRgUuDCQOtfFN2pGxVwhi6zHIUzplCXUPVPPfz&currency=USD&disable-funding=card"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -263,30 +265,21 @@
                 <span class="cerrar" onclick="cerrarCarrito()">×</span>
                 <h2>Tu carrito (<span id="contador">0</span>)</h2>
                 <div id="lista-carrito"></div>
-                <p class="total">Total a cancelar: <strong>$<span id="total">0.00</span></strong></p>
-                <button class="btn-pedido" onclick="realizarPedido()">Realizar Pedido</button>
+                <p class="total">Total a cancelar: <strong>$<span id="totalCarrito">0.00</span></strong></p>
+                <div id="paypal-button-container"></div>
             </div>
         </div>
-                <div class="loader" id="create-loading" style="display: none;">
-                    <div class="dot-spinner" style="top: 0; left: 0;">
-                      <div class="dot-spinner__dot"></div>
-                      <div class="dot-spinner__dot"></div>
-                      <div class="dot-spinner__dot"></div>
-                      <div class="dot-spinner__dot"></div>
-                      <div class="dot-spinner__dot"></div>
-                      <div class="dot-spinner__dot"></div>
-                      <div class="dot-spinner__dot"></div>
-                      <div class="dot-spinner__dot"></div>
-                    </div>
-                </div>
+             
             </div>
         </div>
 
         </div>
-        <script src="../js/utils/protect.js"></script>
-        <script type="module" src="../js/controllers/provider/getProvider.js"></script>
-        <script type="module" src="../js/controllers/product/getAllProductsByProvider.js"></script>
-        <script type="module" src="../js/controllers/order/postOrder.js"></script>
-        <script src="../js/modals/modalCreateOrder.js" defer></script>
+        <script src="/js/utils/protect.js"></script>
+        <script type="module" src="/js/controllers/provider/getProvider.js"></script>
+        <script type="module" src="/js/controllers/product/getAllProductsByProvider.js"></script>
+        <script type="module" src="/js/controllers/order/postOrder.js"></script>
+        <script type="module" src="/js/controllers/cart/getAllCart.js"></script>
+        <script src="/js/modals/modalCreateOrder.js" defer></script>
+        <script src="/js/modals/cart.js"></script>
     </body>
 </html>

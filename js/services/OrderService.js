@@ -57,8 +57,6 @@ export default class Orderservice {
   }
 
   static async update(orderId, statusId) {
-    if (!AuthUtils.isAuthenticated()) return;
-
     const response = await fetch(`${API_URL}/${orderId}`, {
       method: "PUT",
       headers: {
@@ -66,6 +64,25 @@ export default class Orderservice {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ statusId: statusId })
+    });
+    return response;
+  }
+
+  static async addItem(productId, quantity){
+    if (!AuthUtils.isAuthenticated()) return;
+
+    let response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${AuthUtils.getToken()}`,
+      },
+      body: JSON.stringify(
+        { 
+          productId: productId,
+          quantity: quantity
+        })
     });
     return response;
   }

@@ -16,7 +16,7 @@ export function handleApiResponse(data, { noDataId, loadingId, containerId }) {
   }
 
   if (data.Message === "Your session has expired. Please log in again.") {
-    alert(data.Message);
+    console.log(data.Message);
     localStorage.removeItem("token");
     window.location.href = "login.html";
     return false;

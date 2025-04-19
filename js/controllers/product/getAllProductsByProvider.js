@@ -1,12 +1,13 @@
 import ProductService from "../../services/ProductService.js";
 import { handleApiResponse } from "../../utils/handleApiResponse.js";
 import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter.js";
+import { addItemtoCart } from "../cart/addItemCart.js"
 
 const params = new URLSearchParams(window.location.search);
 const providerId = params.get("id");
 let currentPage = 0;
 
-let carrito = [];
+let totalProductosProveedor = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("loading-products").style.display = "flex";
@@ -45,6 +46,7 @@ const showProducts = (products) => {
   const productsContainer = document.getElementById("products");
 
   products.forEach((product) => {
+    totalProductosProveedor++;
     const card = document.createElement("div");
     card.classList.add("card");
 
@@ -123,26 +125,14 @@ const showProducts = (products) => {
     confirmarBtn.textContent = "✓";
     confirmarBtn.classList.add("btn-confirm");
 
-    confirmarBtn.addEventListener("click", () => {
-      const productoExistente = carrito.find(p => p.nombre === product.name);
-
-      if (productoExistente) {
-        productoExistente.cantidad += cantidad;
-      } else {
-        carrito.push({
-          nombre: product.name,
-          precio: Number(product.price), // Asegura que sea número
-          cantidad: cantidad,
-          imagen: product.imageUrl || "/img/Icono-K.png",
-        });
-      }
-
-      actualizarContadores();
+    confirmarBtn.addEventListener("click", async () => {
+      await addItemtoCart(product.id, cantidad)
 
       cantidad = 1;
       qtyDisplay.textContent = "1";
       qtyControls.style.display = "none";
       addButton.style.display = "inline-block";
+      window.location.reload();
     });
 
     qtyControls.appendChild(confirmarBtn);
@@ -154,6 +144,7 @@ const showProducts = (products) => {
     cardInfo.append(textTitle, textBody, price);
     card.append(img, cardInfo, cardFooter);
     productsContainer.appendChild(card);
+    document.getElementById("total").innerHTML = totalProductosProveedor;
   });
 };
 
@@ -189,49 +180,4 @@ const showPagination = (totalPages) => {
 
   paginationContainer.append(prevButton, nextButton);
   paginationContainer.style.display = "flex";
-};
-
-function actualizarContadores() {
-  const totalProductos = carrito.reduce((sum, p) => sum + p.cantidad, 0);
-
-  const contadorCarrito = document.getElementById("contador-carrito");
-  const contadorModal = document.getElementById("contador");
-
-  if (contadorCarrito) contadorCarrito.textContent = totalProductos;
-  if (contadorModal) contadorModal.textContent = totalProductos;
-}
-
-window.mostrarCarrito = function () {
-  const modal = document.getElementById("modalCarrito");
-  const lista = document.getElementById("lista-carrito");
-  const totalElement = document.getElementById("total");
-
-  lista.innerHTML = "";
-  let totalPagar = 0;
-
-  carrito.forEach((producto, index) => {
-    const item = document.createElement("div");
-    item.classList.add("item-carrito");
-    item.innerHTML = `
-      <p><strong>${capitalizeFirstLetter(producto.nombre)}</strong></p>
-      <p>${producto.cantidad}x $${producto.precio.toFixed(2)}</p>
-      <p>$${(producto.cantidad * parseFloat(producto.precio)).toFixed(2)}</p>
-      <button onclick="eliminarDelCarrito(${index})">❌</button>
-    `;
-    lista.appendChild(item);
-    totalPagar += producto.cantidad * parseFloat(producto.precio); // ¡Cambio importante aquí!
-  });
-
-  totalElement.textContent = `$${totalPagar.toFixed(2)}`;
-  modal.style.display = "flex";
-};
-
-window.cerrarCarrito = function () {
-  document.getElementById("modalCarrito").style.display = "none";
-};
-
-window.eliminarDelCarrito = function (index) {
-  carrito.splice(index, 1);
-  mostrarCarrito();
-  actualizarContadores();
 };

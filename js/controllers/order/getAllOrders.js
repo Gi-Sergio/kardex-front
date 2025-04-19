@@ -1,7 +1,7 @@
-// js/controllers/getAllOrders.js
 import OrderService from "../../services/OrderService.js";
 import { handleApiResponse } from "../../utils/handleApiResponse.js";
-import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter.js';
+import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter.js";
+import { generateInvoicePDF } from "../../utils/generateInvoice.js"
 
 document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("orders-loading").style.display = "flex";
@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("pagination").style.display = "none";
 
   try {
-  await listOrders(currentPage);
-  }catch(e) {
+    await listOrders(currentPage);
+  } catch (e) {
     console.error("Error al listar los pedidos", e);
     document.getElementById("orders-loading").style.display = "none";
     document.getElementById("orders").style.display = "none";
@@ -21,31 +21,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-let currentPage = 0; // Página inicial
-const pagesize = 15;
-
+let currentPage = 0;
+const pageSize = 6;
 
 const listOrders = async (page = 0) => {
-  const data = await OrderService.getAll(page, pagesize);
+  const data = await OrderService.getAll(page, pageSize);
   if (
     !handleApiResponse(data, {
       noDataId: "no-orders",
       loadingId: "orders-loading",
       containerId: "orders",
     })
-  )
-    return;
+  ) return;
 
-  const orders = data.content || []; // Verificar si existe "content", si no, asignar un array vacío
+  const orders = data.content || [];
 
   const ordersContainer = document.getElementById("orders");
   const paginationContainer = document.getElementById("pagination");
 
   ordersContainer.innerHTML = "";
-
   showOrders(orders);
 
-  // Mostrar los botones de paginación
   showPagination(data.totalPages);
 
   document.getElementById("orders-loading").style.display = "none";
@@ -57,39 +53,34 @@ const showOrders = (orders) => {
   const ordersContainer = document.getElementById("orders");
 
   orders.forEach((order) => {
-    // Crear contenedor principal
     const orderCard = document.createElement("div");
     orderCard.classList.add("receipt");
 
-    // Nombre del producto
-    const productName = document.createElement("p");
-    productName.classList.add("shop-name");
-    productName.textContent = capitalizeFirstLetter(order.product.name);
+    const orderNumber = document.createElement("p");
+    orderNumber.classList.add("shop-name");
+    orderNumber.textContent = `Pedido Nº: ${order.numberOrder}`;
+    orderCard.appendChild(orderNumber);
 
-    // Información del proveedor y fecha
     const info = document.createElement("div");
     info.classList.add("info");
-
-    const providerName = document.createElement("p");
-    providerName.textContent = capitalizeFirstLetter(order.product.provider.companyName);
 
     const [date, time] = order.createdAt.split("T");
     const formattedTime = time.split(".")[0];
 
     const dateText = document.createElement("p");
-    dateText.textContent = "Date: " + date;
+    dateText.textContent = "Fecha: " + date;
 
     const timeText = document.createElement("p");
-    timeText.textContent = "Time: " + formattedTime;
+    timeText.textContent = "Hora: " + formattedTime;
 
-    info.append(providerName, dateText, timeText);
+    info.append(dateText, timeText);
+    orderCard.appendChild(info);
 
-    // Tabla de productos
     const table = document.createElement("table");
 
     const thead = document.createElement("thead");
     const trHead = document.createElement("tr");
-    ["Producto", "Cantidad", "Precio"].forEach((text) => {
+    ["Producto", "Cantidad", "Precio", "Proveedor"].forEach((text) => {
       const th = document.createElement("th");
       th.textContent = text;
       trHead.appendChild(th);
@@ -97,21 +88,27 @@ const showOrders = (orders) => {
     thead.appendChild(trHead);
 
     const tbody = document.createElement("tbody");
-    const tr = document.createElement("tr");
-    [
-      capitalizeFirstLetter(order.product.name),
-      order.quantity,
-      `$${order.product.price.toLocaleString()}`,
-    ].forEach((text) => {
-      const td = document.createElement("td");
-      td.textContent = text;
-      tr.appendChild(td);
+
+    order.items.forEach((item) => {
+      const tr = document.createElement("tr");
+
+      const productName = capitalizeFirstLetter(item.product.name);
+      const quantity = item.quantity;
+      const price = `$${item.product.price.toLocaleString()}`;
+      const provider = capitalizeFirstLetter(item.product.provider.companyName);
+
+      [productName, quantity, price, provider].forEach((text) => {
+        const td = document.createElement("td");
+        td.textContent = text;
+        tr.appendChild(td);
+      });
+
+      tbody.appendChild(tr);
     });
-    tbody.appendChild(tr);
 
     table.append(thead, tbody);
+    orderCard.appendChild(table);
 
-    // Total
     const totalDiv = document.createElement("div");
     totalDiv.classList.add("total");
 
@@ -119,15 +116,15 @@ const showOrders = (orders) => {
     totalText.textContent = "Total:";
 
     const totalAmount = document.createElement("p");
-    totalAmount.textContent = `$${order.totalPrice.toLocaleString()}`;
+    totalAmount.textContent = `$${order.totalAmount.toLocaleString()}`;
 
     totalDiv.append(totalText, totalAmount);
+    orderCard.appendChild(totalDiv);
 
-    // Línea vertical
     const lineVertical = document.createElement("div");
     lineVertical.classList.add("line-vertical");
+    orderCard.appendChild(lineVertical);
 
-    // Estado
     const estadoDiv = document.createElement("div");
     estadoDiv.classList.add("Estado");
 
@@ -135,51 +132,59 @@ const showOrders = (orders) => {
     estadoText.textContent = "Estado:";
 
     const estadoValue = document.createElement("p");
+    const statusId = order.status.id;
 
-    if(order.status.id === 1){
-      estadoValue.id = "Estado-Proceso";
-      estadoValue.textContent = "PEDIDO"
-    }
-    
-    if(order.status.id === 2){
-      estadoValue.id = "Estado-Despachado";
-      estadoValue.textContent = "ENVIADO"
-    }
-
-    if(order.status.id === 3){
-      estadoValue.id = "Estado-Transito";
-      estadoValue.textContent = "EN TRANSITO"
-    }
-
-    if(order.status.id === 4){
-      estadoValue.id = "Estado-Activo";
-      estadoValue.textContent = "ENTREGADO"
-    }
-
-    if(order.status.id === 5){
-      estadoValue.id = "Estado-Cancelado";
-      estadoValue.textContent = "CANCELADO"
+    switch (statusId) {
+      case 1:
+        estadoValue.id = "Estado-Proceso";
+        estadoValue.textContent = "PEDIDO";
+        break;
+      case 2:
+        estadoValue.id = "Estado-Despachado";
+        estadoValue.textContent = "ENVIADO";
+        break;
+      case 3:
+        estadoValue.id = "Estado-Transito";
+        estadoValue.textContent = "EN TRANSITO";
+        break;
+      case 4:
+        estadoValue.id = "Estado-Activo";
+        estadoValue.textContent = "ENTREGADO";
+        break;
+      case 5:
+        estadoValue.id = "Estado-Cancelado";
+        estadoValue.textContent = "CANCELADO";
+        break;
+      default:
+        estadoValue.id = "Estado-Desconocido";
+        estadoValue.textContent = "DESCONOCIDO";
     }
 
     estadoDiv.append(estadoText, estadoValue);
+    orderCard.appendChild(estadoDiv);
 
-    // Mensaje de agradecimiento
     const thanks = document.createElement("p");
     thanks.classList.add("thanks");
     thanks.textContent = "¡Gracias por comprar con NOSOTROS!";
+    orderCard.appendChild(thanks);
 
-    // Estructurar el recibo
-    orderCard.append(productName, info, table, totalDiv, lineVertical, estadoDiv, thanks);
+    const generateInvoiceBtn = document.createElement("button");
+    generateInvoiceBtn.textContent = "Generar Factura";
+    generateInvoiceBtn.classList.add("invoice-btn");
+    generateInvoiceBtn.addEventListener("click", () => {
+      // Aquí llamas a tu función para generar factura
+      generateInvoicePDF(order); // Asumiendo que el pedido tiene un `id`
+    });
+    orderCard.appendChild(generateInvoiceBtn);
+
     ordersContainer.appendChild(orderCard);
   });
 };
 
-// Función para mostrar los botones de paginación
 const showPagination = (totalPages) => {
   const paginationContainer = document.getElementById("pagination");
   paginationContainer.innerHTML = "";
 
-  // Si solo hay una página, no mostrar los botones
   if (totalPages <= 1) {
     paginationContainer.style.display = "none";
     return;
@@ -205,10 +210,6 @@ const showPagination = (totalPages) => {
     }
   });
 
-  // Agregar los botones de paginación
-  paginationContainer.appendChild(prevButton);
-  paginationContainer.appendChild(nextButton);
-
-  // Mostrar los botones de paginación
+  paginationContainer.append(prevButton, nextButton);
   paginationContainer.style.display = "flex";
 };

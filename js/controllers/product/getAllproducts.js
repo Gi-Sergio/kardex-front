@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 let currentPage = 0;
-const pagesize = 15;
+const pagesize = 6;
 
 const listProducts = async (page = 0) => {
   const data = await ProductService.getAll(page, pagesize);

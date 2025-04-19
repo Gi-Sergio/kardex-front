@@ -1,5 +1,7 @@
 import OrderService from "../../services/OrderService.js";
 import { capitalizeFirstLetter } from "../../utils/capitalizeFirstLetter.js";
+import { generateInvoicePDF } from "../../utils/generateInvoice.js"
+
 
 let page = 0;
 const pagesize = 9999;
@@ -20,7 +22,7 @@ document
     const orders = data.content || [];
 
     let filteredOrders = orders.filter((order) =>
-      order.product.name?.toLowerCase().includes(filter)
+      order.numberOrder.toLowerCase().includes(filter)
     );
 
     let existingNoDataMessage = document.getElementById("no-data-message");
@@ -45,34 +47,31 @@ document
       const orderCard = document.createElement("div");
       orderCard.classList.add("receipt");
 
-      const productName = document.createElement("p");
-      productName.classList.add("shop-name");
-      productName.textContent = capitalizeFirstLetter(order.product.name);
+      const orderNumber = document.createElement("p");
+      orderNumber.classList.add("shop-name");
+      orderNumber.textContent = `Pedido Nº: ${order.numberOrder}`;
+      orderCard.appendChild(orderNumber);
 
       const info = document.createElement("div");
       info.classList.add("info");
-
-      const providerName = document.createElement("p");
-      providerName.textContent = capitalizeFirstLetter(
-        order.product.provider.companyName
-      );
 
       const [date, time] = order.createdAt.split("T");
       const formattedTime = time.split(".")[0];
 
       const dateText = document.createElement("p");
-      dateText.textContent = "Date: " + date;
+      dateText.textContent = "Fecha: " + date;
 
       const timeText = document.createElement("p");
-      timeText.textContent = "Time: " + formattedTime;
+      timeText.textContent = "Hora: " + formattedTime;
 
-      info.append(providerName, dateText, timeText);
+      info.append(dateText, timeText);
+      orderCard.appendChild(info);
 
       const table = document.createElement("table");
+
       const thead = document.createElement("thead");
       const trHead = document.createElement("tr");
-
-      ["Producto", "Cantidad", "Precio"].forEach((text) => {
+      ["Producto", "Cantidad", "Precio", "Proveedor"].forEach((text) => {
         const th = document.createElement("th");
         th.textContent = text;
         trHead.appendChild(th);
@@ -80,20 +79,28 @@ document
       thead.appendChild(trHead);
 
       const tbody = document.createElement("tbody");
-      const tr = document.createElement("tr");
 
-      [
-        capitalizeFirstLetter(order.product.name),
-        order.quantity,
-        `$${order.product.price.toLocaleString()}`,
-      ].forEach((text) => {
-        const td = document.createElement("td");
-        td.textContent = text;
-        tr.appendChild(td);
+      order.items.forEach((item) => {
+        const tr = document.createElement("tr");
+
+        const productName = capitalizeFirstLetter(item.product.name);
+        const quantity = item.quantity;
+        const price = `$${item.product.price.toLocaleString()}`;
+        const provider = capitalizeFirstLetter(
+          item.product.provider.companyName
+        );
+
+        [productName, quantity, price, provider].forEach((text) => {
+          const td = document.createElement("td");
+          td.textContent = text;
+          tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
       });
-      tbody.appendChild(tr);
 
       table.append(thead, tbody);
+      orderCard.appendChild(table);
 
       const totalDiv = document.createElement("div");
       totalDiv.classList.add("total");
@@ -102,12 +109,14 @@ document
       totalText.textContent = "Total:";
 
       const totalAmount = document.createElement("p");
-      totalAmount.textContent = `$${order.totalPrice.toLocaleString()}`;
+      totalAmount.textContent = `$${order.totalAmount.toLocaleString()}`;
 
       totalDiv.append(totalText, totalAmount);
+      orderCard.appendChild(totalDiv);
 
       const lineVertical = document.createElement("div");
       lineVertical.classList.add("line-vertical");
+      orderCard.appendChild(lineVertical);
 
       const estadoDiv = document.createElement("div");
       estadoDiv.classList.add("Estado");
@@ -116,8 +125,9 @@ document
       estadoText.textContent = "Estado:";
 
       const estadoValue = document.createElement("p");
+      const statusId = order.status.id;
 
-      switch (order.status.id) {
+      switch (statusId) {
         case 1:
           estadoValue.id = "Estado-Proceso";
           estadoValue.textContent = "PEDIDO";
@@ -138,23 +148,28 @@ document
           estadoValue.id = "Estado-Cancelado";
           estadoValue.textContent = "CANCELADO";
           break;
+        default:
+          estadoValue.id = "Estado-Desconocido";
+          estadoValue.textContent = "DESCONOCIDO";
       }
 
       estadoDiv.append(estadoText, estadoValue);
+      orderCard.appendChild(estadoDiv);
 
       const thanks = document.createElement("p");
       thanks.classList.add("thanks");
       thanks.textContent = "¡Gracias por comprar con NOSOTROS!";
+      orderCard.appendChild(thanks);
 
-      orderCard.append(
-        productName,
-        info,
-        table,
-        totalDiv,
-        lineVertical,
-        estadoDiv,
-        thanks
-      );
+      const generateInvoiceBtn = document.createElement("button");
+      generateInvoiceBtn.textContent = "Generar Factura";
+      generateInvoiceBtn.classList.add("invoice-btn");
+      generateInvoiceBtn.addEventListener("click", () => {
+        // Aquí llamas a tu función para generar factura
+        generateInvoicePDF(order); // Asumiendo que el pedido tiene un `id`
+      });
+      orderCard.appendChild(generateInvoiceBtn);
+
       resultsContainer.appendChild(orderCard);
     });
 

@@ -18,3 +18,4 @@ function closeAllModals() {
 function redirectOrder() {
   window.location.href = "pedidos.html";
 }
+

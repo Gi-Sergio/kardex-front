@@ -1,47 +1,49 @@
-import OrderService from "../../services/OrderService.js";
+import PayPalService from "../../services/PaypalService.js";
 
-const form = document.getElementById("order-save-form");
+document.addEventListener("DOMContentLoaded", () => {
+  paypal
+    .Buttons({
+      style: {
+        layout: "vertical",
+        color: "blue",
+        shape: "pill",
+        label: "buynow",
+      },
+      createOrder: function (data, actions) {
+        let cartId = localStorage.getItem("cartId");
 
-form.addEventListener("submit", async function (event) {
-  event.preventDefault();
-
-  let loading = document.getElementById("create-loading");
-  loading.style.display = "flex";
-  form.style.display = "none";
-
-  try {
-    const success = await createOrder(); // ⬅️ Captura si fue exitoso
-    if (success) {
-      openModal("confirmacionModal", 1); // ⬅️ Solo si todo salió bien
-    }
-  } catch (error) {
-    console.error("Error al crear el pedido:", error);
-  } finally {
-    loading.style.display = "none";
-    form.style.display = "block";
-  }
+        return PayPalService.createOrder(cartId);
+      },
+      onApprove: function (data, actions) {
+        return actions.order.capture().then(function (details) {
+          console.log("Detalles del pago:", details);
+          Swal.fire({
+            title: "Éxito",
+            text: "Tu pedido se genero correctamente, dirigite a la parte de pedidos para hacerle seguimiento a este, se paciente aveces puede tardar en generarse",
+            icon: "success",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#0CACAB"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.reload();
+            }
+          });
+        });
+      },
+      onError: function (err) {
+        console.error("Error en el pago:", err);
+        Swal.fire({
+          title: "Error",
+          text: "Lo sentimos, hubo un error mientras se generaba el pago",
+          icon: "error",
+          confirmButtonText: "OK",
+          confirmButtonColor: "#0CACAB"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            location.reload();
+          }
+        });
+      },
+    })
+    .render("#paypal-button-container");
 });
-
-let createOrder = async () => {
-
-  const order = {
-    productId: parseInt(document.getElementById("productId").value, 10),
-    quantity: parseInt(document.getElementById("quantity").value, 10),
-  };
-
-  const response = await OrderService.create(order);
-
-  if (!response.ok) {
-    const errorDetails = await response.text();
-    console.error(
-      "Error en la creación de el pedido:",
-      response.status,
-      response.statusText,
-      errorDetails
-    );
-    return false;
-  }
-
-  console.log("Pedido creado con éxito");
-  return true;
-};

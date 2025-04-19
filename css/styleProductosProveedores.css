@@ -487,7 +487,6 @@ ul {
   }
 }
 
-<<<<<<< HEAD
   button {
     cursor: pointer;
   }
@@ -577,107 +576,6 @@ ul {
   }
   
   
-=======
-/* Estilos para el modal */
-.modal {
-  display: none; /* Oculto por defecto */
-  position: fixed; /* Fijo en la pantalla */
-  z-index: 1; /* Por encima de otros elementos */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  overflow: hidden; /* Evita barras de desplazamiento */
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  /* 15% desde la parte superior y centrado */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  /* Ancho del modal */
-  max-width: 500px;
-  /* Ancho máximo */
-  text-align: center;
-  /* Centrar texto */
-  border-radius: 10px;
-}
-.form-control {
-  width: 20%; /* O ajusta a un tamaño específico, como 300px */
-  height: 20px; /* Aumenta la altura */
-  font-size: 18px; /* Aumenta el tamaño del texto */
-  padding: 10px; /* Añade espacio interno */
-  border-radius: 5px; /* Bordes redondeados opcionales */
-  border: 1px solid #ccc; /* Color del borde */
-}
-.modal-header {
-  display: flex;
-  flex-direction: column; /* Asegura que los elementos estén en columna */
-  align-items: center; /* Centra la imagen y el título */
-}
-
-.img-redonda {
-  width: 120px; /* Tamaño de la imagen */
-  object-fit: cover; /* Evita deformaciones */
-  margin-bottom: 10px; /* Espacio entre la imagen y el título */
-}
-
-.modal-title {
-  margin: 0;
-  font-size: 25px;
-  color: #0cacab;
-}
-
-.modal-body {
-  margin: 20px 0;
-  /* Espaciado vertical para el contenido */
-}
-
-.modal-footer {
-  display: flex;
-  justify-content: center;
-  /* Centrar los botones */
-}
-
-.btn-modal {
-  margin: 0 10px; /* Espacio horizontal entre los botones */
-  position: relative;
-  display: inline-block;
-  padding: 8px 20px;
-  background: #0cacab;
-  color: #ffffff;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: 500;
-}
-.btn-ver {
-  margin: 0 10px; /* Espacio horizontal entre los botones */
-  position: relative;
-  display: inline-block;
-  padding: 8px 20px;
-  background: #0cac54;
-  color: #ffffff;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: 500;
-}
-.btn-cerrar {
-  margin: 0 10px; /* Espacio horizontal entre los botones */
-  position: relative;
-  display: inline-block;
-  padding: 8px 20px;
-  background: #ac140c;
-  color: #ffffff;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: 500;
-}
->>>>>>> develop
 :root {
   --white-color: #ffffff;
   --shadow-color: rgba(0, 0, 0, 0.1);
@@ -811,3 +709,4 @@ center {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+

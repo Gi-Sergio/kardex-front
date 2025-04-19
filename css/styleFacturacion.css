@@ -420,8 +420,9 @@ body {
 }
 
 .receipt {
-  width: calc(33% - 20px);  /* Ancho de cada factura (3 por fila) */
-  margin: 5px;  /* Margen entre las facturas */
+  width: 100%;  /* Ancho de cada factura (3 por fila) */
+  margin: 5px; 
+  margin-bottom: 3%; /* Margen entre las facturas */
   background: white;
   border: 2px dashed #ccc;
   padding: 15px;
@@ -789,12 +790,10 @@ footer {
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+
 @media (max-width: 768px) {
   .sidebar {
       transform: translateX(-100%); /* Mueve el sidebar fuera de la pantalla */
-  }
-  .receipt{
-    width: calc(50% - 20px);
   }
 
   .sidebar.show {
@@ -818,17 +817,7 @@ footer {
   
 }
 
-@media (min-width: 769px) and (max-width: 1023px){
-  .receipt{
-    width: calc(50% - 10px);
-    
-  }
-}
-
 @media (min-width: 320px) and (max-width:510px){
-  .receipt{
-    width: 100%;
-  }
   footer{
     top: 1300px
   }
@@ -874,3 +863,27 @@ footer {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.invoice-btn {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: #0CACAB;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  align-self: center;
+}
+
+/* Para centrar el botón en su contenedor */
+.receipt .invoice-btn {
+  display: block;
+  margin: 20px auto 0 auto; /* top: 20px, auto horizontal, 0 bottom */
+}
+
+.invoice-btn:hover {
+  background-color: #088b8a;
+}
+
