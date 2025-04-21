@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log("Detalles del pago:", details);
           Swal.fire({
             title: "Éxito",
-            text: "Tu pedido se genero correctamente, dirigite a la parte de pedidos para hacerle seguimiento a este, se paciente aveces puede tardar en generarse",
+            text: "Tu pedido se genero correctamente, dirigite a la parte de pedidos para hacerle seguimiento a este, se paciente a veces puede tardar en generarse",
             icon: "success",
             confirmButtonText: "OK",
             confirmButtonColor: "#0CACAB"

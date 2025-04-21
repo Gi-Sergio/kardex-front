@@ -37,6 +37,8 @@ let getOrder = async () => {
   order.items.forEach((item) => {
     const product = item.product;
 
+    const producttr = document.createElement("tr");
+
     const producttd = document.createElement("td");
     producttd.textContent = capitalizeFirstLetter(product.name);
 
@@ -46,7 +48,7 @@ let getOrder = async () => {
     const pricetd = document.createElement("td");
     pricetd.textContent = `$${product.price.toLocaleString()}`;
 
-    itemsContainer.append(producttd, quantitytd, pricetd);
+    itemsContainer.append(producttr,producttd, quantitytd, pricetd);
   });
 
   document.getElementById("loading").style.display = "none";

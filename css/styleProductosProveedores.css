@@ -237,16 +237,53 @@ button {
 }
 
 /* From Uiverse.io by alexruix */
-
+/* Estilo para la tarjeta de producto */
 .card {
-  width: 270px;
-  height: 330px;
-  padding: 0.8em;
-  background: #ffffff;
-  position: relative;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  width: 250px;
+  height: 300px; /* Ajusta la altura para que no sea tan larga */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto; /* Agrega scroll si el contenido excede la altura */
 }
+
+
+/* Título del producto */
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Descripción del producto con scroll si es larga */
+.card-info {
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 120px; /* Limita la altura de la descripción */
+  margin-bottom: 16px; /* Espacio entre la descripción y el botón */
+}
+
+/* Botón "Agregar al carrito" */
+.card .add-to-cart {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.card .add-to-cart:hover {
+  background-color: #0056b3;
+}
+
 
 .card-img {
   /* background-color: #0CACAB; */
@@ -257,9 +294,6 @@ button {
   object-fit: contain;
 }
 
-.card-info {
-  padding-top: 10%;
-}
 
 svg {
   width: 20px;
@@ -487,10 +521,18 @@ ul {
   }
 }
 
-  button {
-    cursor: pointer;
-  }
-  
+.btn-confirm {
+  cursor: pointer;
+  background: none; /* Sin fondo */
+  border: none;
+  color: #0CACAB; /* Color del chulo */
+  font-size: 24px; /* Ajusta el tamaño del icono */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
   .modal {
     display: none; /* Esto cambia a 'flex' con JS al mostrar el modal */
     position: fixed;

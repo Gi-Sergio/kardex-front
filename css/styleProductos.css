@@ -365,7 +365,6 @@ input:hover {
   flex-wrap: wrap; /* Permite que las facturas se acomoden en varias filas */
 }
 .products {
-  max-height: 500px; /* Ajusta la altura máxima según necesites */
   padding-right: 10px; /* Espacio para que no se superponga el scroll */
 }
 
