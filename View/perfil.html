@@ -1,104 +1,77 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
-    <title>
-        Perfil del Usuario
-    </title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/stylePerfil.css">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
+    <title>Perfil del Usuario</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/stylePerfil.css">
+    <link rel="stylesheet" href="../css/styleLoader.css">
 </head>
+
 <body>
+    <div id="alert-container" class="alert-container"></div>
     <div class="container">
-     <div class="profile-sidebar">
-      <i class="fas fa-arrow-left back-icon" onclick="window.history.back();"></i>
-      <img alt="Foto de perfil de Anjhell Reyes" height="100" src="https://storage.googleapis.com/a1aa/image/zdLH5bhsEg4BHhG80OSaoZ21iuuw50XtLdkiju5qVNw.jpg" width="100"/>
-      <h2>
-       Anjhell Reyes
-      </h2>
-      <p>
-       anjhell@gmail.com
-      </p>
-      <button class="upload-btn" onclick="document.getElementById('file-input').click();">
-       Subir nueva foto
-      </button>
-      <input class="hidden-file-input" id="file-input" type="file"/>
-      <div class="upload-info">
-       <p>
-        La imagen más grande se redimensionará automáticamente.
-       </p>
-       <p>
-        El tamaño máximo de carga es
-        <strong>
-         1 MB
-        </strong>
-       </p>
-      </div>
-      <div class="member-since">
-       <p>
-        Miembro desde:
-        <strong>
-         29 de septiembre de 2019
-        </strong>
-       </p>
-      </div>
-      <div class="menu">
-       <a href="productos.html">Productos</a>
-       <a href="pedidos.html">Pedidos</a>
-       <a href="proveedores.html">Proveedores</a>
-       <a href="contactos.html">Contáctanos</a>
-      </div>
-     </div>
-     <div class="profile-content">
-      <h2>
-       Editar perfil
-      </h2>
-      <div class="tabs">
-       <div class="active">
-        Información del usuario
-       </div>
-      </div>
-      <div class="form-group">
-       <label for="full-name">
-        Nombre completo
-       </label>
-       <input id="full-name" type="text" value="Anjhell Reyes"/>
-      </div>
-      <div class="form-group">
-       <label for="email">
-        Correo electrónico
-       </label>
-       <input id="email" type="email" value="anjhell@gmail.com"/>
-      </div>
-      <div class="form-group">
-       <label for="confirm-email">
-        Correo electrónico
-       </label>
-       <input id="confirm-email" type="email" value="anjhell@gmail.com"/>
-      </div>
-      <button class="update-btn">
-       Actualizar información
-      </button>
-     </div>
+        <div class="profile-sidebar">
+            <i class="fas fa-arrow-left back-icon" onclick="window.history.back();"></i>
+            <div class="profile-photo-container">
+                <img id="user-image-preview" class="profile-photo" alt="Foto de perfil" />
+                <div class="camera-icon" onclick="document.getElementById('image').click();">
+                    <i class="fas fa-camera"></i>
+                </div>
+            </div>
+            <p id="email-display"></p>
+            <button type="submit" class="upload-btn" id="confirm-image-btn">Confirmar Imagen</button>
+            <input class="hidden-file-input" id="image" accept="image/*" type="file" style="display: none;" />
+            <div class="upload-info">
+                <p>La imagen más grande se redimensionará automáticamente.</p>
+                <p>El tamaño máximo de carga es<strong>1 MB</strong></p>
+            </div>
+            <div class="member-since">
+                <p>Miembro desde:<strong> <span id="member-since"></span></strong></p>
+            </div>
+            <div id="image-error"></div>
+            <div class="menu">
+                <a href="productos.html">Productos</a>
+                <a href="facturacion.html">Pedidos</a>
+                <a href="proveedores.html">Proveedores</a>
+                <a href="contactos.html">Contáctanos</a>
+            </div>
+        </div>
+        <div class="profile-content">
+            <h2>Editar perfil</h2>
+            <div class="tabs">
+                <div class="active">Información del usuario</div>
+            </div>
+            <div class="loader" id="loading-user" style="display: none;">Cargando usuario...</div>
+            <div id="no-user" style="display: none;">Usuario no encontrado.</div>
+            <div id="user-container">
+                <form id="update-user-form">
+                    <div class="form-group">
+                        <label for="username">Nombre de Usuario</label>
+                        <input id="username" type="text" required disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="companyName">Nombre de la Compañía</label>
+                        <input id="companyName" type="text" required disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input id="email" type="email" required disabled />
+                    </div>
+                    <button type="button" id="edit-btn" class="update-btn">Actualizar información</button>
+                    <button type="submit" id="save-btn" class="update-btn" style="display:none;">Guardar cambios</button>
+                    <button type="button" id="cancel-btn" class="update-btn" style="display:none;">Cancelar</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <script>
-     function togglePasswordVisibility(id) {
-          const input = document.getElementById(id);
-          const icon = input.nextElementSibling;
-          if (input.type === 'password') {
-              input.type = 'text';
-              icon.classList.remove('fa-eye');
-              icon.classList.add('fa-eye-slash');
-          } else {
-              input.type = 'password';
-              icon.classList.remove('fa-eye-slash');
-              icon.classList.add('fa-eye');
-          }
-      }
-    </script>
-   </body>
-  </html>
-  
+    <script type="module" src="../js/controllers/user/getUser.js"></script>
+    <script type="module" src="../js/controllers/user/putUser.js"></script>
+    <script type="module" src="../js/controllers/user/patchUserImage.js"></script>
+    <script src="../js/utils/protect.js"></script>
+</body>
+
+</html>

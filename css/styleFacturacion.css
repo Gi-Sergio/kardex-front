@@ -28,12 +28,16 @@ body {
 }
 
 /* Estilos para las imágenes dentro del sidebar */
+/* Estilos para las imágenes dentro del sidebar */
 .sidebar img {
-    width: 100px;  /* Ancho de la imagen */
-    height: 100px;  /* Altura de la imagen */
-    display: block;  /* Convierte la imagen en un bloque para centrarla */
-    margin: 0 auto 20px;  /* Centra la imagen y agrega un margen inferior */
+  width: 100px; /* Ancho de la imagen */
+  height: 100px; /* Altura de la imagen */
+  display: block; /* Convierte la imagen en un bloque para centrarla */
+  margin: 0 auto 20px; /* Centra la imagen y agrega un margen inferior */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Evita deformaciones y mantiene el recorte adecuado */
 }
+
 
 /* Títulos en el sidebar */
 .sidebar h2 {
@@ -393,7 +397,7 @@ body {
   flex-wrap: wrap;  /* Permite que las facturas se acomoden en varias filas */
 }
 .receipts-container {
-  max-height: 500px; /* Ajusta la altura máxima según necesites */
+  /* max-height: 500px; Ajusta la altura máxima según necesites */
   overflow: visible
   ;
   padding-right: 10px; /* Espacio para que no se superponga el scroll */
@@ -429,6 +433,10 @@ body {
   text-align: center;
   color: #0CACAB;
   margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;/* para poner ... al final*/
+  height: 25px;
+  white-space: nowrap;
 }
 
 .info {
@@ -491,6 +499,10 @@ body {
   color: #eb8c08;
 }
 
+.Estado #Estado-Cancelado {
+  color: #eb0808;
+}
+
 .barcode {
   display: flex;
   justify-content: center;
@@ -506,7 +518,6 @@ footer {
   text-align: center; /* Centra el texto */
   padding: 10px 0; /* Agrega un poco de espacio arriba y abajo */
     position: relative;
-    top: 500px;
 }
 .main{
   z-index: 100;
@@ -772,8 +783,7 @@ footer {
   font-weight: normal;
   text-align: center;
   color: #666;
-  padding: 10px 0;
-}
+ }
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -831,4 +841,16 @@ footer {
     margin-left: 250px;
   }
 
+}
+
+#no-orders{
+  display: flex;
+  justify-content: center;
+}
+
+#orders-loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
 }

@@ -422,6 +422,11 @@ a {
     transition-delay: 0.5s;
 }
 
+.center{
+    position: relative;
+    right: 80px;
+}
+
 .panel h3 {
     font-size: 35px;
     position: relative;
@@ -507,6 +512,21 @@ a {
     pointer-events: all;
 }
 
+.alert-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050; /* Asegura que esté por encima de otros elementos */
+    width: 350px;
+    max-width: 90%;
+    text-align: center;
+  }
+  
+  .alert {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
 /*Responsive*/
 @media (max-width:1244px) {
     .container {
@@ -580,3 +600,25 @@ a {
         display: none;
     }
 }
+
+.custom-input-group {
+    margin-top: 2%;
+    border: 1px solid #0CACAB;
+    border-radius: 20px;
+    overflow: hidden; /* Asegura que los bordes redondeados se apliquen correctamente */
+}
+
+.custom-input-group .form-control {
+    border: none; /* Elimina el borde predeterminado del input */
+    border-radius: 20px;
+}
+
+.custom-input-group .input-group-text {
+    background-color: #0CACAB;
+    color: white;
+    border: none;
+    border-radius: 20px 0 0 20px; /* Redondeo solo en el lado izquierdo */
+}
+
+
+  

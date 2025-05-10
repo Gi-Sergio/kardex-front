@@ -3,55 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notificaciones</title>
+    <title>Sistema de Notificaciones</title>
     <link rel="stylesheet" href="../css/styleNotificaciones.css">
-
-    <style>
-       
-    </style>
+    <link rel="stylesheet" href="../css/styleLoader.css"/>
+    <link rel="stylesheet" href="../css/stylePagination.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    
     <div class="container">
-        <button class="home-button" onclick="goHome()">🏠</button>
-        
-        <div id="notifications">
-            <h2>Notificaciones</h2>
-            <div class="notification">
-                <p>Tienes una nueva actualización disponible.</p>
-                <div class="buttons">
-                    <button class="button read-btn" onclick="markAsRead(this)">✔</button>
-                    <button class="button delete-btn" onclick="deleteNotification(this)">🗑</button>
-                </div>
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="back-link" title="Volver a la página principal">
+                    <span class="back-icon"><i class="fa-solid fa-arrow-left"></i>
+                    </span>
+                </a>
+                <h1>Notificaciones</h1>
             </div>
-            <div class="notification">
-                <p>Tu perfil ha sido verificado exitosamente.</p>
-                <div class="buttons">
-                    <button class="button read-btn" onclick="markAsRead(this)">✔</button>
-                    <button class="button delete-btn" onclick="deleteNotification(this)">🗑</button>
-                </div>
-            </div>
-            <div class="notification">
-                <p>Recibiste un nuevo mensaje.</p>
-                <div class="buttons">
-                    <button class="button read-btn" onclick="markAsRead(this)">✔</button>
-                    <button class="button delete-btn" onclick="deleteNotification(this)">🗑</button>
-                </div>
+            <div class="header-buttons">
+                <button id="btn-delete-read-notification" class="undo-button" disabled><i class="fa-solid fa-trash"></i>
+                </button>
             </div>
         </div>
+
+        <ul class="notification-list" id="notifications"></ul>
+        <div id="notifications-loading" class="loader" style="display: none;">
+            <div class="dot-spinner">
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+              </div>
+        </div>
+        <div class="loader" id="no-notifications" style="display: none;">
+            <img src="../img/no-notification.jpg" alt="no-notification">
+        </div>
     </div>
-    <script>
-        function markAsRead(button) {
-            const notification = button.closest(".notification");
-            notification.classList.add("read");
-        }
-        function deleteNotification(button) {
-            const notification = button.closest(".notification");
-            notification.remove();
-        }
-        function goHome() {
-            window.location.href = "inicio.html";
-        }
-    </script>
+    <div id="pagination" class="pagination-controls"></div>
+    <script src="../js/utils/protect.js"></script>
+    <script type="module" src="../js/controllers/notification/getAllNotifications.js"></script>
+    <script type="module" src="../js/controllers/notification/deleteAllReadNotifications.js"></script>
 </body>
 </html>

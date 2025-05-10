@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
+html{
+    width: 100%;
+    overflow-x: hidden;
+}
 body {
     width: 100%;
     margin: 0;    
@@ -22,6 +25,11 @@ a {
     text-decoration: none;
 }
 
+button{
+    border: none;
+    cursor: pointer;
+}
+
 .cols__container {
     display: flex;
     justify-content: space-between;
@@ -29,7 +37,10 @@ a {
     /* Alinea los elementos en la parte superior */
     gap: 20px;
 }
-
+.left__col{
+    margin-top: 20px;
+    margin-left: 30px;
+}
 .right__col {
     display: flex;
     flex-wrap: wrap;
@@ -41,11 +52,16 @@ a {
     padding-left: 40px;
     /* Ajusta este valor según necesites */
 }
-.left__col{
-    margin-left: 10%;
+.contenedorPagination{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-right: 7%;
 }
-
-
+#products{
+    display: flex;
+    flex-flow: row wrap;
+}
 
 .linea-vertical {
     width: 1px;
@@ -87,7 +103,7 @@ a {
 }
 
 .header__wrapper header img {
-    width: 105%;
+    width: 100%;
     /* Reduce el ancho al 50% del tamaño original */
     height: 100px;
     /* Mantiene la proporción */
@@ -99,7 +115,6 @@ a {
     text-align: center;
     max-width: 350px;
     position: relative;
-    margin: 0 auto;
 }
 
 .header__wrapper .cols__container .left__col .img__container {
@@ -206,22 +221,22 @@ a {
 /* From Uiverse.io by alexruix */
 
 .card {
-    width: 190px;
-    height: 280px;
+    width: 270px;
+    height: 330px;
     padding: .8em;
     background: #ffffff;
     position: relative;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     margin: 10px;
-    /* Espacio entre cartas */
 }
 
 .card-img {
-    background-color: #0CACAB;
+    /* background-color: #0CACAB; */
     height: 40%;
     width: 100%;
     border-radius: .5rem;
     transition: .3s ease;
+    object-fit: contain;
 }
 
 .card-info {
@@ -406,6 +421,7 @@ ul {
     .header__wrapper .cols__container .left__col {
         padding: 25px 0;
     }
+    
 
     .header__wrapper .cols__container .right__col nav ul {
         flex-direction: row;
@@ -415,22 +431,17 @@ ul {
 
 /* Estilos para el modal */
 .modal {
-    display: none;
-    /* Oculto por defecto */
-    position: fixed;
-    /* Fijo en la pantalla */
-    z-index: 1;
-    /* Por encima de otros elementos */
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    z-index: 1; /* Por encima de otros elementos */
     left: 0;
     top: 0;
     width: 100%;
-    /* Ancho completo */
     height: 100%;
-    /* Alto completo */
-    overflow: auto;
-    /* Habilitar desplazamiento si es necesario */
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Fondo oscuro con opacidad */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    overflow: hidden; /* Evita barras de desplazamiento */
 }
 
 .modal-content {
@@ -449,7 +460,7 @@ ul {
 
 }
 .form-control{
-    width: 40px;  /* O ajusta a un tamaño específico, como 300px */
+    width: 20%;  /* O ajusta a un tamaño específico, como 300px */
     height: 20px; /* Aumenta la altura */
     font-size: 18px; /* Aumenta el tamaño del texto */
     padding: 10px; /* Añade espacio interno */
@@ -519,27 +530,79 @@ ul {
     text-decoration: none;
     font-weight: 500;
 }
+:root {
+    --white-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --available: #16a085;
+    --available-hover: #117864;
+}
 
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    top: 0;
+    padding-bottom: 20px;
+}
+
+.pagination-controls button {
+    background-color: var(--available);
+    color: var(--white-color);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  background: #0CACAB;
+
+}
+
+.pagination-controls button:disabled {
+    background-color: #c0c0c0;
+    cursor: not-allowed;
+}
+
+.pagination-controls button:not(:disabled):hover {
+    background-color: var(--available-hover);
+    box-shadow: 0px 4px 6px var(--shadow-color);
+}
 /* Estilo para mostrar el modal */
 .show {
-    display: block;
+    display: flex;
     /* Mostrar el modal */
 }
+.dot-spinner{
+    top: 160px;
+    left: 45%;
+}
+
 
 @media (max-width: 768px){
     body{
         width: 100%;
     }    
     .cols__container{
-        flex-flow: column wrap;
-        
+        flex-flow: column wrap;        
     }    
+    .left__col{
+        left: 200px;
+    }
     .header__wrapper header img{
         width: 100%;
     }
     .right__col{
         padding-left: 0;
         gap: 10px;
+        left: 80px;
+    }
+    .dot-spinner{
+        left: 38%;
+        top: 50px;
     }
 }
 @media (max-width: 425px){
@@ -547,4 +610,54 @@ ul {
         width: 70%;
         margin-left: 10%;
     }
+    .left__col{
+        left: 30px;
+    }
+    .right__col{
+        left: 10px;
+    }
+
+}
+
+@media (max-width:320px){    
+    
+    .left__col{
+        margin-left: 0;
+        left: 10px;
+    }
+    .header__wrapper .cols__container .left__col .about {
+        justify-content: center;
+        gap: 50px;
+    }
+    .card{
+        height: 350px;
+        left: 60px;
+    }
+    .contenedorPagination{
+        justify-content: center;
+    }
+}
+
+@media (min-width: 321px) and (max-width:425px){
+    .left__col{
+        left: 10px;
+    }
+}
+
+@media (min-width: 426px) and (max-width:631px){
+    .left__col{
+        left: 40px;
+    }
+}
+@media (max-width:718px){
+    #products{
+        flex-flow: row wrap;
+        left: -65px;
+        position: relative;
+    }
+}
+
+center{
+    top: 0;
+    left: 0;
 }

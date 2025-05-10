@@ -40,14 +40,12 @@ body {
 
 /* Estilos para las imágenes dentro del sidebar */
 .sidebar img {
-  width: 100px;
-  /* Ancho de la imagen */
-  height: 100px;
-  /* Altura de la imagen */
-  display: block;
-  /* Convierte la imagen en un bloque para centrarla */
-  margin: 0 auto 20px;
-  /* Centra la imagen y agrega un margen inferior */
+  width: 100px; /* Ancho de la imagen */
+  height: 100px; /* Altura de la imagen */
+  display: block; /* Convierte la imagen en un bloque para centrarla */
+  margin: 0 auto 20px; /* Centra la imagen y agrega un margen inferior */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Evita deformaciones y mantiene el recorte adecuado */
 }
 
 /* Títulos en el sidebar */
@@ -763,14 +761,15 @@ ul {
   color: #0099ff;
   font-size: 9px;
 }
-
-footer {
+/* ---- Estilos para el pie de página ---- */
+#p-2 {
+  font-size: 10px;
+  font-weight: normal;
   text-align: center;
-  /* Centra el texto */
+  color: #666;
   padding: 10px 0;
-  /* Agrega un poco de espacio arriba y abajo */
-  display: none;
 }
+
 
 @media (max-width: 1024px) {
   .container-2 {

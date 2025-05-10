@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 /* Estilos globales para el cuerpo de la página */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   /* Se aplica la fuente Poppins */
   margin: 0;
   /* Elimina los márgenes predeterminados */
@@ -36,25 +36,21 @@ body {
   padding: 40px;
   /* Relleno interno de 20px */
   transition: transform 0.3s ease-in-out; /* Efecto de entrada/salida */
-
-
 }
 
 /* Estilos para las imágenes dentro del sidebar */
 .sidebar img {
-  width: 100px;
-  /* Ancho de la imagen */
-  height: 100px;
-  /* Altura de la imagen */
-  display: block;
-  /* Convierte la imagen en un bloque para centrarla */
-  margin: 0 auto 20px;
-  /* Centra la imagen y agrega un margen inferior */
+  width: 100px; /* Ancho de la imagen */
+  height: 100px; /* Altura de la imagen */
+  display: block; /* Convierte la imagen en un bloque para centrarla */
+  margin: 0 auto 20px; /* Centra la imagen y agrega un margen inferior */
+  border-radius: 50%; /* Hace que la imagen sea redonda */
+  object-fit: cover; /* Evita deformaciones y mantiene el recorte adecuado */
 }
 
 /* Títulos en el sidebar */
 .sidebar h2 {
-  color: #17E0A7;
+  color: #17e0a7;
   /* Color verde turquesa */
   font-size: 18px;
   /* Tamaño de fuente de 18px */
@@ -80,7 +76,7 @@ body {
 .sidebar a {
   display: block;
   /* Hace que los enlaces sean bloques para ocupar toda la línea */
-  color: #0CACAB;
+  color: #0cacab;
   /* Color turquesa para los enlaces */
   font-size: 20px;
   /* Tamaño de fuente de 20px */
@@ -103,11 +99,10 @@ body {
 }
 
 /* Estilo del contenido principal */
-.content>* {
+.content > * {
   margin-top: 0;
   padding-top: 0;
 }
-
 
 /* Estilos para el encabezado */
 .header {
@@ -137,7 +132,7 @@ body {
 
 /* Estilo para los botones en el encabezado */
 .header button {
-  background-color: #0CACAB;
+  background-color: #0cacab;
   /* Fondo turquesa */
   color: #ffffff;
   /* Color de texto blanco */
@@ -166,7 +161,7 @@ body {
   padding: 10px;
   /* Relleno de 20px */
   background-color: #ffffff;
-  /* Fondo blanco */  
+  /* Fondo blanco */
 }
 
 .header-2 {
@@ -237,7 +232,7 @@ input:hover {
 
 .button-Crear {
   border: 2px solid #ffffff;
-  background-color: #0CACAB;
+  background-color: #0cacab;
   border-radius: 0.9em;
   cursor: pointer;
   padding: 0.8em 1.2em 0.8em 1em;
@@ -343,12 +338,17 @@ input:hover {
   width: 50px;
   height: 50px;
   margin: 0 auto;
+  object-fit: contain;
 }
 
 .product-card h3 {
   font-size: 16px;
-  color: #248E9C;
+  color: #248e9c;
   margin: 10px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;/* para poner ... al final*/
+  height: 25px;
+  white-space: nowrap;
 }
 
 .product-card p {
@@ -358,7 +358,7 @@ input:hover {
 }
 
 .product-card button {
-  background-color: #4CF69A;
+  background-color: #16a085;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
@@ -367,8 +367,8 @@ input:hover {
   font-weight: 600;
 }
 .products {
-  display: flex;  /* Utiliza flexbox para alinear las facturas */
-  flex-wrap: wrap;  /* Permite que las facturas se acomoden en varias filas */
+  display: flex; /* Utiliza flexbox para alinear las facturas */
+  flex-wrap: wrap; /* Permite que las facturas se acomoden en varias filas */
 }
 .products {
   max-height: 500px; /* Ajusta la altura máxima según necesites */
@@ -403,7 +403,7 @@ input:hover {
 }
 
 /* From Uiverse.io by pathikcomp */
-.main>.inp {
+.main > .inp {
   display: none;
 }
 
@@ -451,7 +451,7 @@ input:hover {
   transform: rotate(-35deg) translateX(0.5px);
 }
 
-.main>.inp:checked+.arrow {
+.main > .inp:checked + .arrow {
   transform: rotateX(180deg);
 }
 
@@ -508,36 +508,31 @@ input:hover {
   background-color: rgb(223, 223, 223);
 }
 
-.inp:checked~.menu-container {
+.inp:checked ~ .menu-container {
   clip-path: inset(10% 50% 90% 50% round 10px);
 }
 
-.inp:not(:checked)~.menu-container .menu-list {
+.inp:not(:checked) ~ .menu-container .menu-list {
   transform: translateY(0);
   opacity: 1;
 }
 
-.inp:not(:checked)~.menu-container .menu-list:nth-child(1) {
-  transition:
-    transform 0.4s var(--delay),
-    opacity 0.4s var(--delay);
+.inp:not(:checked) ~ .menu-container .menu-list:nth-child(1) {
+  transition: transform 0.4s var(--delay), opacity 0.4s var(--delay);
 }
 
-.inp:not(:checked)~.menu-container .menu-list:nth-child(2) {
-  transition:
-    transform 0.4s calc(var(--delay) + (var(--trdelay) * 1)),
+.inp:not(:checked) ~ .menu-container .menu-list:nth-child(2) {
+  transition: transform 0.4s calc(var(--delay) + (var(--trdelay) * 1)),
     opacity 0.4s calc(var(--delay) + (var(--trdelay) * 1));
 }
 
-.inp:not(:checked)~.menu-container .menu-list:nth-child(3) {
-  transition:
-    transform 0.4s calc(var(--delay) + (var(--trdelay) * 2)),
+.inp:not(:checked) ~ .menu-container .menu-list:nth-child(3) {
+  transition: transform 0.4s calc(var(--delay) + (var(--trdelay) * 2)),
     opacity 0.4s calc(var(--delay) + (var(--trdelay) * 2));
 }
 
-.inp:not(:checked)~.menu-container .menu-list:nth-child(4) {
-  transition:
-    transform 0.4s calc(var(--delay) + (var(--trdelay) * 3)),
+.inp:not(:checked) ~ .menu-container .menu-list:nth-child(4) {
+  transition: transform 0.4s calc(var(--delay) + (var(--trdelay) * 3)),
     opacity 0.4s calc(var(--delay) + (var(--trdelay) * 3));
 }
 
@@ -565,17 +560,17 @@ input:hover {
   position: relative;
 }
 
-.inp:not(:checked)~.bar>.top {
+.inp:not(:checked) ~ .bar > .top {
   transform-origin: top right;
   transform: translateY(var(--transform)) rotate(-45deg);
 }
 
-.inp:not(:checked)~.bar>.middle {
+.inp:not(:checked) ~ .bar > .middle {
   transform: translateX(-50%);
   opacity: 0;
 }
 
-.inp:not(:checked)~.bar>.bottom {
+.inp:not(:checked) ~ .bar > .bottom {
   transform-origin: bottom right;
   transform: translateY(calc(var(--transform) * -1)) rotate(45deg);
 }
@@ -583,20 +578,14 @@ input:hover {
 /* Estilos del modal de éxito */
 .notifications-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  /* Ocupa todo el ancho */
-  height: 100vh;
-  /* Ocupa toda la altura */
-  background: rgba(0, 0, 0, 0.5);
-  /* Fondo oscuro semi-transparente */
-  display: none;
+  inset: 0; /* Asegura que ocupe toda la pantalla */
+  display: flex; /* Usa flexbox para centrar el contenido */
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
-/* Mantiene la notificación en su tamaño original */
 .success {
   width: 350px;
   background: white;
@@ -604,18 +593,31 @@ input:hover {
   border-radius: 0.5rem;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra todo horizontalmente */
+  justify-content: center;
+  text-align: center;
+}
+
+.success-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem; /* Espaciado debajo del ícono */
 }
 
 .succes-svg {
-  color: rgb(74 222 128);
-  width: 2rem;
-  height: 2rem;
-  display: block;
-  /* Hace que el icono sea un bloque */
-  margin: auto;
-  /* Lo centra horizontalmente */
+  width: 3rem;
+  height: 3rem;
 }
-
 
 .success-prompt-heading {
   font-weight: bold;
@@ -650,12 +652,12 @@ input:hover {
 }
 
 .success-button-main {
-  background-color: #ECFDF5;
+  background-color: #ecfdf5;
   color: rgb(22 101 52);
 }
 
 .success-button-main:hover {
-  background-color: #D1FAE5;
+  background-color: #d1fae5;
 }
 
 .success-button-secondary:hover {
@@ -677,11 +679,11 @@ input:hover {
   padding: 10px 0; /* Espaciado superior e inferior */
 }
 
-.main-content{
+.main-content {
   position: relative;
 }
 
-.main{
+.main {
   display: none;
 }
 /*---------------------------------------------------------------------CAMPANA Y LOGO USUARIO----------------------------------------------------------------------*/
@@ -695,10 +697,9 @@ input:hover {
   width: 100%; /* Que ocupe todo el ancho */
   margin-top: 5px;
   z-index: 10;
-
 }
 .container-2 {
-  --color: #0CACAb;
+  --color: #0cacab;
   --size: 30px;
   display: flex;
   justify-content: center;
@@ -760,7 +761,7 @@ input:hover {
   --burger-line-width: 1.125em;
   --burger-line-height: 0.125em;
   --burger-offset: 0.625em;
-  --burger-bg: #0CACAB;
+  --burger-bg: #0cacab;
   --burger-color: #333;
   --burger-line-border-radius: 0.1875em;
   --burger-diameter: 3.125em;
@@ -797,14 +798,14 @@ input:hover {
   --nav-button-padding-y: 0.375em;
   --nav-button-border-radius: 0.375em;
   --nav-button-font-size: 17px;
-  --nav-button-hover-bg: #0CACAB;
+  --nav-button-hover-bg: #0cacab;
   --nav-button-hover-text-color: #fff;
   --nav-button-distance: 0.875em;
   /* Línea separadora */
   --underline-border-width: 0.0625em;
   --underline-border-color: #ebebeb;
   --underline-margin-y: 0.3125em;
-  
+
   display: inline-block;
   text-rendering: optimizeLegibility;
   position: relative;
@@ -845,7 +846,10 @@ input:hover {
   border-radius: var(--nav-border-radius);
   box-shadow: var(--nav-shadow-width) var(--nav-shadow-color);
   border: var(--nav-border-width) solid var(--nav-border-color);
-  top: calc(var(--burger-diameter) + var(--burger-enable-outline-width) + var(--burger-enable-outline-offset));
+  top: calc(
+    var(--burger-diameter) + var(--burger-enable-outline-width) +
+      var(--burger-enable-outline-offset)
+  );
   left: auto;
   right: 0;
   transition: var(--burger-transition);
@@ -884,13 +888,14 @@ input:hover {
 
 .popup-window ul li:nth-child(1) svg,
 .popup-window ul li:nth-child(2) svg {
-  color: #0CACAB;
+  color: #0cacab;
 }
 
 .popup-window hr {
   margin: var(--underline-margin-y) 0;
   border: none;
-  border-bottom: var(--underline-border-width) solid var(--underline-border-color);
+  border-bottom: var(--underline-border-width) solid
+    var(--underline-border-color);
 }
 
 /* ---- Acciones en botones del popup ---- */
@@ -928,7 +933,9 @@ input:hover {
 }
 
 .popup input:checked + .burger span:nth-child(3) {
-  transform: translateX(calc(var(--burger-diameter) * -1 - var(--burger-line-width)));
+  transform: translateX(
+    calc(var(--burger-diameter) * -1 - var(--burger-line-width))
+  );
 }
 
 /* ---- Mostrar el menú al marcar ---- */
@@ -948,101 +955,95 @@ input:hover {
 }
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
-@media (min-width:769px){
-  .main-content{
+@media (min-width: 769px) {
+  .main-content {
     margin-left: 250px;
   }
 }
-@media (min-width:1025px) and (max-width: 1840px){
-  .button-Crear{
+@media (min-width: 1025px) and (max-width: 1840px) {
+  .button-Crear {
     left: 85%;
   }
-  .container{
+  .container {
     width: 100%;
   }
 }
-@media (max-width: 1024px){
-  .button-Crear{
-    left: 80%
+@media (max-width: 1024px) {
+  .button-Crear {
+    left: 80%;
   }
-  .container{
+  .container {
     max-width: 1024px;
   }
 }
 @media (max-width: 768px) {
   .sidebar {
-      transform: translateX(-100%); /* Mueve el sidebar fuera de la pantalla */
+    transform: translateX(-100%); /* Mueve el sidebar fuera de la pantalla */
   }
 
   .sidebar.show {
-      transform: translateX(0); /* Lo muestra nuevamente */
+    transform: translateX(0); /* Lo muestra nuevamente */
   }
-  .button-Crear{
+  .button-Crear {
     bottom: 50px;
-        right: 0px;
-        left: 80%;
+    right: 0px;
+    left: 80%;
   }
 
-  .main-content{
+  .main-content {
     position: absolute;
   }
-  .main{
+  .main {
     display: flex;
     z-index: 100;
     position: relative;
   }
-  body{
+  body {
     width: 100%;
-  }  
-  .product-card{
+  }
+  .product-card {
     width: 70%;
   }
-
-  
 }
-@media (min-width: 769px) and (max-width: 1024px){
-  .products{
+@media (min-width: 769px) and (max-width: 1024px) {
+  .products {
     width: 100%;
     flex-flow: row wrap;
-  }  
+  }
 }
-@media (min-width: 769px){
-  .header img{
+@media (min-width: 769px) {
+  .header img {
     margin-left: 250px;
   }
 }
 
-@media (max-width: 425px){
-  .main-content{
+@media (max-width: 425px) {
+  .main-content {
     width: 100%;
-  } 
-  .button-Crear{
+  }
+  .button-Crear {
     left: calc(90% - 20px);
   }
-  .button-Crear p{
+  .button-Crear p {
     display: none;
   }
-  .product-card{
+  .product-card {
     width: 100%;
-        position: relative;
+    position: relative;
   }
-  
 }
 
-@media (max-width: 320px){
-  .input{
+@media (max-width: 320px) {
+  .input {
     width: 100%;
   }
-  .button-Crear{
+  .button-Crear {
     left: 80%;
   }
-  .modal-content{
+  .modal-content {
     transform: scale(0.7);
   }
-  .success{
+  .success {
     transform: scale(0.9);
   }
 }
-
-
-
